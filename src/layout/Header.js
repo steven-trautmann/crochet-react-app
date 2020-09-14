@@ -6,13 +6,31 @@ import NavBarThemes from "../theme/NavBarThemes";
 import { Link } from "react-router-dom";
 import "../style/hamburgerMenu.scss";
 import "../style/navBar.css";
+import $ from "jquery";
 
 export default function Header() {
   const [themeMode, setThemeMode] = useContext(NavBarThemeContext);
   const [width, setWidth] = useContext(InnerWidthContext);
   const currentTheme = NavBarThemes[themeMode];
+  // const { JSDOM } = require( "jsdom" );
+  // const { window } = new JSDOM( "" );
+  // const $ = require( "jquery" )( window );
 
   let fromMobile = false;
+
+  const [productsLeftFromWindow, setProductsLeftFromWindow] = useState(0);
+  const [productsWidthFromWindow, setProductsWidthFromWindow] = useState(0);
+
+  React.useEffect(() => {
+    if (!fromMobile) {
+      setProductsLeftFromWindow(
+        document.getElementById("finishedProductsButton").offsetLeft
+      );
+      setProductsWidthFromWindow(
+        document.getElementById("finishedProductsButton").offsetWidth
+      );
+    }
+  }, [fromMobile, width]);
 
   React.useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
@@ -20,8 +38,8 @@ export default function Header() {
 
   const finishedProductsDropper = () => {
     let myDropdown = document.getElementById("finishedProducts");
-    if (myDropdown.classList.contains("finishedProductsDisquise")) {
-      myDropdown.classList.remove("finishedProductsDisquise");
+    if (myDropdown.classList.contains("finishedProductsDropDownDisquise")) {
+      myDropdown.classList.remove("finishedProductsDropDownDisquise");
       myDropdown.classList.add("finishedProductsDropDown");
     } else {
       myDropdown.classList.remove("finishedProductsDropDown");
@@ -31,11 +49,11 @@ export default function Header() {
 
   //Clicking out
   window.onclick = function (e) {
-    if (!e.target.matches("#finishedProducts")) {
+    if (!e.target.matches("#finishedProductsButton")) {
       let myDropdown = document.getElementById("finishedProducts");
-      if (myDropdown.classList.contains("finishedProductsDisquise")) {
-        myDropdown.classList.remove("finishedProductsDisquise");
-        myDropdown.classList.add("finishedProductsDropDown");
+      if (myDropdown.classList.contains("finishedProductsDropDown")) {
+        myDropdown.classList.remove("finishedProductsDropDown");
+        myDropdown.classList.add("finishedProductsDropDownDisquise");
       }
     }
   };
@@ -111,7 +129,14 @@ export default function Header() {
         <Link style={Links} to="/kesz-termekek/figurak">
           Kész Termékek
         </Link>
-        <button style={Links}>Eddigi Munkáim</button>
+        <button
+          style={Links}
+          id="finishedProductsButton"
+          onClick={() => finishedProductsDropper()}
+        >
+          Eddigi Munkáim
+        </button>
+
         <Link style={Links} to="/history">
           Rólam
         </Link>
@@ -146,8 +171,8 @@ export default function Header() {
       </TopNav>
       <div
         id="finishedProducts"
-        className="finishedProductsDisquise"
-        onClick={() => finishedProductsDropper()}
+        style={{ left: productsLeftFromWindow, width: productsWidthFromWindow }}
+        className="finishedProductsDropDownDisquise"
       >
         <ul style={{ listStyleType: "none" }}>
           <li>
