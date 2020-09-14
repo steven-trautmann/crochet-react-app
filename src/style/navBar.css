@@ -1,4 +1,4 @@
-.finishedProductsDropDown {
+.dropDown {
   position: fixed;
   padding: 0.4rem;
   padding-top: 1rem;
@@ -14,7 +14,7 @@
   transition: visibility 0.45s, opacity 0.45s linear;
 }
 
-.finishedProductsDropDownDisquise {
+.dropDownDisquise {
   position: fixed;
   padding: 0.4rem;
   padding-top: 1rem;

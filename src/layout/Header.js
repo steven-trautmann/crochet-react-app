@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import styled from "styled-components";
 import { NavBarThemeContext } from "../theme/NavBarThemeContext";
 import { InnerWidthContext } from "../context/InnerWidthContext";
@@ -6,31 +6,56 @@ import NavBarThemes from "../theme/NavBarThemes";
 import { Link } from "react-router-dom";
 import "../style/hamburgerMenu.scss";
 import "../style/navBar.css";
-import $ from "jquery";
 
 export default function Header() {
   const [themeMode, setThemeMode] = useContext(NavBarThemeContext);
   const [width, setWidth] = useContext(InnerWidthContext);
   const currentTheme = NavBarThemes[themeMode];
-  // const { JSDOM } = require( "jsdom" );
-  // const { window } = new JSDOM( "" );
-  // const $ = require( "jquery" )( window );
 
   let fromMobile = false;
+  window.addEventListener("load", () => setDropdownPositions());
 
-  const [productsLeftFromWindow, setProductsLeftFromWindow] = useState(0);
-  const [productsWidthFromWindow, setProductsWidthFromWindow] = useState(0);
+  const [
+    finishedProductsLeftFromWindow,
+    setFinishedProductsLeftFromWindow,
+  ] = useState(0);
+  const [
+    finishedProductsWidthFromWindow,
+    setFinishedProductsWidthFromWindow,
+  ] = useState(0);
+  const [prevProductsLeftFromWindow, setPrevProductsLeftFromWindow] = useState(
+    0
+  );
+  const [
+    prevProductsWidthFromWindow,
+    setPrevProductsWidthFromWindow,
+  ] = useState(0);
+
+  const setFinishedDropDownPositions = () => {
+    let finishedDropDownButton = document.getElementById(
+      "finishedProductsButton"
+    );
+    setFinishedProductsLeftFromWindow(finishedDropDownButton.offsetLeft);
+    setFinishedProductsWidthFromWindow(finishedDropDownButton.offsetWidth);
+  };
+
+  const setPrevDropDownPositions = () => {
+    let prevDropDownButton = document.getElementById("prevProductsButton");
+
+    setPrevProductsLeftFromWindow(prevDropDownButton.offsetLeft);
+    setPrevProductsWidthFromWindow(prevDropDownButton.offsetWidth);
+  };
+
+  const setDropdownPositions = useCallback(() => {
+    setFinishedDropDownPositions();
+    setPrevDropDownPositions();
+  });
 
   React.useEffect(() => {
     if (!fromMobile) {
-      setProductsLeftFromWindow(
-        document.getElementById("finishedProductsButton").offsetLeft
-      );
-      setProductsWidthFromWindow(
-        document.getElementById("finishedProductsButton").offsetWidth
-      );
+      setDropdownPositions();
     }
-  }, [fromMobile, width]);
+  }, [fromMobile, setDropdownPositions, width]);
 
   React.useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
@@ -38,22 +63,39 @@ export default function Header() {
 
   const finishedProductsDropper = () => {
     let myDropdown = document.getElementById("finishedProducts");
-    if (myDropdown.classList.contains("finishedProductsDropDownDisquise")) {
-      myDropdown.classList.remove("finishedProductsDropDownDisquise");
-      myDropdown.classList.add("finishedProductsDropDown");
-    } else {
-      myDropdown.classList.remove("finishedProductsDropDown");
-      myDropdown.classList.add("finishedProductsDropDownDisquise");
-    }
+    dropDropDown(myDropdown);
   };
+
+  const prevProductsDropper = () => {
+    let myDropdown = document.getElementById("prevProducts");
+    dropDropDown(myDropdown);
+  };
+
+  function dropDropDown(myDropdown) {
+    if (myDropdown.classList.contains("dropDownDisquise")) {
+      myDropdown.classList.remove("dropDownDisquise");
+      myDropdown.classList.add("dropDown");
+    } else {
+      myDropdown.classList.remove("dropDown");
+      myDropdown.classList.add("dropDownDisquise");
+    }
+  }
 
   //Clicking out
   window.onclick = function (e) {
-    if (!e.target.matches("#finishedProductsButton")) {
-      let myDropdown = document.getElementById("finishedProducts");
-      if (myDropdown.classList.contains("finishedProductsDropDown")) {
-        myDropdown.classList.remove("finishedProductsDropDown");
-        myDropdown.classList.add("finishedProductsDropDownDisquise");
+    if (
+      !e.target.matches("#finishedProductsButton") &&
+      !e.target.matches("#prevProductsButton")
+    ) {
+      let finishedDropDown = document.getElementById("finishedProducts");
+      if (finishedDropDown.classList.contains("dropDown")) {
+        finishedDropDown.classList.remove("dropDown");
+        finishedDropDown.classList.add("dropDownDisquise");
+      }
+      let prevDropDown = document.getElementById("prevProducts");
+      if (prevDropDown.classList.contains("dropDown")) {
+        prevDropDown.classList.remove("dropDown");
+        prevDropDown.classList.add("dropDownDisquise");
       }
     }
   };
@@ -126,17 +168,20 @@ export default function Header() {
   const displayNavBar = () => {
     return (
       <div>
-        <Link style={Links} to="/kesz-termekek/figurak">
-          Kész Termékek
-        </Link>
         <button
           style={Links}
           id="finishedProductsButton"
           onClick={() => finishedProductsDropper()}
         >
-          Eddigi Munkáim
+          Kész Termékek
         </button>
-
+        <button
+          style={Links}
+          id="prevProductsButton"
+          onClick={() => prevProductsDropper()}
+        >
+          Eddigi Munkák
+        </button>
         <Link style={Links} to="/history">
           Rólam
         </Link>
@@ -171,8 +216,29 @@ export default function Header() {
       </TopNav>
       <div
         id="finishedProducts"
-        style={{ left: productsLeftFromWindow, width: productsWidthFromWindow }}
-        className="finishedProductsDropDownDisquise"
+        style={{
+          left: finishedProductsLeftFromWindow,
+          width: finishedProductsWidthFromWindow,
+        }}
+        className="dropDownDisquise"
+      >
+        <ul style={{ listStyleType: "none" }}>
+          <li>
+            <Link to="/kesz-termekek/figurak">Figurák</Link>
+          </li>
+          <li>
+            <Link to="/kesz-termekek/plussok">Plüssök</Link>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        id="prevProducts"
+        style={{
+          left: prevProductsLeftFromWindow,
+          width: prevProductsWidthFromWindow,
+        }}
+        className="dropDownDisquise"
       >
         <ul style={{ listStyleType: "none" }}>
           <li>
