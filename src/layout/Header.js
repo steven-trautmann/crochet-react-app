@@ -116,25 +116,27 @@ export default function Header() {
     }
   `;
 
-  const Links = {
-    color: "black",
-    float: "left",
-    display: "block",
-    textAlign: "center",
-    marginLeft: "3.5rem",
-    textDecoration: "none",
-    fontSize: "1.9rem",
-    padding: "1.3rem",
-    paddingLeft: "3vw",
-    ":hover": {
-      backgroundColor: "#ddd",
-      color: "gray",
-    },
-    ":active": {
-      backgroundColor: "#2196f3",
-      color: `${currentTheme.color}`,
-    },
-  };
+  // const Links = {
+  //   border: "none",
+  //   backgroundColor: "white",
+  //   color: "black",
+  //   float: "left",
+  //   display: "block",
+  //   textAlign: "center",
+  //   marginLeft: "3.5rem",
+  //   textDecoration: "none",
+  //   fontSize: "1.9rem",
+  //   padding: "1.3rem",
+  //   paddingLeft: "3vw",
+  //   "&:hover": {
+  //     background: "gray",
+  //     color: "red",
+  //   },
+  //   "&:active": {
+  //     backgroundColor: "#2196f3",
+  //     color: `${currentTheme.color}`,
+  //   },
+  // };
 
   const toggleClasses = () => {
     let elements = document.getElementsByClassName("hamburger-menu");
@@ -169,23 +171,23 @@ export default function Header() {
     return (
       <div>
         <button
-          style={Links}
+          className="navItem"
           id="finishedProductsButton"
           onClick={() => finishedProductsDropper()}
         >
           Kész Termékek
         </button>
         <button
-          style={Links}
+          className="navItem"
           id="prevProductsButton"
           onClick={() => prevProductsDropper()}
         >
           Eddigi Munkák
         </button>
-        <Link style={Links} to="/history">
+        <Link className="navItem" to="/history">
           Rólam
         </Link>
-        <Link style={Links} to="/">
+        <Link className="navItem" to="/">
           Kapcsolat
         </Link>
       </div>
@@ -219,6 +221,7 @@ export default function Header() {
         style={{
           left: finishedProductsLeftFromWindow,
           width: finishedProductsWidthFromWindow,
+          textAlign: "center",
         }}
         className="dropDownDisquise"
       >
@@ -237,6 +240,7 @@ export default function Header() {
         style={{
           left: prevProductsLeftFromWindow,
           width: prevProductsWidthFromWindow,
+          textAlign: "center",
         }}
         className="dropDownDisquise"
       >

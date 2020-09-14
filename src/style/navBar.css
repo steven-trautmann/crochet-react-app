@@ -29,3 +29,23 @@
   opacity: 0;
   transition: visibility 0.45s, opacity 0.45s linear;
 }
+
+.navItem {
+  border: none;
+  background-color: white;
+  color: black;
+  float: left;
+  display: block;
+  text-align: center;
+  margin-left: 3.5rem;
+  text-decoration: none;
+  font-size: 1.9rem;
+  padding: 1.3rem;
+  padding-left: 3vw;
+  outline: none;
+}
+
+.navItem:hover {
+  color: black;
+  background-color: lightgray;
+}
