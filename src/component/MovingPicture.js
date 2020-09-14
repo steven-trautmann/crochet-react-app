@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { InnerWidthContext } from "../context/InnerWidthContext";
 
 export default function MovingPicture() {
+  const [width, setWidth] = useContext(InnerWidthContext);
+
+  let fromMobile = width < 1200;
+
   return (
     <div
       style={{
-        width: "80vw",
+        width: fromMobile ? "90vw" : "80vw",
         margin: "auto",
-        height: "30vw",
+        height: fromMobile ? "33.25vw" : "30vw",
         marginTop: "6rem",
       }}
     >
@@ -15,7 +20,7 @@ export default function MovingPicture() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            style={{ height: "25vw", width: "80vw" }}
+            style={{ height: fromMobile ? "33vw" : "25vw" }}
             src={`/sample_picture.jpg`}
             alt="First slide"
           />
@@ -27,7 +32,7 @@ export default function MovingPicture() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            style={{ height: "25vw", width: "80vw" }}
+            style={{ height: fromMobile ? "33vw" : "25vw" }}
             src={`/sample_picture.jpg`}
             alt="Third slide"
           />
@@ -40,7 +45,7 @@ export default function MovingPicture() {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            style={{ height: "25vw", width: "80vw" }}
+            style={{ height: fromMobile ? "33vw" : "25vw" }}
             src={`/sample_picture.jpg`}
             alt="Third slide"
           />
@@ -54,24 +59,5 @@ export default function MovingPicture() {
         </Carousel.Item>
       </Carousel>
     </div>
-    // <div
-    //   style={{
-    // width: "80vw",
-    // margin: "auto",
-    // paddingTop: "6rem",
-    // height: "25vw",
-    // paddingLeft: "1vw",
-    // paddingRight: "1vw",
-    //   }}
-    // >
-    //   <img
-    //     src={`/sample_picture.jpg`}
-    //     alt="kicsike"
-    //     style={{
-    //       height: "25vw",
-    //       width: "80vw",
-    //     }}
-    //   />
-    // </div>
   );
 }

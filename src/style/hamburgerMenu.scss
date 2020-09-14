@@ -70,7 +70,7 @@ $bar-spacing: 1.25rem;
   top: 0.6rem;
   right: 6rem;
   display: block;
-  z-index: 11;
+  z-index: 16;
   background-color: white;
   border: solid black;
   font-size: 1.2rem;
@@ -87,7 +87,7 @@ $bar-spacing: 1.25rem;
   top: 0.6rem;
   right: 6rem;
   display: block;
-  z-index: 11;
+  z-index: 16;
   background-color: white;
   border: solid black;
   font-size: 1.2rem;
@@ -101,4 +101,48 @@ ul {
   font-size: 1.3rem;
   padding-inline-start: 1rem;
   padding-inline-end: 1rem;
+}
+
+// collapsible sub-menus
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.hamburgerNavItem {
+  border: none;
+  background-color: white;
+  color: black;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  border-radius: 20%;
+  font-size: 1.5rem;
+}
+
+.hamburgerNavItem:hover {
+  color: black;
+  background-color: lightgray;
 }

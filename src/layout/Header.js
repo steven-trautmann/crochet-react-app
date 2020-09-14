@@ -8,12 +8,12 @@ import "../style/hamburgerMenu.scss";
 import "../style/navBar.css";
 
 export default function Header() {
+  //delete these when refactor!
   const [themeMode, setThemeMode] = useContext(NavBarThemeContext);
-  const [width, setWidth] = useContext(InnerWidthContext);
   const currentTheme = NavBarThemes[themeMode];
 
+  const [width, setWidth] = useContext(InnerWidthContext);
   let fromMobile = false;
-  window.addEventListener("load", () => setDropdownPositions());
 
   const [
     finishedProductsLeftFromWindow,
@@ -31,6 +31,27 @@ export default function Header() {
     setPrevProductsWidthFromWindow,
   ] = useState(0);
 
+  window.addEventListener("load", () => {
+    setDropdownPositions();
+    setUpTheCollapsibleDropDownItems();
+  });
+
+  function setUpTheCollapsibleDropDownItems() {
+    let coll = document.getElementsByClassName("collapsible");
+
+    for (let i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        let content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+  }
+
   const setFinishedDropDownPositions = () => {
     let finishedDropDownButton = document.getElementById(
       "finishedProductsButton"
@@ -47,8 +68,10 @@ export default function Header() {
   };
 
   const setDropdownPositions = useCallback(() => {
-    setFinishedDropDownPositions();
-    setPrevDropDownPositions();
+    if (!fromMobile) {
+      setFinishedDropDownPositions();
+      setPrevDropDownPositions();
+    }
   });
 
   React.useEffect(() => {
@@ -61,6 +84,7 @@ export default function Header() {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
   }, [setWidth]);
 
+  // dropping dropDowns
   const finishedProductsDropper = () => {
     let myDropdown = document.getElementById("finishedProducts");
     dropDropDown(myDropdown);
@@ -81,7 +105,7 @@ export default function Header() {
     }
   }
 
-  //Clicking out
+  //Clicking out of dropdown
   window.onclick = function (e) {
     if (
       !e.target.matches("#finishedProductsButton") &&
@@ -99,44 +123,6 @@ export default function Header() {
       }
     }
   };
-
-  const TopNav = styled.div`
-    overflow: hidden;
-    background-color: white;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 5rem;
-    z-index: 2;
-    left: 0;
-    text-align: center;
-
-    @media (min-width: 576px) {
-      display: block;
-    }
-  `;
-
-  // const Links = {
-  //   border: "none",
-  //   backgroundColor: "white",
-  //   color: "black",
-  //   float: "left",
-  //   display: "block",
-  //   textAlign: "center",
-  //   marginLeft: "3.5rem",
-  //   textDecoration: "none",
-  //   fontSize: "1.9rem",
-  //   padding: "1.3rem",
-  //   paddingLeft: "3vw",
-  //   "&:hover": {
-  //     background: "gray",
-  //     color: "red",
-  //   },
-  //   "&:active": {
-  //     backgroundColor: "#2196f3",
-  //     color: `${currentTheme.color}`,
-  //   },
-  // };
 
   const toggleClasses = () => {
     let elements = document.getElementsByClassName("hamburger-menu");
@@ -194,10 +180,20 @@ export default function Header() {
     );
   };
 
-  const MobileDiv = styled.div`
+  const TopNav = styled.div`
+    overflow: hidden;
+    background-color: white;
     position: fixed;
-    top: 1rem;
-    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 5rem;
+    z-index: 2;
+    left: 0;
+    text-align: center;
+
+    @media (min-width: 576px) {
+      display: block;
+    }
   `;
 
   return (
@@ -255,18 +251,75 @@ export default function Header() {
       </div>
 
       <div id="mobile" className="hamburgerDropDownDisquise">
+        <button
+          style={{
+            fontSize: "0.5rem",
+            float: "right",
+            marginBottom: "0.5rem",
+            background: "white",
+            fontFamily: "auto",
+            outline: "black",
+          }}
+          onClick={() => toggleClasses()}
+        >
+          X
+        </button>
         <ul style={{ listStyleType: "none" }}>
           <li>
-            <Link to="/">Kész Termékek</Link>
+            <button
+              style={{ outline: "none" }}
+              class="collapsible hamburgerNavItem"
+            >
+              Kész Termékek
+            </button>
+            <div style={{ borderRadius: "20%" }} class="content">
+              <ul
+                style={{
+                  listStyleType: "none",
+                  textAlign: "center",
+                }}
+              >
+                <li>
+                  <Link to="/kesz-termekek/figurak">Figurák</Link>
+                </li>
+                <li>
+                  <Link to="/kesz-termekek/plussok">Plüssök</Link>
+                </li>
+              </ul>
+            </div>
           </li>
           <li>
-            <Link to="/about">Eddigi Munkáim</Link>
+            <button
+              style={{ outline: "none" }}
+              class="collapsible hamburgerNavItem"
+            >
+              Eddigi Munkáim
+            </button>
+            <div style={{ borderRadius: "20%" }} class="content">
+              <ul
+                style={{
+                  listStyleType: "none",
+                  textAlign: "center",
+                }}
+              >
+                <li>
+                  <Link to="/kesz-termekek/figurak">Figurák</Link>
+                </li>
+                <li>
+                  <Link to="/kesz-termekek/plussok">Plüssök</Link>
+                </li>
+              </ul>
+            </div>
           </li>
           <li>
-            <Link to="/criminalDefence">Rólam</Link>
+            <Link className="hamburgerNavItem" to="/rolam">
+              Rólam
+            </Link>
           </li>
           <li>
-            <Link to="/DUIS">Kapcsolat</Link>
+            <Link className="hamburgerNavItem" to="/kapcsolat">
+              Kapcsolat
+            </Link>
           </li>
         </ul>
       </div>
