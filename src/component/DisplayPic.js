@@ -9,10 +9,14 @@ export default function DisplayPic(props) {
     width: ${props.pictureSquareDistance};
   `;
 
+  let sliceFrom = props.picture.lastIndexOf("/") + 1;
+  let sliceTo = props.picture.indexOf(".");
+  let pictureName = props.picture.slice(sliceFrom, sliceTo);
+
   return (
     <div style={{ width: props.pictureSquareDistance }}>
       <Img src={props.picture} alt="crochetProduct" />
-      <h1 style={{ textAlign: "center" }}>kincsi</h1>
+      <h1 style={{ textAlign: "center" }}>{pictureName}</h1>
     </div>
   );
 }

@@ -126,15 +126,23 @@ export default function Header() {
 
   const toggleClasses = () => {
     let elements = document.getElementsByClassName("hamburger-menu");
-    elements[0].classList.toggle("animate");
-    if (fromMobile === true) {
+    if (elements[0] == null) {
+      //if the hamburger menu is displayed but the window resized to desktop
       let mobileMenu = document.getElementById("mobile");
-      if (mobileMenu.classList.contains("hamburgerDropDownDisquise")) {
-        mobileMenu.classList.remove("hamburgerDropDownDisquise");
-        mobileMenu.classList.add("hamburgerDropDown");
-      } else {
-        mobileMenu.classList.remove("hamburgerDropDown");
-        mobileMenu.classList.add("hamburgerDropDownDisquise");
+      mobileMenu.classList.remove("hamburgerDropDown");
+      mobileMenu.classList.add("hamburgerDropDownDisquise");
+      fromMobile = false;
+    } else {
+      elements[0].classList.toggle("animate");
+      if (fromMobile === true) {
+        let mobileMenu = document.getElementById("mobile");
+        if (mobileMenu.classList.contains("hamburgerDropDownDisquise")) {
+          mobileMenu.classList.remove("hamburgerDropDownDisquise");
+          mobileMenu.classList.add("hamburgerDropDown");
+        } else {
+          mobileMenu.classList.remove("hamburgerDropDown");
+          mobileMenu.classList.add("hamburgerDropDownDisquise");
+        }
       }
     }
   };
@@ -187,7 +195,7 @@ export default function Header() {
     top: 0;
     width: 100vw;
     height: 5rem;
-    z-index: 2;
+    z-index: 15;
     left: 0;
     text-align: center;
 

@@ -140,9 +140,15 @@ ul {
   outline: none;
   border-radius: 20%;
   font-size: 1.5rem;
+  padding: 0.5rem !important;
 }
 
 .hamburgerNavItem:hover {
+  color: black;
+  background-color: lightgray;
+}
+
+.hamburgerNavItem:active {
   color: black;
   background-color: lightgray;
 }

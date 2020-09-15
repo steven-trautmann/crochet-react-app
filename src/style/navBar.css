@@ -43,6 +43,7 @@
   padding: 1.3rem;
   padding-left: 3vw;
   outline: none;
+  z-index: 20;
 }
 
 .navItem:hover {

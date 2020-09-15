@@ -37,7 +37,7 @@ export default function AllDefaultCities() {
       <MovingPicture />
 
       <div style={{ textAlign: "center", marginTop: "1rem" }}>
-        <h1>Kész termékek</h1>
+        <h1>Kész Termékek</h1>
       </div>
       <DisplayPictures pictures={finishedProducts}></DisplayPictures>
 
