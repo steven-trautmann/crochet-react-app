@@ -24,6 +24,7 @@ export default function DisplayPictures(props) {
         let src = image.toString().split(",").pop();
         return (
           <DisplayPic
+            needModal={props.needModal}
             pictureSquareDistance={pictureSquareDistance}
             picture={src}
           ></DisplayPic>

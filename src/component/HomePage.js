@@ -39,12 +39,18 @@ export default function AllDefaultCities() {
       <div style={{ textAlign: "center", marginTop: "1rem" }}>
         <h1>Kész Termékek</h1>
       </div>
-      <DisplayPictures pictures={finishedProducts}></DisplayPictures>
+      <DisplayPictures
+        needModal={false}
+        pictures={finishedProducts}
+      ></DisplayPictures>
 
       <div style={{ textAlign: "center", marginTop: "1rem" }}>
         <h1>Eddigi Munkáim</h1>
       </div>
-      <DisplayPictures pictures={prev_products}></DisplayPictures>
+      <DisplayPictures
+        needModal={false}
+        pictures={prev_products}
+      ></DisplayPictures>
     </div>
   );
 }

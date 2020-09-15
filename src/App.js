@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import HomePage from "./component/HomePage";
 import { SearchProvider } from "./context/SearchContext";
 import { InnerWidthProvider } from "./context/InnerWidthContext";
+import { ModalContextProvider } from "./context/ModalContext";
+import { ModalTextsContextProvider } from "./context/ModalTextsFinishedProducts";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import { NavBarThemeContext } from "./theme/NavBarThemeContext";
@@ -18,14 +20,18 @@ function App() {
       <Router>
         <SearchProvider>
           <InnerWidthProvider>
-            <Header />
-            <Route exact path="/" component={HomePage} />
-            <Route
-              exact
-              path="/kesz-termekek/:type"
-              component={FinishedProducts}
-            />
-            <Footer />
+            <ModalTextsContextProvider>
+              <ModalContextProvider>
+                <Header />
+                <Route exact path="/" component={HomePage} />
+                <Route
+                  exact
+                  path="/kesz-termekek/:type"
+                  component={FinishedProducts}
+                />
+                <Footer />
+              </ModalContextProvider>
+            </ModalTextsContextProvider>
           </InnerWidthProvider>
         </SearchProvider>
       </Router>
