@@ -21,7 +21,7 @@ export default function MovingPicture() {
           <img
             className="d-block w-100"
             style={{ height: fromMobile ? "33vw" : "25vw" }}
-            src={`/sample_picture.jpg`}
+            src={`/homepageImgs/movingImages/sample_picture.jpg`}
             alt="First slide"
           />
           <Carousel.Caption>
@@ -33,7 +33,7 @@ export default function MovingPicture() {
           <img
             className="d-block w-100"
             style={{ height: fromMobile ? "33vw" : "25vw" }}
-            src={`/sample_picture.jpg`}
+            src={`/homepageImgs/movingImages/sample_picture.jpg`}
             alt="Third slide"
           />
 
@@ -46,7 +46,7 @@ export default function MovingPicture() {
           <img
             className="d-block w-100"
             style={{ height: fromMobile ? "33vw" : "25vw" }}
-            src={`/sample_picture.jpg`}
+            src={`/homepageImgs/movingImages/sample_picture.jpg`}
             alt="Third slide"
           />
 

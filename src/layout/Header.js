@@ -228,18 +228,18 @@ export default function Header() {
         className="dropDownDisquise"
       >
         <ul style={{ listStyleType: "none" }}>
-          <li>
-            <Link to="/kesz-termekek/figurak">Figurák</Link>
-          </li>
-          <li>
-            <Link to="/kesz-termekek/plussok">Plüssök</Link>
-          </li>
-          <li>
-            <Link to="/kesz-termekek/ruhak">Ruhák</Link>
-          </li>
-          <li>
-            <Link to="/kesz-termekek/macskak">Macskák</Link>
-          </li>
+          <Link to="/kesz-termekek/figurak">
+            <li>Figurák</li>
+          </Link>
+          <Link to="/kesz-termekek/plussok">
+            <li>Plüssök</li>
+          </Link>
+          <Link to="/kesz-termekek/ruhak">
+            <li>Ruhák</li>
+          </Link>
+          <Link to="/kesz-termekek/macskak">
+            <li>Macskák</li>
+          </Link>
         </ul>
       </div>
 
@@ -253,18 +253,18 @@ export default function Header() {
         className="dropDownDisquise"
       >
         <ul style={{ listStyleType: "none" }}>
-          <li>
-            <Link to="/eddigi-munkak/figurak">Figurák</Link>
-          </li>
-          <li>
-            <Link to="/eddigi-munkak/plussok">Plüssök</Link>
-          </li>
-          <li>
-            <Link to="/eddigi-munkak/ruhak">Ruhák</Link>
-          </li>
-          <li>
-            <Link to="/eddigi-munkak/macskak">Macskák</Link>
-          </li>
+          <Link to="/eddigi-munkak/figurak">
+            <li>Figurák</li>
+          </Link>
+          <Link to="/eddigi-munkak/plussok">
+            <li>Plüssök</li>
+          </Link>
+          <Link to="/eddigi-munkak/ruhak">
+            <li>Ruhák</li>
+          </Link>
+          <Link to="/eddigi-munkak/macskak">
+            <li>Macskák</li>
+          </Link>
         </ul>
       </div>
 
@@ -297,18 +297,18 @@ export default function Header() {
                   textAlign: "center",
                 }}
               >
-                <li>
-                  <Link to="/kesz-termekek/figurak">Figurák</Link>
-                </li>
-                <li>
-                  <Link to="/kesz-termekek/plussok">Plüssök</Link>
-                </li>
-                <li>
-                  <Link to="/kesz-termekek/ruhak">Ruhák</Link>
-                </li>
-                <li>
-                  <Link to="/kesz-termekek/macskak">Macskák</Link>
-                </li>
+                <Link to="/kesz-termekek/figurak">
+                  <li>Figurák</li>
+                </Link>
+                <Link to="/kesz-termekek/plussok">
+                  <li>Plüssök</li>
+                </Link>
+                <Link to="/kesz-termekek/ruhak">
+                  <li>Ruhák</li>
+                </Link>
+                <Link to="/kesz-termekek/macskak">
+                  <li>Macskák</li>
+                </Link>
               </ul>
             </div>
           </li>
@@ -326,18 +326,18 @@ export default function Header() {
                   textAlign: "center",
                 }}
               >
-                <li>
-                  <Link to="/eddigi-munkak/figurak">Figurák</Link>
-                </li>
-                <li>
-                  <Link to="/eddigi-munkak/plussok">Plüssök</Link>
-                </li>
-                <li>
-                  <Link to="/eddigi-munkak/ruhak">Ruhák</Link>
-                </li>
-                <li>
-                  <Link to="/eddigi-munkak/macskak">Macskák</Link>
-                </li>
+                <Link to="/eddigi-munkak/figurak">
+                  <li>Figurák</li>
+                </Link>
+                <Link to="/eddigi-munkak/plussok">
+                  <li>Plüssök</li>
+                </Link>
+                <Link to="/eddigi-munkak/ruhak">
+                  <li>Ruhák</li>
+                </Link>
+                <Link to="/eddigi-munkak/macskak">
+                  <li>Macskák</li>
+                </Link>
               </ul>
             </div>
           </li>

@@ -6,7 +6,7 @@ import { InnerWidthContext } from "../context/InnerWidthContext";
 export default function DisplayPictures(props) {
   const [width] = useContext(InnerWidthContext);
 
-  let pictureSquareDistance = width > 1000 ? "15vw" : "30vw";
+  let pictureSquareDistance = width > 1000 ? "15vw" : "32.5vw";
 
   return (
     <div
