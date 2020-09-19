@@ -110,10 +110,10 @@ export default function FinishedProducts(props) {
 
   return (
     <div>
-      <div id="myModal" class="modalInvisible">
-        <div class="modal-content">
+      <div id="myModal" className="modalInvisible">
+        <div className="modal-content">
           <button
-            class="close"
+            className="close"
             onClick={() => {
               toggleModalVisibility();
             }}

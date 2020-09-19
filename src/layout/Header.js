@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from "react";
+import React, { useContext, useState, useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import "../style/navBar.css";
 export default function Header() {
   const [width, setWidth] = useContext(InnerWidthContext);
   let fromMobile = false;
-  let collapsiblesAreSet = false;
+  const [collapsiblesAreSet, setCollapsiblesAreSet] = useState(false);
 
   const [
     finishedProductsLeftFromWindow,
@@ -26,10 +26,13 @@ export default function Header() {
     setPrevProductsWidthFromWindow,
   ] = useState(0);
 
-  window.addEventListener("load", () => {
-    setDropdownPositions();
-    setUpTheCollapsibleDropDownItems();
-  });
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      setDropdownPositions();
+      setUpTheCollapsibleDropDownItems();
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function setUpTheCollapsibleDropDownItems() {
     if (!collapsiblesAreSet) {
@@ -46,7 +49,7 @@ export default function Header() {
           }
         });
       }
-      collapsiblesAreSet = true;
+      setCollapsiblesAreSet(true);
     }
   }
 
@@ -149,12 +152,12 @@ export default function Header() {
     fromMobile = true;
     return (
       <div
-        class="menu-wrapper"
+        className="menu-wrapper"
         onClick={() => {
           toggleClasses();
         }}
       >
-        <div class="hamburger-menu"></div>
+        <div className="hamburger-menu"></div>
       </div>
     );
   };
@@ -286,11 +289,11 @@ export default function Header() {
           <li>
             <button
               style={{ outline: "none" }}
-              class="collapsible hamburgerNavItem"
+              className="collapsible hamburgerNavItem"
             >
               Kész Termékek
             </button>
-            <div style={{ borderRadius: "20%" }} class="content">
+            <div style={{ borderRadius: "20%" }} className="content">
               <ul
                 style={{
                   listStyleType: "none",
@@ -315,11 +318,11 @@ export default function Header() {
           <li>
             <button
               style={{ outline: "none" }}
-              class="collapsible hamburgerNavItem"
+              className="collapsible hamburgerNavItem"
             >
               Eddigi Munkáim
             </button>
-            <div style={{ borderRadius: "20%" }} class="content">
+            <div style={{ borderRadius: "20%" }} className="content">
               <ul
                 style={{
                   listStyleType: "none",

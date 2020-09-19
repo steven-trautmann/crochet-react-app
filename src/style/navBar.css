@@ -50,3 +50,22 @@
   color: black;
   background-color: lightgray;
 }
+
+#finishedProducts li,
+#prevProducts li {
+  color: black;
+  font-size: 2rem;
+}
+
+#finishedProducts li:active,
+#prevProducts li:active {
+  color: red;
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+#finishedProducts li:hover,
+#prevProducts li:hover {
+  text-decoration: underline;
+  text-decoration-color: black;
+}

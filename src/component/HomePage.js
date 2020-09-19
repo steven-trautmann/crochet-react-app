@@ -3,6 +3,7 @@ import MovingPicture from "./MovingPicture";
 import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
+import "../style/homepage.css";
 
 export default function HomePage() {
   const [width] = useContext(InnerWidthContext);
@@ -31,97 +32,91 @@ export default function HomePage() {
   `;
 
   return (
-    <div>
+    <div id="homepage">
       <MovingPicture />
-
-      <div style={{ textAlign: "center", marginTop: "1rem" }}>
+      {/* if from mobile or desktop */}
+      <div style={{ marginTop: `${width > 1000 ? "0" : "1rem"}` }}>
         <h1>Kész Termékek</h1>
       </div>
 
       <GridDiv>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/figurak"} style={{ color: "black" }}>
+          <Link to={"/kesz-termekek/figurak"} className="links">
             <Img
               src="/homepageImgs/finishedSampleImgs/Figurák.jpg"
               alt="Figurák"
             />
-            <h1
-              style={{
-                textAlign: "center",
-              }}
-            >
-              Figurák
-            </h1>
+            <h1>Figurák</h1>
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/plussok"} style={{ color: "black" }}>
+          <Link to={"/kesz-termekek/plussok"} className="links">
             <Img
               src="/homepageImgs/finishedSampleImgs/Plüssök.jpg"
               alt="Plüssök"
             />
-            <h1 style={{ textAlign: "center" }}>Plüssök</h1>
+            <h1>Plüssök</h1>
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/ruhak"} style={{ color: "black" }}>
+          <Link to={"/kesz-termekek/ruhak"} className="links">
             <Img
               src={"/homepageImgs/finishedSampleImgs/Ruhák.jpg"}
               alt="Ruhák"
             />
-            <h1 style={{ textAlign: "center" }}>Ruhák</h1>
+            <h1>Ruhák</h1>
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/macskak"} style={{ color: "black" }}>
+          <Link to={"/kesz-termekek/macskak"} className="links">
             <Img
               src={"/homepageImgs/finishedSampleImgs/Macskák.jpg"}
               alt="Macskák"
             />
-            <h1 style={{ textAlign: "center" }}>Macskák</h1>
+            <h1>Macskák</h1>
           </Link>
         </div>
       </GridDiv>
 
-      <div style={{ textAlign: "center", marginTop: "1rem" }}>
+      <div style={{ marginTop: "1rem" }}>
         <h1>Eddigi Munkáim</h1>
       </div>
       <GridDiv>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/eddigi-munkak/figurak"} style={{ color: "black" }}>
+          <Link to={"/eddigi-munkak/figurak"} className="links">
             <Img
               src="/homepageImgs/previousSampleImgs/csiga_biga.jpg"
               alt="Figurák"
             />
-            <h1 style={{ textAlign: "center" }}>Figurák</h1>
+            <h1>Figurák</h1>
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/plussok"} style={{ color: "black" }}>
+          <Link to={"/kesz-termekek/plussok"} className="links">
             <Img
               src="/homepageImgs/previousSampleImgs/csigusz.jpg"
               alt="Plüssök"
             />
-            <h1 style={{ textAlign: "center" }}>Plüssök</h1>
+            <h1>Plüssök</h1>
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/ruhak"} style={{ color: "black" }}>
+          <Link to={"/kesz-termekek/ruhak"} className="links">
             <Img
               src={"/homepageImgs/previousSampleImgs/csingula.jpg"}
               alt="Ruhák"
             />
-            <h1 style={{ textAlign: "center" }}>Ruhák</h1>
+            <h1>Ruhák</h1>
           </Link>
         </div>
 
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/macskak"} style={{ color: "black" }}>
+          <Link to={"/kesz-termekek/macskak"} className="links">
             <Img
               src={"/homepageImgs/previousSampleImgs/mesztelen.jpg"}
               alt="Macskák"
             />
-            <h1 style={{ textAlign: "center" }}>Macskák</h1>
+            <h1>Macskák</h1>
           </Link>
         </div>
       </GridDiv>

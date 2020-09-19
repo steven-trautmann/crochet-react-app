@@ -37,7 +37,7 @@ export default function DisplayPic(props) {
   }
 
   return (
-    <div style={{ width: props.pictureSquareDistance }}>
+    <div style={{ width: props.pictureSquareDistance }} className={"tableCard"}>
       <Img
         onClick={() => {
           showModal();
@@ -46,11 +46,6 @@ export default function DisplayPic(props) {
         alt="crochetProduct"
       />
       <h1
-        style={{
-          textAlign: "center",
-          textDecoration: "underline",
-          cursor: "pointer",
-        }}
         onClick={() => {
           showModal();
         }}
