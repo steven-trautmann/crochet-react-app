@@ -1,11 +1,17 @@
 import React, { useContext, useState, useCallback } from "react";
 import styled from "styled-components";
+import { NavBarThemeContext } from "../theme/NavBarThemeContext";
 import { InnerWidthContext } from "../context/InnerWidthContext";
+import NavBarThemes from "../theme/NavBarThemes";
 import { Link } from "react-router-dom";
 import "../style/hamburgerMenu.scss";
 import "../style/navBar.css";
 
 export default function Header() {
+  //delete these when refactor!
+  const [themeMode, setThemeMode] = useContext(NavBarThemeContext);
+  const currentTheme = NavBarThemes[themeMode];
+
   const [width, setWidth] = useContext(InnerWidthContext);
   let fromMobile = false;
   let collapsiblesAreSet = false;

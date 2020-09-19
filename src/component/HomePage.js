@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import DisplayPictures from "./DisplayPictures";
+import DisplayPicturesHomepage from "./DisplayPicturesHomepage";
 import MovingPicture from "./MovingPicture";
 import styled from "styled-components";
 
-export default function AllDefaultCities() {
+export default function HomePage() {
   const [finishedProducts, setFinishedProducts] = useState({});
   const [prev_products, setPrev_products] = useState({});
 
@@ -39,18 +39,16 @@ export default function AllDefaultCities() {
       <div style={{ textAlign: "center", marginTop: "1rem" }}>
         <h1>Kész Termékek</h1>
       </div>
-      <DisplayPictures
-        needModal={false}
+      <DisplayPicturesHomepage
         pictures={finishedProducts}
-      ></DisplayPictures>
+      ></DisplayPicturesHomepage>
 
       <div style={{ textAlign: "center", marginTop: "1rem" }}>
         <h1>Eddigi Munkáim</h1>
       </div>
-      <DisplayPictures
-        needModal={false}
+      <DisplayPicturesHomepage
         pictures={prev_products}
-      ></DisplayPictures>
+      ></DisplayPicturesHomepage>
     </div>
   );
 }

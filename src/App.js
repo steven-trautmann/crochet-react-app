@@ -4,34 +4,38 @@ import HomePage from "./component/HomePage";
 import { SearchProvider } from "./context/SearchContext";
 import { InnerWidthProvider } from "./context/InnerWidthContext";
 import { ModalContextProvider } from "./context/ModalContext";
-import { ModalTextsContextProvider } from "./context/ModalTextsFinishedProducts";
+import { FinishedModalTextsContextProvider } from "./context/ModalTextsFinishedProducts";
+import { PreviousModalTextsContextProvider } from "./context/ModalTextsPreviousProducts";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import { NavBarThemeContext } from "./theme/NavBarThemeContext";
-import NavBarThemes from "./theme/NavBarThemes";
 import FinishedProducts from "./component/FinishedProducts";
+import PreviousProducts from "./component/PreviousProducts";
 
 function App() {
-  const [themeMode, setThemeMode] = useContext(NavBarThemeContext);
-  const currentTheme = NavBarThemes[themeMode];
-
   return (
     <div>
       <Router>
         <SearchProvider>
           <InnerWidthProvider>
-            <ModalTextsContextProvider>
-              <ModalContextProvider>
-                <Header />
-                <Route exact path="/" component={HomePage} />
-                <Route
-                  exact
-                  path="/kesz-termekek/:type"
-                  component={FinishedProducts}
-                />
-                <Footer />
-              </ModalContextProvider>
-            </ModalTextsContextProvider>
+            <FinishedModalTextsContextProvider>
+              <PreviousModalTextsContextProvider>
+                <ModalContextProvider>
+                  <Header />
+                  <Route exact path="/" component={HomePage} />
+                  <Route
+                    exact
+                    path="/kesz-termekek/:type"
+                    component={FinishedProducts}
+                  />
+                  <Route
+                    exact
+                    path="/eddigi-munkak/:type"
+                    component={PreviousProducts}
+                  />
+                  <Footer />
+                </ModalContextProvider>
+              </PreviousModalTextsContextProvider>
+            </FinishedModalTextsContextProvider>
           </InnerWidthProvider>
         </SearchProvider>
       </Router>

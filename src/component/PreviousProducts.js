@@ -2,12 +2,12 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import "../style/modal.css";
 import DisplayPictures from "./DisplayPictures";
 import { ModalContext } from "../context/ModalContext";
-import { FinishedModalTextsContext } from "../context/ModalTextsFinishedProducts";
+import { PreviousModalTextsContext } from "../context/ModalTextsPreviousProducts";
 import { useParams } from "react-router-dom";
 
-export default function FinishedProducts(props) {
-  const [ModalTexts, setModalTexts] = useContext(FinishedModalTextsContext);
-  const [finishedProducts, setFinishedProducts] = useState({});
+export default function PreviousProducts(props) {
+  const [ModalTexts, setModalTexts] = useContext(PreviousModalTextsContext); // !!!!!!!!!!!!!!!!!!!
+  const [previousProducts, setPreviousProducts] = useState({});
   const { type } = useParams();
   const [typeInHeader, setTypeInHeader] = useState("Helytelen URL!");
   const didMountRef = useRef(false);
@@ -24,10 +24,10 @@ export default function FinishedProducts(props) {
   useEffect(() => {
     if (type === "figurak") {
       setTypeInHeader("Figurák");
-      setFinishedProducts(
+      setPreviousProducts(
         importAll(
           require.context(
-            "../images/finished_products/figures",
+            "../images/prev_products/figures",
             false,
             /\.(png|jpe?g|svg)$/
           )
@@ -35,10 +35,10 @@ export default function FinishedProducts(props) {
       );
     } else if (type === "plussok") {
       setTypeInHeader("Plüssök");
-      setFinishedProducts(
+      setPreviousProducts(
         importAll(
           require.context(
-            "../images/finished_products/figures2",
+            "../images/prev_products/figures2",
             false,
             /\.(png|jpe?g|svg)$/
           )
@@ -46,10 +46,10 @@ export default function FinishedProducts(props) {
       );
     } else if (type === "ruhak") {
       setTypeInHeader("Ruhák");
-      setFinishedProducts(
+      setPreviousProducts(
         importAll(
           require.context(
-            "../images/finished_products/figures3",
+            "../images/prev_products/figures3",
             false,
             /\.(png|jpe?g|svg)$/
           )
@@ -57,10 +57,10 @@ export default function FinishedProducts(props) {
       );
     } else if (type === "macskak") {
       setTypeInHeader("Macskák");
-      setFinishedProducts(
+      setPreviousProducts(
         importAll(
           require.context(
-            "../images/finished_products/figures4",
+            "../images/prev_products/figures4",
             false,
             /\.(png|jpe?g|svg)$/
           )
@@ -158,7 +158,7 @@ export default function FinishedProducts(props) {
             : "Kész Termékek | " + typeInHeader}
         </h1>
 
-        <DisplayPictures pictures={finishedProducts} />
+        <DisplayPictures pictures={previousProducts} />
       </div>
     </div>
   );

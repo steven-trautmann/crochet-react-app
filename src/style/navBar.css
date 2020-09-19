@@ -4,7 +4,7 @@
   padding-top: 1rem;
   top: 5rem;
   display: block;
-  z-index: 11;
+  z-index: 20;
   background-color: white;
   border: solid black;
   font-size: 1.2rem;
@@ -20,7 +20,7 @@
   padding-top: 1rem;
   top: 5rem;
   display: block;
-  z-index: 11;
+  z-index: 20;
   background-color: white;
   border: solid black;
   font-size: 1.2rem;

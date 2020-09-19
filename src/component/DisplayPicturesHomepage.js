@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import DisplayPic from "./DisplayPic";
+import DisplayPicHomepage from "./DisplayPicHomepage";
 import "../style/tableCard.css";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 
-export default function DisplayPictures(props) {
+export default function DisplayPicturesHomepage(props) {
   const [width] = useContext(InnerWidthContext);
 
   let pictureSquareDistance = width > 1000 ? "15vw" : "30vw";
@@ -15,7 +15,7 @@ export default function DisplayPictures(props) {
         display: "grid",
         gridTemplateColumns: `repeat(auto-fill, minmax(${pictureSquareDistance}, 1fr))`,
         justifyContent: "center",
-        gridGap: "3vw",
+        gridGap: "5vw",
         placeItems: "center",
         margin: "auto",
       }}
@@ -23,10 +23,10 @@ export default function DisplayPictures(props) {
       {Object.entries(props.pictures).map((image) => {
         let src = image.toString().split(",").pop();
         return (
-          <DisplayPic
+          <DisplayPicHomepage
             pictureSquareDistance={pictureSquareDistance}
             picture={src}
-          ></DisplayPic>
+          ></DisplayPicHomepage>
         );
       })}
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../style/tableCard.css";
 import styled from "styled-components";
@@ -26,24 +26,37 @@ export default function DisplayPic(props) {
   let sliceTo = props.picture.indexOf(".");
   let pictureName = props.picture.slice(sliceFrom, sliceTo);
 
+  function showModal() {
+    setModalSrc(props.picture);
+    setModalName(pictureName);
+    if (10 < modalCounter) {
+      setModalCounter(0);
+    } else {
+      setModalCounter(modalCounter + 1);
+    }
+  }
+
   return (
     <div style={{ width: props.pictureSquareDistance }}>
       <Img
         onClick={() => {
-          if (props.needModal) {
-            setModalSrc(props.picture);
-            setModalName(pictureName);
-            if (10 < modalCounter) {
-              setModalCounter(0);
-            } else {
-              setModalCounter(modalCounter + 1);
-            }
-          }
+          showModal();
         }}
         src={props.picture}
         alt="crochetProduct"
       />
-      <h1 style={{ textAlign: "center" }}>{pictureName}</h1>
+      <h1
+        style={{
+          textAlign: "center",
+          textDecoration: "underline",
+          cursor: "pointer",
+        }}
+        onClick={() => {
+          showModal();
+        }}
+      >
+        {pictureName}
+      </h1>
     </div>
   );
 }
