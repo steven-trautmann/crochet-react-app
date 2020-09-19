@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
 import "../style/homepage.css";
+import "../style/links.css";
 
 export default function HomePage() {
   const [width] = useContext(InnerWidthContext);
@@ -43,7 +44,7 @@ export default function HomePage() {
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/figurak"} className="links">
             <Img
-              src="/homepageImgs/finishedSampleImgs/Figurák.jpg"
+              src="/specialImages/homepageImgs/finishedSampleImgs/Figurák.jpg"
               alt="Figurák"
             />
             <h1>Figurák</h1>
@@ -52,7 +53,7 @@ export default function HomePage() {
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/plussok"} className="links">
             <Img
-              src="/homepageImgs/finishedSampleImgs/Plüssök.jpg"
+              src="/specialImages/homepageImgs/finishedSampleImgs/Plüssök.jpg"
               alt="Plüssök"
             />
             <h1>Plüssök</h1>
@@ -61,7 +62,7 @@ export default function HomePage() {
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/ruhak"} className="links">
             <Img
-              src={"/homepageImgs/finishedSampleImgs/Ruhák.jpg"}
+              src={"/specialImages/homepageImgs/finishedSampleImgs/Ruhák.jpg"}
               alt="Ruhák"
             />
             <h1>Ruhák</h1>
@@ -70,7 +71,7 @@ export default function HomePage() {
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/macskak"} className="links">
             <Img
-              src={"/homepageImgs/finishedSampleImgs/Macskák.jpg"}
+              src={"/specialImages/homepageImgs/finishedSampleImgs/Macskák.jpg"}
               alt="Macskák"
             />
             <h1>Macskák</h1>
@@ -85,7 +86,7 @@ export default function HomePage() {
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/eddigi-munkak/figurak"} className="links">
             <Img
-              src="/homepageImgs/previousSampleImgs/csiga_biga.jpg"
+              src="/specialImages/homepageImgs/previousSampleImgs/csiga_biga.jpg"
               alt="Figurák"
             />
             <h1>Figurák</h1>
@@ -94,7 +95,7 @@ export default function HomePage() {
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/plussok"} className="links">
             <Img
-              src="/homepageImgs/previousSampleImgs/csigusz.jpg"
+              src="/specialImages/homepageImgs/previousSampleImgs/csigusz.jpg"
               alt="Plüssök"
             />
             <h1>Plüssök</h1>
@@ -103,7 +104,9 @@ export default function HomePage() {
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/ruhak"} className="links">
             <Img
-              src={"/homepageImgs/previousSampleImgs/csingula.jpg"}
+              src={
+                "/specialImages/homepageImgs/previousSampleImgs/csingula.jpg"
+              }
               alt="Ruhák"
             />
             <h1>Ruhák</h1>
@@ -113,7 +116,9 @@ export default function HomePage() {
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/macskak"} className="links">
             <Img
-              src={"/homepageImgs/previousSampleImgs/mesztelen.jpg"}
+              src={
+                "/specialImages/homepageImgs/previousSampleImgs/mesztelen.jpg"
+              }
               alt="Macskák"
             />
             <h1>Macskák</h1>

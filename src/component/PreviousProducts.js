@@ -155,7 +155,7 @@ export default function PreviousProducts(props) {
         >
           {typeInHeader === "Helytelen URL!"
             ? typeInHeader
-            : "Kész Termékek | " + typeInHeader}
+            : "Eddigi Munkák | " + typeInHeader}
         </h1>
 
         <DisplayPictures pictures={previousProducts} />

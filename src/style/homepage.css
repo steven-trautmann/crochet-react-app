@@ -1,17 +1,3 @@
 #homepage h1 {
   text-align: center;
 }
-
-.links {
-  color: black;
-}
-
-.links:hover {
-  color: black;
-  text-decoration: underline;
-  text-decoration-color: black;
-}
-
-.links:active {
-  color: red;
-}

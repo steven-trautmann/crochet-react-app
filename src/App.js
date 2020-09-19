@@ -10,6 +10,7 @@ import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import FinishedProducts from "./component/FinishedProducts";
 import PreviousProducts from "./component/PreviousProducts";
+import PageAboutMe from "./component/PageAboutMe";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                     path="/eddigi-munkak/:type"
                     component={PreviousProducts}
                   />
+                  <Route exact path="/rolam" component={PageAboutMe} />
                   <Footer />
                 </ModalContextProvider>
               </PreviousModalTextsContextProvider>

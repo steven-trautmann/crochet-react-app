@@ -4,6 +4,7 @@ import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
 import "../style/hamburgerMenu.scss";
 import "../style/navBar.css";
+import "../style/links.css";
 
 export default function Header() {
   const [width, setWidth] = useContext(InnerWidthContext);
@@ -179,10 +180,10 @@ export default function Header() {
         >
           Eddigi Munkák
         </button>
-        <Link className="navItem" to="/history">
+        <Link className="navItem links" to="/rolam">
           Rólam
         </Link>
-        <Link className="navItem" to="/">
+        <Link className="navItem links" to="/kapcsolat">
           Kapcsolat
         </Link>
       </div>
@@ -213,7 +214,7 @@ export default function Header() {
           to="/"
         >
           <img
-            src="/logo.png"
+            src="/specialImages/logo.png"
             alt="home"
             style={{ width: "5.25rem", height: "auto", textDecoration: "none" }}
           ></img>
@@ -344,16 +345,12 @@ export default function Header() {
               </ul>
             </div>
           </li>
-          <li>
-            <Link className="hamburgerNavItem" to="/rolam">
-              Rólam
-            </Link>
-          </li>
-          <li>
-            <Link className="hamburgerNavItem" to="/kapcsolat">
-              Kapcsolat
-            </Link>
-          </li>
+          <Link className="hamburgerNavItem links" to="/rolam">
+            <li>Rólam</li>
+          </Link>
+          <Link className="hamburgerNavItem links" to="/kapcsolat">
+            <li>Kapcsolat</li>
+          </Link>
         </ul>
       </div>
     </div>
