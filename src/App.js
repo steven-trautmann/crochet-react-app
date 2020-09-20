@@ -11,6 +11,7 @@ import Footer from "./layout/Footer";
 import FinishedProducts from "./component/FinishedProducts";
 import PreviousProducts from "./component/PreviousProducts";
 import PageAboutMe from "./component/PageAboutMe";
+import Connection from "./component/Connection";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                     component={PreviousProducts}
                   />
                   <Route exact path="/rolam" component={PageAboutMe} />
+                  <Route exact path="/kapcsolat" component={Connection} />
                   <Footer />
                 </ModalContextProvider>
               </PreviousModalTextsContextProvider>
