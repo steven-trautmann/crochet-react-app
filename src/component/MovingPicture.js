@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { InnerWidthContext } from "../context/InnerWidthContext";
+import { Link } from "react-router-dom";
 
 export default function MovingPicture() {
   const [width, setWidth] = useContext(InnerWidthContext);
 
-  let fromMobile = width < 1200;
+  let fromMobile = width < 1000;
 
   return (
     <div
@@ -18,44 +19,39 @@ export default function MovingPicture() {
     >
       <Carousel>
         <Carousel.Item>
-          <img
-            className="d-block w-100"
-            style={{ height: fromMobile ? "33vw" : "25vw" }}
-            src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
-            alt="First slide"
-          />
-          <Carousel.Caption>
+          <Link to="/kesz-termekek/figurak">
+            <img
+              className="d-block w-100"
+              style={{ height: fromMobile ? "33vw" : "25vw" }}
+              src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
+              alt="First slide"
+            />
+          </Link>
+          {/* you can add caption */}
+          {/* <Carousel.Caption>
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
+          </Carousel.Caption> */}
         </Carousel.Item>
         <Carousel.Item>
-          <img
-            className="d-block w-100"
-            style={{ height: fromMobile ? "33vw" : "25vw" }}
-            src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
+          <Link to="/eddigi-munkak/figurak">
+            <img
+              className="d-block w-100"
+              style={{ height: fromMobile ? "33vw" : "25vw" }}
+              src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
+              alt="Third slide"
+            />
+          </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <img
-            className="d-block w-100"
-            style={{ height: fromMobile ? "33vw" : "25vw" }}
-            src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
-            alt="Third slide"
-          />
-
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
+          <Link to="/rolam">
+            <img
+              className="d-block w-100"
+              style={{ height: fromMobile ? "33vw" : "25vw" }}
+              src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
+              alt="Third slide"
+            />
+          </Link>
         </Carousel.Item>
       </Carousel>
     </div>
