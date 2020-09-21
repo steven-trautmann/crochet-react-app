@@ -4,6 +4,7 @@ import DisplayPictures from "./DisplayPictures";
 import { ModalContext } from "../context/ModalContext";
 import { PreviousModalTextsContext } from "../context/ModalTextsPreviousProducts";
 import { useParams } from "react-router-dom";
+import { InnerWidthContext } from "../context/InnerWidthContext";
 
 export default function PreviousProducts(props) {
   const [ModalTexts, setModalTexts] = useContext(PreviousModalTextsContext); // !!!!!!!!!!!!!!!!!!!
@@ -11,6 +12,7 @@ export default function PreviousProducts(props) {
   const { type } = useParams();
   const [typeInHeader, setTypeInHeader] = useState("Helytelen URL!");
   const didMountRef = useRef(false);
+  const [width] = useContext(InnerWidthContext);
 
   const [
     modalSrc,
@@ -108,11 +110,62 @@ export default function PreviousProducts(props) {
     }
   }
 
+  function desktopModalContext() {
+    return (
+      <div>
+        <div style={{ display: "inline-block" }}>
+          <img
+            src={modalSrc}
+            alt="finished_product"
+            style={{ width: "30vw", height: "30vw" }}
+          />
+        </div>
+        <div
+          style={{
+            display: "inline-block",
+            width: "45vw",
+            height: "30vw",
+            verticalAlign: "top",
+            marginLeft: "3vw",
+            overflow: "auto",
+          }}
+        >
+          <h2>{ModalTexts[modalName]}</h2>
+        </div>
+      </div>
+    );
+  }
+
+  function mobileModalContext() {
+    return (
+      <div>
+        <div style={{ margin: "auto", textAlign: "center" }}>
+          <img
+            src={modalSrc}
+            alt="finished_product"
+            style={{ width: "60vw", height: "60vw" }}
+          />
+        </div>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "1rem",
+            height: "22vh",
+            overflow: "auto",
+          }}
+        >
+          <h2>{ModalTexts[modalName]}</h2>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div id="myModal" class="modalInvisible">
         <div class="modal-content">
           <button
+            style={{ position: "absolute", right: "2vw" }}
             class="close"
             onClick={() => {
               toggleModalVisibility();
@@ -125,23 +178,7 @@ export default function PreviousProducts(props) {
             {modalName}
           </h1>
           <div>
-            <div style={{ display: "inline-block" }}>
-              <img
-                src={modalSrc}
-                alt="finished_product"
-                style={{ width: "30vw", height: "30vw" }}
-              />
-            </div>
-            <div
-              style={{
-                display: "inline-block",
-                width: "40vw",
-                verticalAlign: "top",
-                marginLeft: "3vw",
-              }}
-            >
-              <h2>{ModalTexts[modalName]}</h2>
-            </div>
+            {width > 1000 ? desktopModalContext() : mobileModalContext()}
           </div>
         </div>
       </div>
