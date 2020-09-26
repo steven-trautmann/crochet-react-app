@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DisplayPictures from "./DisplayPictures";
 import Modal from "./Modal";
 import { useParams } from "react-router-dom";
+import { PreviousModalTextsContext } from "../context/ModalTextsPreviousProducts";
 
 export default function PreviousProducts(props) {
   const [previousProducts, setPreviousProducts] = useState({});
@@ -66,7 +67,7 @@ export default function PreviousProducts(props) {
 
   return (
     <div>
-      <Modal />
+      <Modal context={PreviousModalTextsContext} />
       <div style={{ marginTop: "6rem" }}>
         <h1
           style={{

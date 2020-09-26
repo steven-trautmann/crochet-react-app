@@ -1,11 +1,11 @@
 import React, { useEffect, useContext, useRef } from "react";
 import "../style/modal.css";
 import { ModalContext } from "../context/ModalContext";
-import { PreviousModalTextsContext } from "../context/ModalTextsPreviousProducts";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 
-function Modal() {
-  const [ModalTexts] = useContext(PreviousModalTextsContext);
+function Modal(props) {
+  const [ModalTexts] = useContext(props.context);
+
   const [width] = useContext(InnerWidthContext);
   const [
     modalSrc,
@@ -17,6 +17,8 @@ function Modal() {
     modalName,
     // eslint-disable-next-line no-unused-vars
     setModalName,
+    hasListener,
+    setHasListener,
   ] = useContext(ModalContext);
 
   const didMountRef = useRef(false);
@@ -33,13 +35,17 @@ function Modal() {
   }, [modalCounter]);
 
   useEffect(() => {
-    window.addEventListener("click", function (event) {
-      let myModal = document.getElementById("myModal");
-      if (event.target === myModal) {
-        toggleModalVisibility();
-      }
-    });
-  }, []);
+    if (!hasListener) {
+      window.addEventListener("click", function (event) {
+        let myModal = document.getElementById("myModal");
+        if (event.target === myModal) {
+          toggleModalVisibility();
+          console.log("toggleing");
+        }
+      });
+      setHasListener(true);
+    }
+  }, [hasListener, setHasListener]);
 
   function toggleModalVisibility() {
     let modal = document.getElementById("myModal");

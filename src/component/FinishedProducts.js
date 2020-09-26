@@ -3,6 +3,7 @@ import "../style/modal.css";
 import DisplayPictures from "./DisplayPictures";
 import Modal from "./Modal";
 import { useParams } from "react-router-dom";
+import { FinishedModalTextsContext } from "../context/ModalTextsFinishedProducts";
 
 export default function FinishedProducts(props) {
   const [finishedProducts, setFinishedProducts] = useState({});
@@ -67,7 +68,7 @@ export default function FinishedProducts(props) {
 
   return (
     <div>
-      <Modal />
+      <Modal context={FinishedModalTextsContext} />
       <div style={{ marginTop: "6rem" }}>
         <h1
           style={{
