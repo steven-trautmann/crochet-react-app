@@ -23,10 +23,12 @@ export default function DisplayPictures(props) {
       {Object.entries(props.pictures).map((image) => {
         let src = image.toString().split(",").pop();
         return (
-          <DisplayPic
-            pictureSquareDistance={pictureSquareDistance}
-            picture={src}
-          ></DisplayPic>
+          <div key={src}>
+            <DisplayPic
+              pictureSquareDistance={pictureSquareDistance}
+              picture={src}
+            ></DisplayPic>
+          </div>
         );
       })}
     </div>

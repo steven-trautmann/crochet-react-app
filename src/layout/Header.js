@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
@@ -69,20 +69,19 @@ export default function Header() {
     setPrevProductsWidthFromWindow(prevDropDownButton.offsetWidth);
   };
 
-  const setDropdownPositions = useCallback(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const setDropdownPositions = () => {
     if (!fromMobile) {
       setFinishedDropDownPositions();
       setPrevDropDownPositions();
     }
-  });
+  };
 
-  React.useEffect(() => {
-    if (!fromMobile) {
-      setDropdownPositions();
-    }
+  useEffect(() => {
+    setDropdownPositions();
   }, [fromMobile, setDropdownPositions, width]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
   }, [setWidth]);
 

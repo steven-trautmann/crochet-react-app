@@ -4,7 +4,7 @@ import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
 
 export default function MovingPicture() {
-  const [width, setWidth] = useContext(InnerWidthContext);
+  const [width] = useContext(InnerWidthContext);
 
   let fromMobile = width < 1000;
 

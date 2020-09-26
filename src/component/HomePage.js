@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import MovingPicture from "./MovingPicture";
 import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";

@@ -1,15 +1,16 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import "../style/tableCard.css";
 import styled from "styled-components";
 import { ModalContext } from "../context/ModalContext";
 
 export default function DisplayPic(props) {
   const [
+    // eslint-disable-next-line no-unused-vars
     modalSrc,
     setModalSrc,
     modalCounter,
     setModalCounter,
+    // eslint-disable-next-line no-unused-vars
     modalName,
     setModalName,
   ] = useContext(ModalContext);
