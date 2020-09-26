@@ -9,7 +9,7 @@ import "../style/links.css";
 export default function HomePage() {
   const [width] = useContext(InnerWidthContext);
 
-  let pictureSquareDistance = width > 1000 ? "17.5vw" : "32.5vw";
+  let pictureSquareDistance = width > 1000 ? "17.5vw" : "32vw";
 
   const Img = styled.img`
     height: ${pictureSquareDistance};

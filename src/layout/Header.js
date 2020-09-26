@@ -276,7 +276,7 @@ export default function Header() {
           style={{
             fontSize: "0.5rem",
             float: "right",
-            marginBottom: "0.5rem",
+            marginBottom: "0rem",
             background: "white",
             fontFamily: "auto",
             outline: "black",

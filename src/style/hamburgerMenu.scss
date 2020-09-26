@@ -64,6 +64,8 @@ $bar-spacing: 1.25rem;
 }
 
 .hamburgerDropDown {
+  overflow: auto;
+  height: 18rem;
   position: fixed;
   padding: 0.4rem;
   padding-top: 1rem;
@@ -81,6 +83,8 @@ $bar-spacing: 1.25rem;
 }
 
 .hamburgerDropDownDisquise {
+  overflow: auto;
+  height: 18rem;
   position: fixed;
   padding: 0.4rem;
   padding-top: 1rem;
@@ -90,7 +94,7 @@ $bar-spacing: 1.25rem;
   z-index: 16;
   background-color: white;
   border: solid black;
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   visibility: hidden;
   opacity: 0;
