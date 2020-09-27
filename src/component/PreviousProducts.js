@@ -37,7 +37,7 @@ export default function PreviousProducts(props) {
       setPreviousProducts(
         importAll(
           require.context(
-            "../images/prev_products/figures3",
+            "../images/prev_products/figures",
             false,
             /\.(png|jpe?g|svg)$/
           )
@@ -48,7 +48,7 @@ export default function PreviousProducts(props) {
       setPreviousProducts(
         importAll(
           require.context(
-            "../images/prev_products/figures4",
+            "../images/prev_products/figures2",
             false,
             /\.(png|jpe?g|svg)$/
           )
