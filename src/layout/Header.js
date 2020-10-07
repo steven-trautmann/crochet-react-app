@@ -231,8 +231,8 @@ export default function Header() {
         className="dropDownDisquise"
       >
         <ul style={{ listStyleType: "none" }}>
-          <Link to="/kesz-termekek/figurak">
-            <li>Figurák</li>
+          <Link to="/kesz-termekek/takarok">
+            <li>Takarók</li>
           </Link>
           <Link to="/kesz-termekek/plussok">
             <li>Plüssök</li>
@@ -256,8 +256,8 @@ export default function Header() {
         className="dropDownDisquise"
       >
         <ul style={{ listStyleType: "none" }}>
-          <Link to="/eddigi-munkak/figurak">
-            <li>Figurák</li>
+          <Link to="/eddigi-munkak/takarok">
+            <li>Takarók</li>
           </Link>
           <Link to="/eddigi-munkak/plussok">
             <li>Plüssök</li>
@@ -300,8 +300,8 @@ export default function Header() {
                   textAlign: "center",
                 }}
               >
-                <Link to="/kesz-termekek/figurak">
-                  <li>Figurák</li>
+                <Link to="/kesz-termekek/takarok">
+                  <li>Takarók</li>
                 </Link>
                 <Link to="/kesz-termekek/plussok">
                   <li>Plüssök</li>
@@ -329,8 +329,8 @@ export default function Header() {
                   textAlign: "center",
                 }}
               >
-                <Link to="/eddigi-munkak/figurak">
-                  <li>Figurák</li>
+                <Link to="/eddigi-munkak/takarok">
+                  <li>Takarók</li>
                 </Link>
                 <Link to="/eddigi-munkak/plussok">
                   <li>Plüssök</li>

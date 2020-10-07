@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useRef } from "react";
 import "../style/modal.css";
 import { ModalContext } from "../context/ModalContext";
 import { InnerWidthContext } from "../context/InnerWidthContext";
+import Carousel from "react-bootstrap/Carousel";
 
 function Modal(props) {
   const [ModalTexts] = useContext(props.context);
@@ -40,7 +41,6 @@ function Modal(props) {
         let myModal = document.getElementById("myModal");
         if (event.target === myModal) {
           toggleModalVisibility();
-          console.log("toggleing");
         }
       });
       setHasListener(true);
@@ -61,12 +61,26 @@ function Modal(props) {
   function desktopModalContext() {
     return (
       <div>
-        <div style={{ display: "inline-block" }}>
-          <img
+        <div style={{ display: "inline-block", width: "30vw", height: "30vw" }}>
+          {/* <img
             src={modalSrc}
             alt="finished_product"
             style={{ width: "30vw", height: "30vw" }}
-          />
+          /> */}
+          <Carousel>
+            {modalSrc.map((src) => {
+              return (
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    style={{ height: "30vw", width: "30vw" }}
+                    src={src}
+                    alt="slide"
+                  />
+                </Carousel.Item>
+              )
+            })}
+          </Carousel>
         </div>
         <div
           style={{
@@ -88,11 +102,27 @@ function Modal(props) {
     return (
       <div>
         <div style={{ margin: "auto", textAlign: "center" }}>
-          <img
+
+          {/* <img
             src={modalSrc}
             alt="finished_product"
             style={{ width: "60vw", height: "60vw" }}
-          />
+          /> */}
+          <Carousel>
+            {modalSrc.map((src) => {
+              return (
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    style={{ height: "60vw", width: "60vw" }}
+                    src={src}
+                    alt="First slide"
+                  />
+                </Carousel.Item>
+              )
+            })}
+          </Carousel>
+
         </div>
         <div
           style={{
@@ -124,7 +154,8 @@ function Modal(props) {
         <h1 style={{ borderBottom: "solid", marginBottom: "5vh" }}>
           {modalName}
         </h1>
-        <div>{width > 1000 ? desktopModalContext() : mobileModalContext()}</div>
+
+        {modalSrc !== "" ? <div>{width > 1000 ? desktopModalContext() : mobileModalContext()}</div> : null}
       </div>
     </div>
   );

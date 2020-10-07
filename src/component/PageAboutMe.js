@@ -1,51 +1,11 @@
-import React, { useContext } from "react";
-import { InnerWidthContext } from "../context/InnerWidthContext";
+import React from "react";
 
 export default function PageAboutMe() {
-  const [width] = useContext(InnerWidthContext);
-
-  function desktopContent() {
-    return (
-      <div>
-        <div style={{ display: "inline-block" }}>
-          <img
-            src="/specialImages/aboutMeImgs/profile.jpg"
-            alt="Me"
-            style={{
-              margin: "2vw",
-              marginTop: "1rem",
-              width: "50vw",
-              height: "40vw",
-            }}
-          />
-        </div>
-        <div
-          style={{
-            marginTop: "1rem",
-            display: "inline-block",
-            verticalAlign: "top",
-            width: "40vw",
-            fontSize: "1.75rem",
-          }}
-        >
-          <p>Sziasztok!</p>
-          <p>
-            Az Én nevem Fanni, és egy csodálatos ember vagyok, de ezt
-            természetesen nem írnám le soha, éppen ezért a barátom, akit nagyon
-            szeretek, írja le helyettem, de igazából el sem nagyon hiszem, de
-            nem is baj, mert ő elhiszi, és szeret meg minden, utazgatunk majd
-            ide oda meg amoda és akkor jó lesz minden vagy nemtom:)) A lényeg,
-            hogy művészetet fogyasszunk, és elgondolkodjunk. Ezt jegyezzétek meg
-            gyerekek. Khm.. Még mindig írnom kéne valamit, hogy jóóó sokat
-            írjak, szóval azt mondom még, hogy kőkeményen áll.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  function mobileContent() {
-    return (
+  return (
+    <div style={{ marginTop: "6rem" }}>
+      <h1 style={{ borderBottom: "solid", margin: "2vw", marginBottom: "5vw" }}>
+        Rólam
+      </h1>
       <div>
         <img
           src="/specialImages/aboutMeImgs/profile.jpg"
@@ -61,35 +21,42 @@ export default function PageAboutMe() {
         <div
           style={{
             margin: "auto",
-            marginTop: "1rem",
+            marginTop: "2rem",
             display: "block",
             width: "95vw",
             fontSize: "1.75rem",
             textAlign: "center",
           }}
         >
-          <p>Sziasztok!</p>
-          <p>
-            Az Én nevem Fanni, és egy csodálatos ember vagyok, de ezt
-            természetesen nem írnám le soha, éppen ezért a barátom, akit nagyon
-            szeretek, írja le helyettem, de igazából el sem nagyon hiszem, de
-            nem is baj, mert ő elhiszi, és szeret meg minden, utazgatunk majd
-            ide oda meg amoda és akkor jó lesz minden vagy nemtom:)) A lényeg,
-            hogy művészetet fogyasszunk, és elgondolkodjunk. Ezt jegyezzétek meg
-            gyerekek. Khm.. Még mindig írnom kéne valamit, hogy jóóó sokat
-            írjak, szóval azt mondom még, hogy kőkeményen áll.
+          <p style={{ fontSize: "2rem" }}>
+            Miskédi-Biró Annamária vagyok, a horgolással 2015-ben kezdtem el foglalkozni, amikor az elsõ fiam 1 éves volt. A bababoltokat járva sokszor láttam
+            "fonalfigurákat", de akkor még elképzelhetetlennek gondoltam, hogy egyszer én is ilyeneket fogok készíteni. Bár mindig szerettem alkotni, a kézimunka
+            valahogy kimaradt az addigi életembõl. Aztán egyre több ötletet láttam, és úgy éreztem, muszáj valamit csinálnom a gyerkõc mellett, mivel az addigi
+            hobbijaimat fel kellett függesztenem. Elmentem egy kézimunka üzlet tanfolyamára, ahol megismerkedtem a horgoló tûvel, amirõl addig azt sem tudtam,
+            hogy néz ki :) Bár nagyon nehéz volt az elsõ lépéssel megküzdenem, azonnal beleszerettem. Nagyon motiváló volt másokat látni, miket alkotnak, és
+            azóta szinte le sem tudom tenni a fonalakat. Ennyire elvakultan nem rajongtam elõtte semminek az elkészítéséért. Ez igazán kikapcsolt és az anyaság
+            mellett ez vált a fõ gondolatvilágommá. Nem véletlen, hogy a legtöbb nõ talán az élet ezen szakaszában talál magára és kezd bele valamilyen alkotásba.
+            Nekem is nagyon jókor jött egy olyan hobbi, amit otthon is bármikor, szinte bármilyen helyzetben tudok csinálni. Nem szúr a tû, nyugodtan elöl
+            hagyhatom a gyerekek mellett is, csak a fonalak összegabalyodásától kell megmentenem magam :)
+
+            A horgoláson belül nekem nincs kimondottan kedvenc témám, mindig valami új ötlet jön.
+            Sokan keresnek meg olyan kérésekkel, hogy kép alapján készítsek el egy figurát.
+            Talán ez a legnagyobb kihívás, sokszor fejtörést is okoz és rengeteget kell próbálkoznom, ami pedig sok idõ. De mindig izgalmas és szuper érzés
+            örömet okozni egy új alkotással.
+            Ezen kívül készítek még takarókat, párnákat, sapkákat, ruhadarabokat és kiegészítõket.
+
+            Ezen az oldalon megtaláljátok az összes eddigi munkámat, egészen a kezdetektõl.
+
+            Eladásra jelenleg leginkább babaholmikat - takarókat, szundikendõket, csörgõket - horgolok, ezeket a shop-ban keressétek.
+
+            Ha bármi megtetszik, de más színben, méretben képzeled el, keress bátran!
+            Ha pedig horgoláshoz szeretnél segítséget kérni, vagy szeretnél tanulni, igyekszem minél elõbb válaszolni!
+
+
+            Kellemes nézelõdést az oldalon.
           </p>
         </div>
       </div>
-    );
-  }
-
-  return (
-    <div style={{ marginTop: "6rem" }}>
-      <h1 style={{ borderBottom: "solid", margin: "2vw", marginBottom: "5vw" }}>
-        Rólam
-      </h1>
-      {width > 1000 ? desktopContent() : mobileContent()}
     </div>
   );
 }

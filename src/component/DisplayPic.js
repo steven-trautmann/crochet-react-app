@@ -22,13 +22,13 @@ export default function DisplayPic(props) {
       cursor: pointer;
     }
   `;
-
-  let sliceFrom = props.picture.lastIndexOf("/") + 1;
-  let sliceTo = props.picture.indexOf(".");
-  let pictureName = props.picture.slice(sliceFrom, sliceTo);
+  let samplePicture = props.pictureSrcGroup[0];
+  let sliceFrom = samplePicture.lastIndexOf("/") + 1;
+  let sliceTo = samplePicture.indexOf(".");
+  let pictureName = samplePicture.slice(sliceFrom, sliceTo - 1);
 
   function showModal() {
-    setModalSrc(props.picture);
+    setModalSrc(props.pictureSrcGroup);
     setModalName(pictureName);
     if (10 < modalCounter) {
       setModalCounter(0);
@@ -43,7 +43,7 @@ export default function DisplayPic(props) {
         onClick={() => {
           showModal();
         }}
-        src={props.picture}
+        src={props.pictureSrcGroup[0]}
         alt="crochetProduct"
       />
       <h1

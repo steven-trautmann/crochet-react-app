@@ -11,12 +11,12 @@ export default function FinishedProducts(props) {
   const [typeInHeader, setTypeInHeader] = useState("Helytelen URL!");
 
   useEffect(() => {
-    if (type === "figurak") {
-      setTypeInHeader("Figurák");
+    if (type === "takarok") {
+      setTypeInHeader("Takarók");
       setFinishedProducts(
         importAll(
           require.context(
-            "../images/finished_products/figures",
+            "../images/finished_products/takarok",
             false,
             /\.(png|jpe?g|svg)$/
           )
@@ -38,7 +38,7 @@ export default function FinishedProducts(props) {
       setFinishedProducts(
         importAll(
           require.context(
-            "../images/finished_products/figures",
+            "../images/finished_products/figures2",
             false,
             /\.(png|jpe?g|svg)$/
           )
