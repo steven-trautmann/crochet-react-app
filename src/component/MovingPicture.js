@@ -34,7 +34,7 @@ export default function MovingPicture() {
           </Carousel.Caption> */}
         </Carousel.Item>
         <Carousel.Item>
-          <Link to="/eddigi-munkak/figurak">
+          <Link to="/eddigi-munkak/takarok">
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
@@ -44,12 +44,22 @@ export default function MovingPicture() {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <Link to="/rolam">
+          <Link to="/eddigi-munkak/szundikendok">
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
               src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
               alt="Third slide"
+            />
+          </Link>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Link to="/eddigi-munkak/ruhak">
+            <img
+              className="d-block w-100"
+              style={{ height: fromMobile ? "33vw" : "25vw" }}
+              src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
+              alt="Fourth slide"
             />
           </Link>
         </Carousel.Item>

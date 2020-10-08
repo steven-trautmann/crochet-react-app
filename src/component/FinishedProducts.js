@@ -11,23 +11,34 @@ export default function FinishedProducts(props) {
   const [typeInHeader, setTypeInHeader] = useState("Helytelen URL!");
 
   useEffect(() => {
-    if (type === "takarok") {
-      setTypeInHeader("Takarók");
+    if (type === "figurak") {
+      setTypeInHeader("Figurák");
       setFinishedProducts(
         importAll(
           require.context(
-            "../images/finished_products/takarok",
+            "../images/finished_products/figurák",
             false,
             /\.(png|jpe?g|svg)$/
           )
         )
       );
-    } else if (type === "plussok") {
-      setTypeInHeader("Plüssök");
+    } else if (type === "takarok") {
+      setTypeInHeader("Takarók");
       setFinishedProducts(
         importAll(
           require.context(
-            "../images/finished_products/figures2",
+            "../images/finished_products/takarók",
+            false,
+            /\.(png|jpe?g|svg)$/
+          )
+        )
+      );
+    } else if (type === "szundikendok") {
+      setTypeInHeader("Szundikendők");
+      setFinishedProducts(
+        importAll(
+          require.context(
+            "../images/finished_products/szundikendők",
             false,
             /\.(png|jpe?g|svg)$/
           )
@@ -38,18 +49,7 @@ export default function FinishedProducts(props) {
       setFinishedProducts(
         importAll(
           require.context(
-            "../images/finished_products/figures2",
-            false,
-            /\.(png|jpe?g|svg)$/
-          )
-        )
-      );
-    } else if (type === "macskak") {
-      setTypeInHeader("Macskák");
-      setFinishedProducts(
-        importAll(
-          require.context(
-            "../images/finished_products/figures2",
+            "../images/finished_products/ruhák",
             false,
             /\.(png|jpe?g|svg)$/
           )

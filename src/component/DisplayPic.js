@@ -47,6 +47,7 @@ export default function DisplayPic(props) {
         alt="crochetProduct"
       />
       <h1
+        style={{ fontSize: "2rem" }}
         onClick={() => {
           showModal();
         }}

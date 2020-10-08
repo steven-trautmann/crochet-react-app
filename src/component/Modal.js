@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import "../style/modal.css";
 import { ModalContext } from "../context/ModalContext";
 import { InnerWidthContext } from "../context/InnerWidthContext";
@@ -6,6 +6,12 @@ import Carousel from "react-bootstrap/Carousel";
 
 function Modal(props) {
   const [ModalTexts] = useContext(props.context);
+
+  const [modalIndex, setModalIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setModalIndex(selectedIndex);
+  };
 
   const [width] = useContext(InnerWidthContext);
   const [
@@ -25,6 +31,7 @@ function Modal(props) {
   const didMountRef = useRef(false);
 
   useEffect(() => {
+    setModalIndex(0);
     if (didMountRef.current) {
       if (modalSrc !== "") {
         toggleModalVisibility();
@@ -62,12 +69,7 @@ function Modal(props) {
     return (
       <div>
         <div style={{ display: "inline-block", width: "30vw", height: "30vw" }}>
-          {/* <img
-            src={modalSrc}
-            alt="finished_product"
-            style={{ width: "30vw", height: "30vw" }}
-          /> */}
-          <Carousel>
+          <Carousel fade={true} pause="hover" interval="20000" activeIndex={modalIndex} onSelect={handleSelect}>
             {modalSrc.map((src) => {
               return (
                 <Carousel.Item>
@@ -92,7 +94,11 @@ function Modal(props) {
             overflow: "auto",
           }}
         >
-          <h2>{ModalTexts[modalName]}</h2>
+          <h2>{ModalTexts[modalName + " szöveg"]}</h2>
+          <h2>{ModalTexts[modalName + " méret"]}</h2>
+          <h2>{ModalTexts[modalName + " anyag"]}</h2>
+          <h2>{ModalTexts[modalName + " additional"]}</h2>
+          <h1 style={{ marginLeft: "0", textAlign: "inherit", marginTop: "1rem" }}>{ModalTexts[modalName + " ár"]}</h1>
         </div>
       </div>
     );
@@ -102,26 +108,22 @@ function Modal(props) {
     return (
       <div>
         <div style={{ margin: "auto", textAlign: "center" }}>
-
-          {/* <img
-            src={modalSrc}
-            alt="finished_product"
-            style={{ width: "60vw", height: "60vw" }}
-          /> */}
-          <Carousel>
-            {modalSrc.map((src) => {
-              return (
-                <Carousel.Item>
-                  <img
-                    className="d-block w-100"
-                    style={{ height: "60vw", width: "60vw" }}
-                    src={src}
-                    alt="First slide"
-                  />
-                </Carousel.Item>
-              )
-            })}
-          </Carousel>
+          <div style={{ display: "inline-block", width: "60vw", height: "60vw" }}>
+            <Carousel fade={true} pause="hover" interval="20000" activeIndex={modalIndex} onSelect={handleSelect}>
+              {modalSrc.map((src) => {
+                return (
+                  <Carousel.Item>
+                    <img
+                      className="d-block w-100"
+                      style={{ height: "60vw", width: "60vw" }}
+                      src={src}
+                      alt="slide"
+                    />
+                  </Carousel.Item>
+                )
+              })}
+            </Carousel>
+          </div>
 
         </div>
         <div
@@ -132,7 +134,11 @@ function Modal(props) {
             overflow: "auto",
           }}
         >
-          <h2>{ModalTexts[modalName]}</h2>
+          <h3>{ModalTexts[modalName + " szöveg"]}</h3>
+          <h3>{ModalTexts[modalName + " méret"]}</h3>
+          <h3>{ModalTexts[modalName + " anyag"]}</h3>
+          <h3>{ModalTexts[modalName + " additional"]}</h3>
+          <h2 style={{ marginLeft: "0", textAlign: "inherit", marginTop: "1rem" }}>{ModalTexts[modalName + " ár"]}</h2>
         </div>
       </div>
     );
@@ -151,9 +157,13 @@ function Modal(props) {
           &times;
         </button>
 
-        <h1 style={{ borderBottom: "solid", marginBottom: "5vh" }}>
+        {width > 1000 ? <h1 style={{ borderBottom: "solid", marginBottom: "5vh" }}>
           {modalName}
         </h1>
+          :
+          <h2 style={{ borderBottom: "solid", marginBottom: "5vh", textAlign: "center" }}>
+            {modalName}
+          </h2>}
 
         {modalSrc !== "" ? <div>{width > 1000 ? desktopModalContext() : mobileModalContext()}</div> : null}
       </div>
