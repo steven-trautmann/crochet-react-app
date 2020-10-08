@@ -75,6 +75,7 @@ export default function FinishedProducts(props) {
             borderBottom: "solid",
             margin: "2rem",
             marginTop: 0,
+            textAlign: "center"
           }}
         >
           {typeInHeader === "Helytelen URL!"

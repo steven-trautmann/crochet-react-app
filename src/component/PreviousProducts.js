@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../style/modal.css";
 import DisplayPictures from "./DisplayPictures";
 import Modal from "./Modal";
 import { useParams } from "react-router-dom";
@@ -74,6 +75,7 @@ export default function PreviousProducts(props) {
             borderBottom: "solid",
             margin: "2rem",
             marginTop: 0,
+            textAlign: "center"
           }}
         >
           {typeInHeader === "Helytelen URL!"

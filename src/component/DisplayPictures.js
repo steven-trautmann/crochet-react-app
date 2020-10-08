@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import DisplayPic from "./DisplayPic";
-import "../style/tableCard.css";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 
 export default function DisplayPictures(props) {

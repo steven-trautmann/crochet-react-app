@@ -40,7 +40,7 @@ export default function HomePage() {
         <h1>Kész Termékek</h1>
       </div>
 
-      <GridDiv>
+      <GridDiv className="homepage-table">
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/figurak"} className="links">
             <Img
@@ -65,7 +65,7 @@ export default function HomePage() {
               src={"/specialImages/homepageImgs/finishedSampleImgs/Szundikendők.jpg"}
               alt="Szundikendők"
             />
-            <h1>Szundikendők</h1>
+            <h2>Szundikendők</h2>
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>

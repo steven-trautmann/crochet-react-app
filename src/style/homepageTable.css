@@ -1,22 +1,21 @@
-h1 {
+.homepage-table h1,
+.homepage-table h2 {
   margin-top: 0.5rem;
   text-align: center;
-  font-size: 1.5rem;
-}
-
-.tableCard h1 {
   cursor: pointer;
   color: black;
   text-decoration: none;
 }
 
-.tableCard h1:active {
+.homepage-table h1:active,
+.homepage-table h2:active {
   color: red;
   text-decoration: underline;
   text-decoration-color: red;
 }
 
-.tableCard h1:hover {
+.homepage-table h1:hover,
+.homepage-table h2:hover {
   text-decoration: underline;
   text-decoration-color: black;
 }

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import "../style/tableCard.css";
 import styled from "styled-components";
 import { ModalContext } from "../context/ModalContext";
 
@@ -47,7 +46,7 @@ export default function DisplayPic(props) {
         alt="crochetProduct"
       />
       <h1
-        style={{ fontSize: "2rem" }}
+        style={{ fontSize: "2rem", marginTop: "0.5rem", textAlign: "center" }}
         onClick={() => {
           showModal();
         }}

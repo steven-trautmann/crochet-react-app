@@ -3,7 +3,7 @@ import React from "react";
 export default function PageAboutMe() {
   return (
     <div style={{ marginTop: "6rem" }}>
-      <h1 style={{ borderBottom: "solid", margin: "2vw", marginBottom: "5vw" }}>
+      <h1 style={{ borderBottom: "solid", margin: "2vw", marginBottom: "5vw", textAlign: "center" }}>
         Rólam
       </h1>
       <div>

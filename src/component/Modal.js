@@ -72,7 +72,7 @@ function Modal(props) {
           <Carousel fade={true} pause="hover" interval="20000" activeIndex={modalIndex} onSelect={handleSelect}>
             {modalSrc.map((src) => {
               return (
-                <Carousel.Item>
+                <Carousel.Item style={{ transition: "transform 3s ease, opacity 1s ease-out" }}>
                   <img
                     className="d-block w-100"
                     style={{ height: "30vw", width: "30vw" }}
@@ -112,7 +112,7 @@ function Modal(props) {
             <Carousel fade={true} pause="hover" interval="20000" activeIndex={modalIndex} onSelect={handleSelect}>
               {modalSrc.map((src) => {
                 return (
-                  <Carousel.Item>
+                  <Carousel.Item style={{ transition: "transform 3s ease, opacity 1s ease-out" }}>
                     <img
                       className="d-block w-100"
                       style={{ height: "60vw", width: "60vw" }}
