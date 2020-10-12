@@ -5,7 +5,6 @@ const FooterDiv = styled.div`
   background-color: lightgray;
   float: bottom;
   width: 100%;
-  height: 8rem;
   margin-bottom: 0.5rem;
   padding-top: 0.5rem;
 `;
