@@ -1,5 +1,6 @@
 .homepage-table h1,
-.homepage-table h2 {
+.homepage-table h2,
+.homepage-table h3 {
   margin-top: 0.5rem;
   text-align: center;
   cursor: pointer;
@@ -8,14 +9,16 @@
 }
 
 .homepage-table h1:active,
-.homepage-table h2:active {
+.homepage-table h2:active,
+.homepage-table h3:active  {
   color: red;
   text-decoration: underline;
   text-decoration-color: red;
 }
 
 .homepage-table h1:hover,
-.homepage-table h2:hover {
+.homepage-table h2:hover,
+.homepage-table h3:hover  {
   text-decoration: underline;
   text-decoration-color: black;
 }
