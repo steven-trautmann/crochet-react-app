@@ -6,7 +6,7 @@ export default function Connection() {
 
   return (
     <div style={{ marginTop: "6rem" }}>
-      <h1 style={{ borderBottom: "solid", margin: "2vw", marginBottom: "5vw" }}>
+      <h1 style={{ borderBottom: "solid", margin: "2vw", marginBottom: "5vw", textAlign: "center" }}>
         Kapcsolat
       </h1>
       <div>
