@@ -22,8 +22,8 @@ export default function PreviousProducts(props) {
           )
         )
       );
-    } else if (type === "plussok") {
-      setTypeInHeader("Plüssök");
+    } else if (type === "takarok") {
+      setTypeInHeader("Takarók");
       setPreviousProducts(
         importAll(
           require.context(
@@ -33,8 +33,8 @@ export default function PreviousProducts(props) {
           )
         )
       );
-    } else if (type === "ruhak") {
-      setTypeInHeader("Ruhák");
+    } else if (type === "szundikendok") {
+      setTypeInHeader("Szundikendők");
       setPreviousProducts(
         importAll(
           require.context(
@@ -44,8 +44,8 @@ export default function PreviousProducts(props) {
           )
         )
       );
-    } else if (type === "macskak") {
-      setTypeInHeader("Macskák");
+    } else if (type === "ruhak") {
+      setTypeInHeader("Ruhák");
       setPreviousProducts(
         importAll(
           require.context(

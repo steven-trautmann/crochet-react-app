@@ -18,7 +18,6 @@ export default function DisplayPictures(props) {
   for (let imageSrc of Object.entries(props.pictures)) {
     let src = imageSrc.toString().split(",").pop();
     listOfAllSrc.push(src);
-    console.log(src);
     let sliceFrom = src.lastIndexOf("/") + 1;
     let sliceTo = src.indexOf(".");
     srcSet.add(src.slice(sliceFrom, sliceTo - 1));

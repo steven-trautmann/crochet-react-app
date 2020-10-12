@@ -14,7 +14,7 @@ export default function PageAboutMe() {
             display: "block",
             margin: "auto",
             marginTop: "1rem",
-            width: "80%"
+            width: "60%"
           }}
         />
         <div

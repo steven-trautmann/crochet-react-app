@@ -18,13 +18,25 @@ export function FinishedModalTextsContextProvider(props) {
     "Őzike szundikendő méret": "Méret: 23*23 cm",
     "Őzike szundikendő anyag": "Anyag: 100% GOTS minősített pamut",
     "Őzike szundikendő additional": "Mosás: 40 fokon gépben mosható, szárítógépbe nem szabad tenni, fektetve kell szárítani",
-    "Őzike szundikendő ár": "Ár: 7000 Ft",
+    "Őzike szundikendő ár": "Ár: 7500 Ft",
 
     "Macis szundikendő szöveg": "Kedves kis alvótársa a babáknak, prémium fonalból, hímzett szemmel",
     "Macis szundikendő méret": "Méret: 23*23 cm",
     "Macis szundikendő anyag": "Anyag: 100% GOTS minősített pamut",
     "Macis szundikendő additional": "Mosás: 40 fokon gépben mosható, szárítógépbe nem szabad tenni, fektetve kell szárítani",
     "Macis szundikendő ár": "Ár: 6500 Ft",
+
+    "Pingvin szundikendő szöveg": "Kedves kis alvótársa a babáknak, prémium fonalból, hímzett szemmel",
+    "Pingvin szundikendő méret": "Méret: 23*23 cm",
+    "Pingvin szundikendő anyag": "Anyag: 100% GOTS minősített pamut",
+    "Pingvin szundikendő additional": "Mosás: 40 fokon gépben mosható, szárítógépbe nem szabad tenni, fektetve kell szárítani",
+    "Pingvin szundikendő ár": "Ár: 6500 Ft",
+
+    "Zsiráf szundikendő szöveg": "Kedves kis alvótársa a babáknak, prémium fonalból, hímzett szemmel",
+    "Zsiráf szundikendő méret": "Méret: 23*23 cm",
+    "Zsiráf szundikendő anyag": "Anyag: 100% GOTS minősített pamut",
+    "Zsiráf szundikendő additional": "Mosás: 40 fokon gépben mosható, szárítógépbe nem szabad tenni, fektetve kell szárítani",
+    "Zsiráf szundikendő ár": "Ár: 6500 Ft",
   });
 
   return (

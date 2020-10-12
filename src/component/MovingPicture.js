@@ -17,7 +17,7 @@ export default function MovingPicture() {
         marginTop: "6rem",
       }}
     >
-      <Carousel interval="10000">
+      <Carousel interval={10000}>
         <Carousel.Item>
           <Link to="/kesz-termekek/figurak">
             <img
@@ -34,7 +34,7 @@ export default function MovingPicture() {
           </Carousel.Caption> */}
         </Carousel.Item>
         <Carousel.Item>
-          <Link to="/eddigi-munkak/takarok">
+          <Link to="/kesz-termekek/takarok">
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
@@ -44,7 +44,7 @@ export default function MovingPicture() {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <Link to="/eddigi-munkak/szundikendok">
+          <Link to="/kesz-termekek/szundikendok">
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
@@ -54,7 +54,7 @@ export default function MovingPicture() {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <Link to="/eddigi-munkak/ruhak">
+          <Link to="/kesz-termekek/ruhak">
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
@@ -64,7 +64,7 @@ export default function MovingPicture() {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <Link to="/eddigi-munkak/rolam">
+          <Link to="/rolam">
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
@@ -74,6 +74,6 @@ export default function MovingPicture() {
           </Link>
         </Carousel.Item>
       </Carousel>
-    </div>
+    </div >
   );
 }

@@ -179,6 +179,9 @@ export default function Header() {
         >
           Eddigi Munkák
         </button>
+        <Link className="navItem links" to="/">
+          Prémium Babatermékek
+        </Link>
         <Link className="navItem links" to="/rolam">
           Rólam
         </Link>
@@ -219,7 +222,7 @@ export default function Header() {
           ></img>
         </Link>
 
-        {width > 1200 ? displayNavBar() : displayHamburgerMenu()}
+        {width > 1300 ? displayNavBar() : displayHamburgerMenu()}
       </TopNav>
       <div
         id="finishedProducts"
@@ -344,6 +347,9 @@ export default function Header() {
               </ul>
             </div>
           </li>
+          <Link className="hamburgerNavItem links" to="/">
+            <li>Prémium Babatermékek</li>
+          </Link>
           <Link className="hamburgerNavItem links" to="/rolam">
             <li>Rólam</li>
           </Link>

@@ -10,7 +10,7 @@ const FooterDiv = styled.div`
 `;
 
 const SocialDiv = styled.div`
-  width: 18vw;
+  width: 12vw;
   margin: auto;
   padding-top: 1vw;
   @media only screen and (max-width: 640px) {
@@ -38,20 +38,19 @@ const Footer = () => {
   return (
     <FooterDiv>
       <SocialDiv>
-        <SocialImg
-          src={require("../images/social_media/facebook.jpg")}
-          alt="facebook"
-        />
+        <a href="https://www.facebook.com/zyarncrochet/" target="_blank" rel="noopener noreferrer">
+          <SocialImg
+            src={require("../images/social_media/facebook.svg")}
+            alt="facebook"
+          />
+        </a>
 
-        <SocialImg
-          src={require("../images/social_media/instagram.jpg")}
-          alt="instagram"
-        />
-
-        <SocialImg
-          src={require("../images/social_media/youtube.jpg")}
-          alt="youtube"
-        />
+        <a href="https://www.instagram.com/zyarncrochet/?hl=hu" target="_blank" rel="noopener noreferrer">
+          <SocialImg
+            src={require("../images/social_media/instagram.svg")}
+            alt="instagram"
+          />
+        </a>
       </SocialDiv>
       <h3
         style={{

@@ -23,8 +23,6 @@ export default function DisplayPic(props) {
     }
   `;
 
-  console.log(props.pictureSrcGroup[0])
-
   let samplePicture = props.pictureSrcGroup[0];
   let sliceFrom = samplePicture.lastIndexOf("/") + 1;
   let sliceTo = samplePicture.indexOf(".");

@@ -69,7 +69,7 @@ function Modal(props) {
     return (
       <div>
         <div style={{ display: "inline-block", width: "30vw", height: "30vw" }}>
-          <Carousel fade={true} pause="hover" interval="20000" activeIndex={modalIndex} onSelect={handleSelect}>
+          <Carousel fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect}>
             {modalSrc.map((src) => {
               return (
                 <Carousel.Item style={{ transition: "transform 1s ease, opacity 1s ease-out" }}>
@@ -124,7 +124,6 @@ function Modal(props) {
               })}
             </Carousel>
           </div>
-
         </div>
         <div
           style={{
