@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
 import "../style/homepage.css";
+import "../style/homepageTable.css";
 import "../style/links.css";
 
 export default function HomePage() {
