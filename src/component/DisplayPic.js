@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { ModalContext } from "../context/ModalContext";
+import "../style/links.css";
 
 export default function DisplayPic(props) {
   const [
@@ -21,6 +22,7 @@ export default function DisplayPic(props) {
       cursor: pointer;
     }
   `;
+
   let samplePicture = props.pictureSrcGroup[0];
   let sliceFrom = samplePicture.lastIndexOf("/") + 1;
   let sliceTo = samplePicture.indexOf(".");
@@ -37,7 +39,7 @@ export default function DisplayPic(props) {
   }
 
   return (
-    <div style={{ width: props.pictureSquareDistance }} className={"tableCard"}>
+    <div style={{ width: props.pictureSquareDistance }}>
       <Img
         onClick={() => {
           showModal();
@@ -45,14 +47,25 @@ export default function DisplayPic(props) {
         src={props.pictureSrcGroup[0]}
         alt="crochetProduct"
       />
-      <h1
-        style={{ fontSize: "2rem", marginTop: "0.5rem", textAlign: "center" }}
-        onClick={() => {
-          showModal();
-        }}
-      >
-        {pictureName}
-      </h1>
+      {props.fromMobile ?
+        <h3 className="links"
+          style={{ marginTop: "0.5rem", textAlign: "center", height: "4rem" }}
+          onClick={() => {
+            showModal();
+          }}
+        >
+          {pictureName}
+        </h3>
+        :
+        <h2 className="links"
+          style={{ marginTop: "0.5rem", textAlign: "center", height: "4rem" }}
+          onClick={() => {
+            showModal();
+          }}
+        >
+          {pictureName}
+        </h2>
+      }
     </div>
   );
 }

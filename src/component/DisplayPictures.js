@@ -5,7 +5,8 @@ import { InnerWidthContext } from "../context/InnerWidthContext";
 export default function DisplayPictures(props) {
   const [width] = useContext(InnerWidthContext);
 
-  let pictureSquareDistance = width > 1000 ? "15vw" : "32.5vw";
+  let fromMobile = width < 1000;
+  let pictureSquareDistance = fromMobile ? "32vw" : "17.5vw";
   let keyCounter = 0;
 
   let listOfImgGroups = [];
@@ -46,25 +47,12 @@ export default function DisplayPictures(props) {
         margin: "auto",
       }}
     >
-      {/* {Object.entries(props.pictures).map((image) => {
-        let src = image.toString().split(",").pop();
-
-        keyCounter++;
-        return (
-          <div key={keyCounter}>
-            <DisplayPic
-              pictureSquareDistance={pictureSquareDistance}
-              picture={src}
-            ></DisplayPic>
-          </div>
-        );
-      })} */}
-
       {listOfImgGroups.map((imageSrcGroup) => {
         keyCounter++;
         return (
           <div key={keyCounter}>
             <DisplayPic
+              fromMobile={fromMobile}
               pictureSquareDistance={pictureSquareDistance}
               pictureSrcGroup={imageSrcGroup}
             ></DisplayPic>

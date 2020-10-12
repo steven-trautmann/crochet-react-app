@@ -17,7 +17,7 @@ export default function MovingPicture() {
         marginTop: "6rem",
       }}
     >
-      <Carousel>
+      <Carousel interval="10000">
         <Carousel.Item>
           <Link to="/kesz-termekek/figurak">
             <img

@@ -9,7 +9,8 @@ import "../style/links.css";
 export default function HomePage() {
   const [width] = useContext(InnerWidthContext);
 
-  let pictureSquareDistance = width > 1000 ? "17.5vw" : "32vw";
+  let fromMobile = width < 1000;
+  let pictureSquareDistance = fromMobile ? "32vw" : "17.5vw";
 
   const Img = styled.img`
     height: ${pictureSquareDistance};
@@ -36,7 +37,7 @@ export default function HomePage() {
     <div id="homepage">
       <MovingPicture />
       {/* if from mobile or desktop */}
-      <div style={{ marginTop: `${width > 1000 ? "0" : "1rem"}` }}>
+      <div style={{ marginTop: `${fromMobile ? "1rem" : "0"}` }}>
         <h1>Kész Termékek</h1>
       </div>
 
@@ -47,7 +48,7 @@ export default function HomePage() {
               src="/specialImages/homepageImgs/finishedSampleImgs/Figurák.jpg"
               alt="Figurák"
             />
-            <h1>Figurák</h1>
+            {fromMobile ? <h2>Figurák</h2> : <h1>Figurák</h1>}
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
@@ -56,7 +57,7 @@ export default function HomePage() {
               src="/specialImages/homepageImgs/finishedSampleImgs/Takarók.jpg"
               alt="Takarók"
             />
-            <h1>Takarók</h1>
+            {fromMobile ? <h2>Takarók</h2> : <h1>Takarók</h1>}
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
@@ -65,7 +66,7 @@ export default function HomePage() {
               src={"/specialImages/homepageImgs/finishedSampleImgs/Szundikendők.jpg"}
               alt="Szundikendők"
             />
-            <h2>Szundikendők</h2>
+            {fromMobile ? <h3>Szundikendők</h3> : <h2>Szundikendők</h2>}
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
@@ -74,7 +75,7 @@ export default function HomePage() {
               src={"/specialImages/homepageImgs/finishedSampleImgs/Ruhák.jpg"}
               alt="Ruhák"
             />
-            <h1>Ruhák</h1>
+            {fromMobile ? <h2>Ruhák</h2> : <h1>Ruhák</h1>}
           </Link>
         </div>
       </GridDiv>
@@ -89,7 +90,7 @@ export default function HomePage() {
               src="/specialImages/homepageImgs/previousSampleImgs/csiga_biga.jpg"
               alt="Figurák"
             />
-            <h1>Figurák</h1>
+            {fromMobile ? <h2>Figurák</h2> : <h1>Figurák</h1>}
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
@@ -98,7 +99,7 @@ export default function HomePage() {
               src="/specialImages/homepageImgs/previousSampleImgs/csigusz.jpg"
               alt="Plüssök"
             />
-            <h1>Plüssök</h1>
+            {fromMobile ? <h2>Plüssök</h2> : <h1>Plüssök</h1>}
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
@@ -109,7 +110,7 @@ export default function HomePage() {
               }
               alt="Ruhák"
             />
-            <h1>Ruhák</h1>
+            {fromMobile ? <h2>Ruhák</h2> : <h1>Ruhák</h1>}
           </Link>
         </div>
 
@@ -121,7 +122,7 @@ export default function HomePage() {
               }
               alt="Macskák"
             />
-            <h1>Macskák</h1>
+            {fromMobile ? <h2>Macskák</h2> : <h1>Macskák</h1>}
           </Link>
         </div>
       </GridDiv>

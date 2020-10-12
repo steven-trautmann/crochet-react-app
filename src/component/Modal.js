@@ -72,7 +72,7 @@ function Modal(props) {
           <Carousel fade={true} pause="hover" interval="20000" activeIndex={modalIndex} onSelect={handleSelect}>
             {modalSrc.map((src) => {
               return (
-                <Carousel.Item style={{ transition: "transform 3s ease, opacity 1s ease-out" }}>
+                <Carousel.Item style={{ transition: "transform 1s ease, opacity 1s ease-out" }}>
                   <img
                     className="d-block w-100"
                     style={{ height: "30vw", width: "30vw" }}
@@ -112,7 +112,7 @@ function Modal(props) {
             <Carousel fade={true} pause="hover" interval="20000" activeIndex={modalIndex} onSelect={handleSelect}>
               {modalSrc.map((src) => {
                 return (
-                  <Carousel.Item style={{ transition: "transform 3s ease, opacity 1s ease-out" }}>
+                  <Carousel.Item style={{ transition: "transform 1s ease, opacity 1s ease-out" }}>
                     <img
                       className="d-block w-100"
                       style={{ height: "60vw", width: "60vw" }}
@@ -134,11 +134,11 @@ function Modal(props) {
             overflow: "auto",
           }}
         >
-          <h3>{ModalTexts[modalName + " szöveg"]}</h3>
-          <h3>{ModalTexts[modalName + " méret"]}</h3>
-          <h3>{ModalTexts[modalName + " anyag"]}</h3>
-          <h3>{ModalTexts[modalName + " additional"]}</h3>
-          <h2 style={{ marginLeft: "0", textAlign: "inherit", marginTop: "1rem" }}>{ModalTexts[modalName + " ár"]}</h2>
+          <h4>{ModalTexts[modalName + " szöveg"]}</h4>
+          <h4>{ModalTexts[modalName + " méret"]}</h4>
+          <h4>{ModalTexts[modalName + " anyag"]}</h4>
+          <h4>{ModalTexts[modalName + " additional"]}</h4>
+          <h3 style={{ marginLeft: "0", textAlign: "inherit", marginTop: "1rem" }}>{ModalTexts[modalName + " ár"]}</h3>
         </div>
       </div>
     );

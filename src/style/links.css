@@ -1,5 +1,6 @@
 .links {
   color: black;
+  cursor: pointer;
 }
 
 .links:hover {
