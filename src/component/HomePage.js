@@ -84,46 +84,45 @@ export default function HomePage() {
       <div style={{ marginTop: "1rem" }}>
         <h1>Eddigi Munkáim</h1>
       </div>
-      <GridDiv>
+      <GridDiv className="homepage-table">
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/eddigi-munkak/figurak"} className="links">
             <Img
-              src="/specialImages/homepageImgs/previousSampleImgs/csiga_biga.jpg"
+              src="/specialImages/homepageImgs/previousSampleImgs/black.jpg"
               alt="Figurák"
             />
             {fromMobile ? <h2>Figurák</h2> : <h1>Figurák</h1>}
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/plussok"} className="links">
+          <Link to={"/kesz-termekek/takarok"} className="links">
             <Img
-              src="/specialImages/homepageImgs/previousSampleImgs/csigusz.jpg"
-              alt="Plüssök"
+              src="/specialImages/homepageImgs/previousSampleImgs/black.jpg"
+              alt="Takarók"
             />
-            {fromMobile ? <h2>Plüssök</h2> : <h1>Plüssök</h1>}
+            {fromMobile ? <h2>Takarók</h2> : <h1>Takarók</h1>}
+          </Link>
+        </div>
+        <div style={{ width: pictureSquareDistance }}>
+          <Link to={"/kesz-termekek/szundikendok"} className="links">
+            <Img
+              src={
+                "/specialImages/homepageImgs/previousSampleImgs/black.jpg"
+              }
+              alt="Szundikendők"
+            />
+            {fromMobile ? <h3>Szundikendők</h3> : <h2>Szundikendők</h2>}
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/ruhak"} className="links">
             <Img
               src={
-                "/specialImages/homepageImgs/previousSampleImgs/csingula.jpg"
+                "/specialImages/homepageImgs/previousSampleImgs/black.jpg"
               }
               alt="Ruhák"
             />
             {fromMobile ? <h2>Ruhák</h2> : <h1>Ruhák</h1>}
-          </Link>
-        </div>
-
-        <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/macskak"} className="links">
-            <Img
-              src={
-                "/specialImages/homepageImgs/previousSampleImgs/mesztelen.jpg"
-              }
-              alt="Macskák"
-            />
-            {fromMobile ? <h2>Macskák</h2> : <h1>Macskák</h1>}
           </Link>
         </div>
       </GridDiv>

@@ -23,7 +23,7 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
+              src={`/specialImages/homepageImgs/movingImages/figura.jpg`}
               alt="First slide"
             />
           </Link>
@@ -38,7 +38,7 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
+              src={`/specialImages/homepageImgs/movingImages/takaro.jpg`}
               alt="Third slide"
             />
           </Link>
@@ -48,7 +48,7 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
+              src={`/specialImages/homepageImgs/movingImages/szundikendo.jpg`}
               alt="Third slide"
             />
           </Link>
@@ -58,7 +58,17 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/sample_picture.jpg`}
+              src={`/specialImages/homepageImgs/movingImages/black.jpg`}
+              alt="Fourth slide"
+            />
+          </Link>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Link to="/eddigi-munkak/rolam">
+            <img
+              className="d-block w-100"
+              style={{ height: fromMobile ? "33vw" : "25vw" }}
+              src={`/specialImages/homepageImgs/movingImages/rolam.jpg`}
               alt="Fourth slide"
             />
           </Link>
