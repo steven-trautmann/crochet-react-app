@@ -58,7 +58,7 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/black.jpg`}
+              src={`/specialImages/homepageImgs/movingImages/ruha.jpg`}
               alt="Fourth slide"
             />
           </Link>

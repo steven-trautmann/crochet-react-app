@@ -18,7 +18,7 @@ export default function Connection() {
           }}
         >
           <li>E-mail: sample@sample.com</li>
-          <li>Telefon: 06 20 195 657</li>
+          <li>Telefon: 06 20 587 4099</li>
         </ul>
       </div>
       <div>
