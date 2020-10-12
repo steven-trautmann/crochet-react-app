@@ -14,7 +14,7 @@ const SocialDiv = styled.div`
   margin: auto;
   padding-top: 1vw;
   @media only screen and (max-width: 640px) {
-    width: 9rem;
+    width: 6rem;
     margin: auto;
     padding-top: 1vw;
   }
