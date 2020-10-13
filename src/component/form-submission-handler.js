@@ -54,37 +54,38 @@
         event.preventDefault();           // we are submitting via xhr below
         var form = event.target;
         var formData = getFormData(form);
-        var data = formData.data;
+        console.log(formData);
+        return;
+        // var data = formData.data;
 
-        // If a honeypot field is filled, assume it was done so by a spam bot.
-        if (formData.honeypot) {
-            return false;
-        }
+        // // If a honeypot field is filled, assume it was done so by a spam bot.
+        // if (formData.honeypot) {
+        //     return false;
+        // }
 
-        disableAllButtons(form);
-        var url = form.action;
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', url);
-        // xhr.withCredentials = true;
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                form.reset();
-                var formElements = form.querySelector(".form-elements")
-                if (formElements) {
-                    formElements.style.display = "none"; // hide form
-                }
-                var thankYouMessage = form.querySelector(".thankyou_message");
-                if (thankYouMessage) {
-                    thankYouMessage.style.display = "block";
-                }
-            }
-        };
-        // url encode form data for sending as post data
-        var encoded = Object.keys(data).map(function (k) {
-            return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
-        }).join('&');
-        xhr.send(encoded);
+        // var url = form.action;
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('POST', url);
+        // // xhr.withCredentials = true;
+        // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        // xhr.onreadystatechange = function () {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         form.reset();
+        //         var formElements = form.querySelector(".form-elements")
+        //         if (formElements) {
+        //             formElements.style.display = "none"; // hide form
+        //         }
+        //         var thankYouMessage = form.querySelector(".thankyou_message");
+        //         if (thankYouMessage) {
+        //             thankYouMessage.style.display = "block";
+        //         }
+        //     }
+        // };
+        // // url encode form data for sending as post data
+        // var encoded = Object.keys(data).map(function (k) {
+        //     return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+        // }).join('&');
+        // xhr.send(encoded);
     }
 
     function loaded() {
@@ -96,10 +97,4 @@
     };
     document.addEventListener("DOMContentLoaded", loaded, false);
 
-    function disableAllButtons(form) {
-        var buttons = form.querySelectorAll("button");
-        for (var i = 0; i < buttons.length; i++) {
-            buttons[i].disabled = true;
-        }
-    }
 })();
