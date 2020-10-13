@@ -88,7 +88,7 @@ export default function HomePage() {
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/eddigi-munkak/figurak"} className="links">
             <Img
-              src="/specialImages/homepageImgs/previousSampleImgs/black.jpg"
+              src="/specialImages/homepageImgs/previousSampleImgs/missing.jpg"
               alt="Figurák"
             />
             {fromMobile ? <h2>Figurák</h2> : <h1>Figurák</h1>}
@@ -97,7 +97,7 @@ export default function HomePage() {
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/takarok"} className="links">
             <Img
-              src="/specialImages/homepageImgs/previousSampleImgs/black.jpg"
+              src="/specialImages/homepageImgs/previousSampleImgs/missing.jpg"
               alt="Takarók"
             />
             {fromMobile ? <h2>Takarók</h2> : <h1>Takarók</h1>}
@@ -107,7 +107,7 @@ export default function HomePage() {
           <Link to={"/kesz-termekek/szundikendok"} className="links">
             <Img
               src={
-                "/specialImages/homepageImgs/previousSampleImgs/black.jpg"
+                "/specialImages/homepageImgs/previousSampleImgs/missing.jpg"
               }
               alt="Szundikendők"
             />
@@ -118,7 +118,7 @@ export default function HomePage() {
           <Link to={"/kesz-termekek/ruhak"} className="links">
             <Img
               src={
-                "/specialImages/homepageImgs/previousSampleImgs/black.jpg"
+                "/specialImages/homepageImgs/previousSampleImgs/missing.jpg"
               }
               alt="Ruhák"
             />

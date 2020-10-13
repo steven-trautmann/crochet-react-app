@@ -2,6 +2,18 @@ import React, { useContext } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const CarouselText = styled.h1`
+  background: rgba(192, 192, 192, 0.6);
+  font-size: 4vw;
+  color: black;
+  font-weight: 600;
+  width: 21vw;
+  border-radius: 20%;
+  margin: auto;
+  padding: 0.5vw;
+`;
 
 export default function MovingPicture() {
   const [width] = useContext(InnerWidthContext);
@@ -11,7 +23,7 @@ export default function MovingPicture() {
   return (
     <div
       style={{
-        width: fromMobile ? "90vw" : "80vw",
+        width: "80vw",
         margin: "auto",
         height: fromMobile ? "33.25vw" : "30vw",
         marginTop: "6rem",
@@ -23,15 +35,13 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/figura.jpg`}
+              src={`/specialImages/homepageImgs/movingImages/black.jpg`}
               alt="First slide"
             />
+            <Carousel.Caption>
+              <CarouselText>Figurák</CarouselText>
+            </Carousel.Caption>
           </Link>
-          {/* you can add caption */}
-          {/* <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption> */}
         </Carousel.Item>
         <Carousel.Item>
           <Link to="/kesz-termekek/takarok">
@@ -41,6 +51,9 @@ export default function MovingPicture() {
               src={`/specialImages/homepageImgs/movingImages/takaro.jpg`}
               alt="Third slide"
             />
+            <Carousel.Caption>
+              <CarouselText>Takarók</CarouselText>
+            </Carousel.Caption>
           </Link>
         </Carousel.Item>
         <Carousel.Item>
@@ -51,6 +64,9 @@ export default function MovingPicture() {
               src={`/specialImages/homepageImgs/movingImages/szundikendo.jpg`}
               alt="Third slide"
             />
+            <Carousel.Caption>
+              <CarouselText>Szundikendők</CarouselText>
+            </Carousel.Caption>
           </Link>
         </Carousel.Item>
         <Carousel.Item>
@@ -61,6 +77,9 @@ export default function MovingPicture() {
               src={`/specialImages/homepageImgs/movingImages/ruha.jpg`}
               alt="Fourth slide"
             />
+            <Carousel.Caption>
+              <CarouselText>Ruhák</CarouselText>
+            </Carousel.Caption>
           </Link>
         </Carousel.Item>
         <Carousel.Item>
@@ -71,6 +90,9 @@ export default function MovingPicture() {
               src={`/specialImages/homepageImgs/movingImages/rolam.jpg`}
               alt="Fourth slide"
             />
+            <Carousel.Caption>
+              <CarouselText>Rólam</CarouselText>
+            </Carousel.Caption>
           </Link>
         </Carousel.Item>
       </Carousel>
