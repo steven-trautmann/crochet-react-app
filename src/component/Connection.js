@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import Axios from "axios";
+import "../style/speech-bubble.css";
 
 export default function Connection() {
   const [width] = useContext(InnerWidthContext);
@@ -8,6 +9,8 @@ export default function Connection() {
   const [formSentSuccess, setFormSentSuccess] = useState(false);
   const [formSent, setFormSent] = useState(false);
   const [errorHappened, setErrorHappened] = useState(false);
+  const [missingInputs, setMissingInputs] = useState(false);
+  const [emailIsValid, setEmailIsValid] = useState(true);
   let emailAdress = "sample@sample.com";
 
   const [emailStates, setEmailStates] = useState({
@@ -24,6 +27,29 @@ export default function Connection() {
       ...emailStates,
       [e.target.name]: value,
     });
+    if (missingInputs && value !== "") {
+      checkMissingInputs(e.target.name);
+    }
+  }
+
+  function handleEmailChange(e) {
+    const value = e.currentTarget.value;
+    setEmailStates({
+      ...emailStates,
+      [e.target.name]: value,
+    });
+    if (!emailIsValid && checkEmailValidity(value)) {
+      setEmailIsValid(true);
+    }
+    if (missingInputs && value !== "") {
+      checkMissingInputs(e.target.name);
+    }
+  }
+
+  const handleEnterKeydown = (event) => {
+    if (event.keyCode === 13) {
+      handleFormSubmit(event);
+    }
   }
 
   const getFormData = () => {
@@ -38,25 +64,65 @@ export default function Connection() {
     }
   }
 
+  // url encode form data
+  const encodeData = (data) => {
+    return Object.keys(data).map(function (k) {
+      return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+    }).join('&');
+  }
+
+  const checkEmailValidity = (newEmail) => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(newEmail === "" ? emailStates.email : newEmail).toLowerCase());
+  }
+
+  function checkMissingInputs(inputName) {
+    for (let [key, value] of Object.entries(emailStates)) {
+      if (key !== "honeypot" && inputName !== key && value === "") {
+        return;
+      }
+    }
+    setMissingInputs(false);
+  }
+
   const checkFieldsAreFilled = () => {
     for (let [key, value] of Object.entries(emailStates)) {
       if (key !== "honeypot" && value === "") {
+        setMissingInputs(true);
         return false;
       }
     }
     return true;
   }
 
+  const checkFieldsAreFilledCorrectly = () => {
+    let somethingIsWrong = false;
+
+    if (!checkFieldsAreFilled()) {
+      setMissingInputs(true);
+      somethingIsWrong = true;
+    } else {
+      setMissingInputs(false);
+    }
+
+    if (!checkEmailValidity("")) {
+      setEmailIsValid(false);
+      somethingIsWrong = true;
+    } else {
+      setEmailIsValid(true);
+    }
+
+    return !somethingIsWrong;
+  }
+
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (checkFieldsAreFilled() && emailStates.honeypot === "" && !formSent) {
+    let everyThingIsCorrect = checkFieldsAreFilledCorrectly();
+
+    if (everyThingIsCorrect && emailStates.honeypot === "" && !formSent) {
       setFormSent(true);
       let data = getFormData();
-
-      // url encode form data
-      let encoded = Object.keys(data).map(function (k) {
-        return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
-      }).join('&');
+      let encoded = encodeData(data);
 
       Axios.post("https://script.google.com/macros/s/AKfycbxOIeZLfLu1rAjdt0RzjUzA-eTfOcROJCKrzCBQ4vW-pLcZaA/exec", encoded, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
@@ -101,43 +167,46 @@ export default function Connection() {
           style={{ display: `${formVisible ? "block" : "none"}` }}>
 
           <div>
+            <fieldset style={{ visibility: "hidden" }} >
+              <input type="text" name="honeypot"
+                onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.honeypot} />
+            </fieldset>
             <fieldset>
               <label htmlFor="name">Name: </label>
               <input name="name" placeholder="What your Mom calls you"
-                onChange={handleChange} value={emailStates.name} />
+                onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.name} />
             </fieldset>
 
             <fieldset>
               <label htmlFor="message">Message: </label>
               <textarea name="message" rows="10"
                 placeholder="Tell us what's on your mind..."
-                onChange={handleChange} value={emailStates.message} ></textarea>
+                onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.message} ></textarea>
             </fieldset>
 
+            {emailIsValid ? null : <h3>Helytelen e-mail cím. Ellenőrizd újra!</h3>}
             <fieldset>
               <label htmlFor="email"><em>Your</em> Email Address:</label>
               <input name="email" type="email"
                 required placeholder="your.name@email.com"
-                onChange={handleChange} value={emailStates.email} />
+                onChange={handleEmailChange} onKeyDown={handleEnterKeydown} value={emailStates.email} />
             </fieldset>
 
             <fieldset>
               <label htmlFor="color">Favourite Color: </label>
               <input name="color" placeholder="green"
-                onChange={handleChange} value={emailStates.color} />
+                onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.color} />
             </fieldset>
 
-            <fieldset style={{ visibility: "hidden" }} >
-              <input type="text" name="honeypot"
-                onChange={handleChange} value={emailStates.honeypot} />
-            </fieldset>
-
-            <button onClick={handleFormSubmit}>Send</button>
+            {missingInputs ? <p className="speech-bubble">Minden mezőt ki kell tölteni!</p> : null}
+            <button onClick={handleFormSubmit} style={{ marginTop: "1.5rem" }}>Send</button>
           </div>
         </form>
+        {/* on success */}
         <div style={{ display: `${formSentSuccess ? "block" : "none"}`, textAlign: "center" }}>
           <h2><em>Köszönöm,</em> hogy írtál. Igyekszek minél hamarabb válaszolni!</h2>
         </div>
+        {/* if email could not be sent */}
         <div style={{ display: `${errorHappened ? "block" : "none"}`, textAlign: "center" }}>
           <h3>Hiba történt, az üzenetet nem sikerült elküldeni.</h3>
           <h3>Próbálkozzon kézzel küldeni üzenetet a {emailAdress} e-mail címre!</h3>
