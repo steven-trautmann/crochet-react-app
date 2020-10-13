@@ -164,7 +164,7 @@ export default function Connection() {
       <div>
         <form method="POST" data-email="example@email.net"
           action="https://script.google.com/macros/s/AKfycbxOIeZLfLu1rAjdt0RzjUzA-eTfOcROJCKrzCBQ4vW-pLcZaA/exec"
-          style={{ display: `${formVisible ? "block" : "none"}` }}>
+          style={{ display: `${formVisible ? "block" : "none"}`, fontSize: "xx-large", textAlign: "center" }}>
 
           <div>
             <fieldset style={{ visibility: "hidden" }} >
@@ -172,29 +172,33 @@ export default function Connection() {
                 onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.honeypot} />
             </fieldset>
             <fieldset>
-              <label htmlFor="name">Name: </label>
-              <input name="name" placeholder="What your Mom calls you"
+              <label htmlFor="name">Név: </label>
+              <input name="name" placeholder="Milyen néven szólíthatlak?"
+                required
                 onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.name} />
             </fieldset>
 
             <fieldset>
-              <label htmlFor="message">Message: </label>
-              <textarea name="message" rows="10"
-                placeholder="Tell us what's on your mind..."
-                onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.message} ></textarea>
+              <label htmlFor="message">Üzenet: </label>
+              <textarea name="message" rows="8"
+                required
+                placeholder="Ide írhatod az üzenetedet..."
+                onChange={handleChange} value={emailStates.message} ></textarea>
             </fieldset>
 
-            {emailIsValid ? null : <h3>Helytelen e-mail cím. Ellenőrizd újra!</h3>}
+            {emailIsValid ? null : <h2>Helytelen e-mail cím. Ellenőrizd újra!</h2>}
             <fieldset>
-              <label htmlFor="email"><em>Your</em> Email Address:</label>
+              <label htmlFor="email"><em>A te</em> e-mail címed:</label>
               <input name="email" type="email"
-                required placeholder="your.name@email.com"
-                onChange={handleEmailChange} onKeyDown={handleEnterKeydown} value={emailStates.email} />
+                required placeholder="a.neved@email.hu"
+                onChange={handleEmailChange} onKeyDown={handleEnterKeydown} value={emailStates.email}
+                style={{ border: `${emailIsValid ? "" : "solid red"}` }} />
             </fieldset>
 
             <fieldset>
               <label htmlFor="color">Favourite Color: </label>
               <input name="color" placeholder="green"
+                required
                 onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.color} />
             </fieldset>
 
