@@ -5,6 +5,10 @@ import Axios from "axios";
 export default function Connection() {
   const [width] = useContext(InnerWidthContext);
   const [formVisible, setFormVisible] = useState(true);
+  const [formSentSuccess, setFormSentSuccess] = useState(false);
+  const [formSent, setFormSent] = useState(false);
+  const [errorHappened, setErrorHappened] = useState(false);
+  let emailAdress = "sample@sample.com";
 
   const [emailStates, setEmailStates] = useState({
     name: "",
@@ -24,46 +28,53 @@ export default function Connection() {
 
   const getFormData = () => {
     return {
-      data: {
-        color: emailStates.color,
-        email: emailStates.email,
-        formDataNameOrder: "[\"name\",\"message\",\"email\",\"color\"]",
-        formGoogleSendEmail: "example@email.net",
-        formGoogleSheetName: "responses",
-        message: emailStates.message,
-        name: emailStates.name
-      }, honeypot: emailStates.honeypot
-    };
+      color: emailStates.color,
+      email: emailStates.email,
+      formDataNameOrder: "[\"name\",\"message\",\"email\",\"color\"]",
+      formGoogleSendEmail: "example@email.net",
+      formGoogleSheetName: "responses",
+      message: emailStates.message,
+      name: emailStates.name
+    }
+  }
+
+  const checkFieldsAreFilled = () => {
+    for (let [key, value] of Object.entries(emailStates)) {
+      if (key !== "honeypot" && value === "") {
+        return false;
+      }
+    }
+    return true;
   }
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    let formData = getFormData();
-    console.log(formData);
+    if (checkFieldsAreFilled() && emailStates.honeypot === "" && !formSent) {
+      setFormSent(true);
+      let data = getFormData();
 
-    // If a honeypot field is filled, assume it was done so by a spam bot.
-    if (formData.honeypot !== "") {
-      return;
-    }
+      // url encode form data
+      let encoded = Object.keys(data).map(function (k) {
+        return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+      }).join('&');
 
-    let data = formData.data;
-
-    // url encode form data
-    let encoded = Object.keys(data).map(function (k) {
-      return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
-    }).join('&');
-
-    Axios.post("https://script.google.com/macros/s/AKfycbxOIeZLfLu1rAjdt0RzjUzA-eTfOcROJCKrzCBQ4vW-pLcZaA/exec", encoded, {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          setFormVisible(false);
-        }
+      Axios.post("https://script.google.com/macros/s/AKfycbxOIeZLfLu1rAjdt0RzjUzA-eTfOcROJCKrzCBQ4vW-pLcZaA/exec", encoded, {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((response) => {
+          if (response.status === 200) {
+            setFormVisible(false);
+            setFormSentSuccess(true);
+          } else {
+            setFormVisible(false);
+            setErrorHappened(true);
+          }
+        })
+        .catch((error) => {
+          setFormVisible(false);
+          setErrorHappened(true);
+        });
+    }
   }
 
   return (
@@ -79,53 +90,57 @@ export default function Connection() {
             fontSize: `${width > 1000 ? "2rem" : "1.75rem"}`,
           }}
         >
-          <li>E-mail: sample@sample.com</li>
+          <li>E-mail: {emailAdress}</li>
           <li>Telefon: 06 20 587 4099</li>
         </ul>
       </div>
       {/* email */}
       <div>
-        <form class="gform pure-form pure-form-stacked" method="POST" data-email="example@email.net"
+        <form method="POST" data-email="example@email.net"
           action="https://script.google.com/macros/s/AKfycbxOIeZLfLu1rAjdt0RzjUzA-eTfOcROJCKrzCBQ4vW-pLcZaA/exec"
           style={{ display: `${formVisible ? "block" : "none"}` }}>
 
-          <div class="form-elements">
-            <fieldset class="pure-group">
-              <label for="name">Name: </label>
-              <input id="name" name="name" placeholder="What your Mom calls you"
+          <div>
+            <fieldset>
+              <label htmlFor="name">Name: </label>
+              <input name="name" placeholder="What your Mom calls you"
                 onChange={handleChange} value={emailStates.name} />
             </fieldset>
 
-            <fieldset class="pure-group">
-              <label for="message">Message: </label>
-              <textarea id="message" name="message" rows="10"
+            <fieldset>
+              <label htmlFor="message">Message: </label>
+              <textarea name="message" rows="10"
                 placeholder="Tell us what's on your mind..."
                 onChange={handleChange} value={emailStates.message} ></textarea>
             </fieldset>
 
-            <fieldset class="pure-group">
-              <label for="email"><em>Your</em> Email Address:</label>
-              <input id="email" name="email" type="email"
+            <fieldset>
+              <label htmlFor="email"><em>Your</em> Email Address:</label>
+              <input name="email" type="email"
                 required placeholder="your.name@email.com"
                 onChange={handleChange} value={emailStates.email} />
             </fieldset>
 
-            <fieldset class="pure-group">
-              <label for="color">Favourite Color: </label>
-              <input id="color" name="color" placeholder="green"
+            <fieldset>
+              <label htmlFor="color">Favourite Color: </label>
+              <input name="color" placeholder="green"
                 onChange={handleChange} value={emailStates.color} />
             </fieldset>
 
-            <fieldset style={{ visibility: "hidden" }} class="pure-group">
-              <input id="honeypot" type="text" name="honeypot"
+            <fieldset style={{ visibility: "hidden" }} >
+              <input type="text" name="honeypot"
                 onChange={handleChange} value={emailStates.honeypot} />
             </fieldset>
 
             <button onClick={handleFormSubmit}>Send</button>
           </div>
         </form>
-        <div style={{ display: `${formVisible ? "none" : "block"}`, textAlign: "center" }}>
+        <div style={{ display: `${formSentSuccess ? "block" : "none"}`, textAlign: "center" }}>
           <h2><em>Köszönöm,</em> hogy írtál. Igyekszek minél hamarabb válaszolni!</h2>
+        </div>
+        <div style={{ display: `${errorHappened ? "block" : "none"}`, textAlign: "center" }}>
+          <h3>Hiba történt, az üzenetet nem sikerült elküldeni.</h3>
+          <h3>Próbálkozzon kézzel küldeni üzenetet a {emailAdress} e-mail címre!</h3>
         </div>
 
       </div>
