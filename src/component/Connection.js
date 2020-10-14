@@ -5,6 +5,7 @@ import "../style/speech-bubble.css";
 
 export default function Connection() {
   const [width] = useContext(InnerWidthContext);
+  let fromMobile = width < 1000;
   const [formVisible, setFormVisible] = useState(true);
   const [formSentSuccess, setFormSentSuccess] = useState(false);
   const [formSent, setFormSent] = useState(false);
@@ -17,7 +18,7 @@ export default function Connection() {
     name: "",
     message: "",
     email: "",
-    color: "",
+    additional: "",
     honeypot: "",
   });
 
@@ -54,9 +55,9 @@ export default function Connection() {
 
   const getFormData = () => {
     return {
-      color: emailStates.color,
+      additional: emailStates.additional,
       email: emailStates.email,
-      formDataNameOrder: "[\"name\",\"message\",\"email\",\"color\"]",
+      formDataNameOrder: "[\"name\",\"message\",\"email\",\"additional\"]",
       formGoogleSendEmail: "example@email.net",
       formGoogleSheetName: "responses",
       message: emailStates.message,
@@ -78,7 +79,7 @@ export default function Connection() {
 
   function checkMissingInputs(inputName) {
     for (let [key, value] of Object.entries(emailStates)) {
-      if (key !== "honeypot" && inputName !== key && value === "") {
+      if (key !== "honeypot" && key !== "additional" && inputName !== key && value === "") {
         return;
       }
     }
@@ -87,7 +88,7 @@ export default function Connection() {
 
   const checkFieldsAreFilled = () => {
     for (let [key, value] of Object.entries(emailStates)) {
-      if (key !== "honeypot" && value === "") {
+      if (key !== "honeypot" && key !== "additional" && value === "") {
         setMissingInputs(true);
         return false;
       }
@@ -153,7 +154,7 @@ export default function Connection() {
         <ul
           style={{
             marginLeft: "6vw",
-            fontSize: `${width > 1000 ? "2rem" : "1.75rem"}`,
+            fontSize: `${fromMobile ? "1.5rem" : "2rem"}`,
           }}
         >
           <li>E-mail: {emailAdress}</li>
@@ -164,16 +165,16 @@ export default function Connection() {
       <div>
         <form method="POST" data-email="example@email.net"
           action="https://script.google.com/macros/s/AKfycbxOIeZLfLu1rAjdt0RzjUzA-eTfOcROJCKrzCBQ4vW-pLcZaA/exec"
-          style={{ display: `${formVisible ? "block" : "none"}`, fontSize: "xx-large", textAlign: "center" }}>
-
+          style={{ display: `${formVisible ? "block" : "none"}`, fontSize: "x-large", textAlign: "center" }}>
           <div>
             <fieldset style={{ visibility: "hidden" }} >
               <input type="text" name="honeypot"
                 onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.honeypot} />
             </fieldset>
+            <h1 style={{ marginBottom: "1.5rem", textDecoration: "underline" }}>Írj nekem egy üzenetet!</h1>
             <fieldset>
               <label htmlFor="name">Név: </label>
-              <input name="name" placeholder="Milyen néven szólíthatlak?"
+              <input name="name" placeholder={fromMobile ? "A neved" : "Milyen néven szólíthatlak?"}
                 required
                 onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.name} />
             </fieldset>
@@ -188,7 +189,7 @@ export default function Connection() {
 
             {emailIsValid ? null : <h2>Helytelen e-mail cím. Ellenőrizd újra!</h2>}
             <fieldset>
-              <label htmlFor="email"><em>A te</em> e-mail címed:</label>
+              <label htmlFor="email">A <em>te</em> e-mail címed (ezen tudok neked válaszolni):</label>
               <input name="email" type="email"
                 required placeholder="a.neved@email.hu"
                 onChange={handleEmailChange} onKeyDown={handleEnterKeydown} value={emailStates.email}
@@ -196,14 +197,13 @@ export default function Connection() {
             </fieldset>
 
             <fieldset>
-              <label htmlFor="color">Favourite Color: </label>
-              <input name="color" placeholder="green"
-                required
-                onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.color} />
+              <label htmlFor="additional">Egyéb megjegyzés: </label>
+              <input name="additional" placeholder={fromMobile ? "Útóirat esetleg? :)" : "Észrevételek, utóirat, bármi :)"}
+                onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.additional} />
             </fieldset>
 
             {missingInputs ? <p className="speech-bubble">Minden mezőt ki kell tölteni!</p> : null}
-            <button onClick={handleFormSubmit} style={{ marginTop: "1.5rem" }}>Send</button>
+            <button onClick={handleFormSubmit} style={{ marginTop: "1.5rem" }}>Küldés</button>
           </div>
         </form>
         {/* on success */}
