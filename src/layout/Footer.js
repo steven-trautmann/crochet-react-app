@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const FooterDiv = styled.div`
@@ -35,8 +35,16 @@ const SocialImg = styled.img`
 `;
 
 const Footer = () => {
+  const [noContent, setNoContent] = useState(false);
+
+  useEffect(() => {
+    if (document.getElementById("footer-div").offsetTop === 0) {
+      setNoContent(true);
+    }
+  }, [])
+
   return (
-    <FooterDiv>
+    <FooterDiv id="footer-div" style={{ marginTop: `${noContent ? "6rem" : "0"}` }}>
       <SocialDiv>
         <a href="https://www.facebook.com/zyarncrochet/" target="_blank" rel="noopener noreferrer">
           <SocialImg

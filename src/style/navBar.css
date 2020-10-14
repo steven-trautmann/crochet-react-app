@@ -51,7 +51,8 @@
 }
 
 #finishedProducts li,
-#prevProducts li {
+#prevProducts li,
+#premiumProducts li {
   color: black;
   font-size: 2rem;
 }

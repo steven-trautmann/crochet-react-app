@@ -6,10 +6,12 @@ import { InnerWidthProvider } from "./context/InnerWidthContext";
 import { ModalContextProvider } from "./context/ModalContext";
 import { FinishedModalTextsContextProvider } from "./context/ModalTextsFinishedProducts";
 import { PreviousModalTextsContextProvider } from "./context/ModalTextsPreviousProducts";
+import { PremiumModalTextsContextProvider } from "./context/ModalTextsPremiumProducts";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import FinishedProducts from "./component/FinishedProducts";
 import PreviousProducts from "./component/PreviousProducts";
+import PremiumProducts from "./component/PremiumProducts";
 import PageAboutMe from "./component/PageAboutMe";
 import Connection from "./component/Connection";
 
@@ -21,23 +23,30 @@ function App() {
           <InnerWidthProvider>
             <FinishedModalTextsContextProvider>
               <PreviousModalTextsContextProvider>
-                <ModalContextProvider>
-                  <Header />
-                  <Route exact path="/" component={HomePage} />
-                  <Route
-                    exact
-                    path="/kesz-termekek/:type"
-                    component={FinishedProducts}
-                  />
-                  <Route
-                    exact
-                    path="/eddigi-munkak/:type"
-                    component={PreviousProducts}
-                  />
-                  <Route exact path="/rolam" component={PageAboutMe} />
-                  <Route exact path="/kapcsolat" component={Connection} />
-                  <Footer />
-                </ModalContextProvider>
+                <PremiumModalTextsContextProvider>
+                  <ModalContextProvider>
+                    <Header />
+                    <Route exact path="/" component={HomePage} />
+                    <Route
+                      exact
+                      path="/kesz-termekek/:type"
+                      component={FinishedProducts}
+                    />
+                    <Route
+                      exact
+                      path="/eddigi-munkak/:type"
+                      component={PreviousProducts}
+                    />
+                    <Route
+                      exact
+                      path="/premium-termekek/:type"
+                      component={PremiumProducts}
+                    />
+                    <Route exact path="/rolam" component={PageAboutMe} />
+                    <Route exact path="/kapcsolat" component={Connection} />
+                    <Footer />
+                  </ModalContextProvider>
+                </PremiumModalTextsContextProvider>
               </PreviousModalTextsContextProvider>
             </FinishedModalTextsContextProvider>
           </InnerWidthProvider>
