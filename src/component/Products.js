@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "../style/modal.css";
 import DisplayPictures from "./DisplayPictures";
 import Modal from "./Modal";
@@ -22,15 +22,15 @@ export default function FinishedProducts(props) {
     const [categoryTitle, setCategoryTitle] = useState("");
     const [typeTitle, setTypeTitle] = useState("Helytelen URL!");
 
-    function importAll(r) {
+    const importAll = useCallback((r) => {
         let images = {};
         r.keys().map((item, index) => {
             return (images[item.replace("./", "")] = r(item));
         });
         return images;
-    }
+    }, []);
 
-    function importFinishedProducts() {
+    const importFinishedProducts = useCallback(() => {
         if (type === "figurak") {
             setTypeTitle("Figurák");
             setProducts(
@@ -76,9 +76,9 @@ export default function FinishedProducts(props) {
                 )
             );
         }
-    }
+    }, [importAll, type]);
 
-    function importPreviousProducts() {
+    const importPreviousProducts = useCallback(() => {
         if (type === "figurak") {
             setTypeTitle("Figurák");
             setProducts(
@@ -124,9 +124,9 @@ export default function FinishedProducts(props) {
                 )
             );
         }
-    }
+    }, [importAll, type]);
 
-    function chooseContext() {
+    const chooseContext = useCallback(() => {
         if (category === "kesz-termekek") {
             return FinishedModalTextsContext;
         } else if (category === "eddigi-munkak") {
@@ -137,7 +137,7 @@ export default function FinishedProducts(props) {
         } else {
             return FinishedModalTextsContext;
         }
-    }
+    }, [category]);
 
     useEffect(() => {
         if (category === "kesz-termekek") {
@@ -151,8 +151,7 @@ export default function FinishedProducts(props) {
             importPreviousProducts();
         }
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [type, category]);
+    }, [type, category, importFinishedProducts, importPreviousProducts]);
 
     return (
         <div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
@@ -37,8 +37,7 @@ export default function Header() {
   })
 
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  function setUpTheCollapsibleDropDownItems() {
+  const setUpTheCollapsibleDropDownItems = useCallback(() => {
     if (!collapsiblesAreSet) {
       let coll = document.getElementsByClassName("collapsible");
 
@@ -55,10 +54,9 @@ export default function Header() {
       }
       setCollapsiblesAreSet(true);
     }
-  }
+  }, [collapsiblesAreSet]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const setDropdownPositions = () => {
+  const setDropdownPositions = useCallback(() => {
     if (!fromMobile) {
       let finishedDropDownButton = document.getElementById("finishedProductsButton");
       let prevDropDownButton = document.getElementById("prevProductsButton");
@@ -72,7 +70,7 @@ export default function Header() {
         premiumProductsWidth: premiumDropDownButton.offsetWidth
       })
     }
-  };
+  }, [fromMobile]);
 
   useEffect(() => {
     window.addEventListener("load", () => {
