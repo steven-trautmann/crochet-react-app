@@ -148,13 +148,16 @@ export default function Connection() {
 
   function handleReset(event) {
     event.preventDefault();
-    setEmailStates({
-      name: "",
-      message: "",
-      email: "",
-      additional: "",
-      honeypot: "",
-    });
+    if (!formSent) {
+      event.preventDefault();
+      setEmailStates({
+        name: "",
+        message: "",
+        email: "",
+        additional: "",
+        honeypot: "",
+      });
+    }
   }
 
   function handleFormSubmit(event) {
