@@ -24,7 +24,7 @@ const TopNav = styled.div`
 
 export default function Header() {
   const [width, setWidth] = useContext(InnerWidthContext);
-  let fromMobile = false;
+  let fromMobile = 1380 > width;
   const [collapsiblesAreSet, setCollapsiblesAreSet] = useState(false);
 
   const [menuPositions, setMenuPositions] = useState({
@@ -71,7 +71,6 @@ export default function Header() {
   useEffect(() => {
     window.addEventListener("load", () => {
       if (!fromMobile) {
-        console.log("triggered")
         setDropdownPositions();
       }
       if (!collapsiblesAreSet) {
@@ -87,10 +86,7 @@ export default function Header() {
   }, [fromMobile, setDropdownPositions, width]);
 
   useEffect(() => {
-    if (fromMobile) {
-      console.log("triggered")
-      closeAllNavBarSubmenus();
-    }
+    closeAllNavBarSubmenus();
   }, [fromMobile]);
 
   useEffect(() => {
@@ -152,7 +148,6 @@ export default function Header() {
       let mobileMenu = document.getElementById("mobile");
       mobileMenu.classList.remove("hamburgerDropDown");
       mobileMenu.classList.add("hamburgerDropDownDisquise");
-      fromMobile = false;
     } else {
       hamMenu[0].classList.toggle("animate");
       if (fromMobile === true) {
@@ -169,7 +164,6 @@ export default function Header() {
   };
 
   const displayHamburgerMenu = () => {
-    fromMobile = true;
     return (
       <div
         className="menu-wrapper"
@@ -233,7 +227,7 @@ export default function Header() {
           ></img>
         </Link>
 
-        {width > 1380 ? displayNavBar() : displayHamburgerMenu()}
+        {!fromMobile ? displayNavBar() : displayHamburgerMenu()}
       </TopNav>
       <div
         id="finishedProducts"

@@ -3,6 +3,12 @@ import styled from "styled-components";
 import { ModalContext } from "../context/ModalContext";
 import "../style/links.css";
 
+const Img = styled.img`
+    &:hover {
+      cursor: pointer;
+    }
+  `;
+
 export default function DisplayPic(props) {
   const [
     // eslint-disable-next-line no-unused-vars
@@ -14,14 +20,6 @@ export default function DisplayPic(props) {
     modalName,
     setModalName,
   ] = useContext(ModalContext);
-
-  const Img = styled.img`
-    height: ${props.pictureSquareDistance};
-    width: ${props.pictureSquareDistance};
-    &:hover {
-      cursor: pointer;
-    }
-  `;
 
   let samplePicture = props.pictureSrcGroup[0];
   let sliceFrom = samplePicture.lastIndexOf("/") + 1;
@@ -41,6 +39,7 @@ export default function DisplayPic(props) {
   return (
     <div style={{ width: props.pictureSquareDistance }}>
       <Img
+        style={{ height: `${props.pictureSquareDistance}`, width: `${props.pictureSquareDistance}` }}
         onClick={() => {
           showModal();
         }}
