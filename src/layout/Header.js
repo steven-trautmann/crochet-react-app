@@ -26,6 +26,13 @@ export default function Header() {
     prevProductsWidthFromWindow,
     setPrevProductsWidthFromWindow,
   ] = useState(0);
+  const [premiumProductsLeftFromWindow, setPremiumProductsLeftFromWindow] = useState(
+    0
+  );
+  const [
+    premiumProductsWidthFromWindow,
+    setPremiumProductsWidthFromWindow,
+  ] = useState(0);
 
   useEffect(() => {
     window.addEventListener("load", () => {
@@ -69,11 +76,19 @@ export default function Header() {
     setPrevProductsWidthFromWindow(prevDropDownButton.offsetWidth);
   };
 
+  const setPremiumDropDownPositions = () => {
+    let premiumDropDownButton = document.getElementById("premiumProductsButton");
+
+    setPremiumProductsLeftFromWindow(premiumDropDownButton.offsetLeft);
+    setPremiumProductsWidthFromWindow(premiumDropDownButton.offsetWidth);
+  };
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const setDropdownPositions = () => {
     if (!fromMobile) {
       setFinishedDropDownPositions();
       setPrevDropDownPositions();
+      setPremiumDropDownPositions();
     }
   };
 
@@ -96,6 +111,11 @@ export default function Header() {
     dropDropDown(myDropdown);
   };
 
+  const premiumProductsDropper = () => {
+    let myDropdown = document.getElementById("premiumProducts");
+    dropDropDown(myDropdown);
+  };
+
   function dropDropDown(myDropdown) {
     if (myDropdown.classList.contains("dropDownDisquise")) {
       myDropdown.classList.remove("dropDownDisquise");
@@ -110,7 +130,8 @@ export default function Header() {
   window.onclick = function (e) {
     if (
       !e.target.matches("#finishedProductsButton") &&
-      !e.target.matches("#prevProductsButton")
+      !e.target.matches("#prevProductsButton") &&
+      !e.target.matches("#premiumProductsButton")
     ) {
       let finishedDropDown = document.getElementById("finishedProducts");
       if (finishedDropDown.classList.contains("dropDown")) {
@@ -121,6 +142,11 @@ export default function Header() {
       if (prevDropDown.classList.contains("dropDown")) {
         prevDropDown.classList.remove("dropDown");
         prevDropDown.classList.add("dropDownDisquise");
+      }
+      let premiumDropDown = document.getElementById("premiumProducts");
+      if (premiumDropDown.classList.contains("dropDown")) {
+        premiumDropDown.classList.remove("dropDown");
+        premiumDropDown.classList.add("dropDownDisquise");
       }
     }
   };
@@ -179,9 +205,13 @@ export default function Header() {
         >
           Eddigi Munkák
         </button>
-        <Link className="navItem links" to="/">
-          Prémium Babatermékek
-        </Link>
+        <button
+          className="navItem"
+          id="premiumProductsButton"
+          onClick={() => premiumProductsDropper()}
+        >
+          Prémium babatermékek
+        </button>
         <Link className="navItem links" to="/rolam">
           Rólam
         </Link>
@@ -274,6 +304,31 @@ export default function Header() {
         </ul>
       </div>
 
+      <div
+        id="premiumProducts"
+        style={{
+          left: premiumProductsLeftFromWindow,
+          width: premiumProductsWidthFromWindow,
+          textAlign: "center",
+        }}
+        className="dropDownDisquise"
+      >
+        <ul style={{ listStyleType: "none" }}>
+          <Link to="/premium-termekek/figurak">
+            <li>Figurák</li>
+          </Link>
+          <Link to="/premium-termekek/takarok">
+            <li>Takarók</li>
+          </Link>
+          <Link to="/premium-termekek/szundikendok">
+            <li>Szundikendők</li>
+          </Link>
+          <Link to="/premium-termekek/ruhak">
+            <li>Ruhák</li>
+          </Link>
+        </ul>
+      </div>
+
       <div id="mobile" className="hamburgerDropDownDisquise">
         <button
           style={{
@@ -347,9 +402,35 @@ export default function Header() {
               </ul>
             </div>
           </li>
-          <Link className="hamburgerNavItem links" to="/">
-            <li>Prémium Babatermékek</li>
-          </Link>
+          <li>
+            <button
+              style={{ outline: "none" }}
+              className="collapsible hamburgerNavItem"
+            >
+              Prémium Babatermékek
+            </button>
+            <div style={{ borderRadius: "20%" }} className="content">
+              <ul
+                style={{
+                  listStyleType: "none",
+                  textAlign: "center",
+                }}
+              >
+                <Link to="/premium-termekek/figurak">
+                  <li>Figurák</li>
+                </Link>
+                <Link to="/premium-termekek/takarok">
+                  <li>Takarók</li>
+                </Link>
+                <Link to="/premium-termekek/szundikendok">
+                  <li>Szundikendők</li>
+                </Link>
+                <Link to="/premium-termekek/ruhak">
+                  <li>Ruhák</li>
+                </Link>
+              </ul>
+            </div>
+          </li>
           <Link className="hamburgerNavItem links" to="/rolam">
             <li>Rólam</li>
           </Link>
