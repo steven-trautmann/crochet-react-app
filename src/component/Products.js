@@ -18,74 +18,9 @@ const PageTitle = styled.h1`
 export default function FinishedProducts(props) {
     const [products, setProducts] = useState({});
     const { category } = useParams();
-    const [modalContext, setModalContext] = useState();
     const { type } = useParams();
-    const [title, setTitle] = useState("Helytelen URL!");
-
-    function chooseCategory() {
-        if (category === "kesz-termekek") {
-            setModalContext(FinishedModalTextsContext);
-            return "finished_products";
-        } else if (category === "eddigi-munkak") {
-            setModalContext(PreviousModalTextsContext);
-            return "prev_products";
-        } else if (category === "premium-termekek") {
-            setModalContext(PremiumModalTextsContext);
-            return "finished_products";
-        } else {
-            return "";
-        }
-    }
-
-    useEffect(() => {
-        let category = chooseCategory();
-        if (type === "figurak") {
-            setTitle("Figurák");
-            setProducts(
-                importAll(
-                    require.context(
-                        `../images/${category}/figurák`,
-                        false,
-                        /\.(png|jpe?g|svg)$/
-                    )
-                )
-            );
-        } else if (type === "takarok") {
-            setTitle("Takarók");
-            setProducts(
-                importAll(
-                    require.context(
-                        `../images/${category}/takarók`,
-                        false,
-                        /\.(png|jpe?g|svg)$/
-                    )
-                )
-            );
-        } else if (type === "szundikendok") {
-            setTitle("Szundikendők");
-            setProducts(
-                importAll(
-                    require.context(
-                        `../images/${category}/szundikendők`,
-                        false,
-                        /\.(png|jpe?g|svg)$/
-                    )
-                )
-            );
-        } else if (type === "ruhak") {
-            setTitle("Ruhák");
-            setProducts(
-                importAll(
-                    require.context(
-                        `../images/${category}/ruhák`,
-                        false,
-                        /\.(png|jpe?g|svg)$/
-                    )
-                )
-            );
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [type, category]);
+    const [categoryTitle, setCategoryTitle] = useState("");
+    const [typeTitle, setTypeTitle] = useState("Helytelen URL!");
 
     function importAll(r) {
         let images = {};
@@ -95,14 +30,138 @@ export default function FinishedProducts(props) {
         return images;
     }
 
+    function importFinishedProducts() {
+        if (type === "figurak") {
+            setTypeTitle("Figurák");
+            setProducts(
+                importAll(
+                    require.context(
+                        "../images/finished_products/figurák",
+                        false,
+                        /\.(png|jpe?g|svg)$/
+                    )
+                )
+            );
+        } else if (type === "takarok") {
+            setTypeTitle("Takarók");
+            setProducts(
+                importAll(
+                    require.context(
+                        "../images/finished_products/takarók",
+                        false,
+                        /\.(png|jpe?g|svg)$/
+                    )
+                )
+            );
+        } else if (type === "szundikendok") {
+            setTypeTitle("Szundikendők");
+            setProducts(
+                importAll(
+                    require.context(
+                        "../images/finished_products/szundikendők",
+                        false,
+                        /\.(png|jpe?g|svg)$/
+                    )
+                )
+            );
+        } else if (type === "ruhak") {
+            setTypeTitle("Ruhák");
+            setProducts(
+                importAll(
+                    require.context(
+                        "../images/finished_products/ruhák",
+                        false,
+                        /\.(png|jpe?g|svg)$/
+                    )
+                )
+            );
+        }
+    }
+
+    function importPreviousProducts() {
+        if (type === "figurak") {
+            setTypeTitle("Figurák");
+            setProducts(
+                importAll(
+                    require.context(
+                        "../images/prev_products/figures",
+                        false,
+                        /\.(png|jpe?g|svg)$/
+                    )
+                )
+            );
+        } else if (type === "takarok") {
+            setTypeTitle("Takarók");
+            setProducts(
+                importAll(
+                    require.context(
+                        "../images/prev_products/figures2",
+                        false,
+                        /\.(png|jpe?g|svg)$/
+                    )
+                )
+            );
+        } else if (type === "szundikendok") {
+            setTypeTitle("Szundikendők");
+            setProducts(
+                importAll(
+                    require.context(
+                        "../images/prev_products/figures",
+                        false,
+                        /\.(png|jpe?g|svg)$/
+                    )
+                )
+            );
+        } else if (type === "ruhak") {
+            setTypeTitle("Ruhák");
+            setProducts(
+                importAll(
+                    require.context(
+                        "../images/prev_products/figures2",
+                        false,
+                        /\.(png|jpe?g|svg)$/
+                    )
+                )
+            );
+        }
+    }
+
+    function chooseContext() {
+        if (category === "kesz-termekek") {
+            return FinishedModalTextsContext;
+        } else if (category === "eddigi-munkak") {
+            return PreviousModalTextsContext;
+        } else if (category === "premium-termekek") {
+            return PremiumModalTextsContext;
+            //setting something to prevent crash
+        } else {
+            return FinishedModalTextsContext;
+        }
+    }
+
+    useEffect(() => {
+        if (category === "kesz-termekek") {
+            setCategoryTitle("Kész Termékek | ");
+            importFinishedProducts();
+        } else if (category === "eddigi-munkak") {
+            setCategoryTitle("Eddigi Munkák | ");
+            importPreviousProducts();
+        } else if (category === "premium-termekek") {
+            setCategoryTitle("Prémium Babatermékek | ");
+            importPreviousProducts();
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [type, category]);
+
     return (
         <div>
-            <Modal context={modalContext} />
+            <Modal context={chooseContext()} />
             <div style={{ marginTop: "6rem" }}>
                 <PageTitle>
-                    {title === "Helytelen URL!"
-                        ? title
-                        : "Kész Termékek | " + title}
+                    {typeTitle === "Helytelen URL!"
+                        ? typeTitle
+                        : categoryTitle + typeTitle}
                 </PageTitle>
 
                 <DisplayPictures pictures={products} />
