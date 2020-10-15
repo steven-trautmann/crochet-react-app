@@ -38,49 +38,52 @@ export default function Header() {
 
 
   const setUpTheCollapsibleDropDownItems = useCallback(() => {
-    if (!collapsiblesAreSet) {
-      let coll = document.getElementsByClassName("collapsible");
+    let coll = document.getElementsByClassName("collapsible");
 
-      for (let i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-          this.classList.toggle("active");
-          let content = this.nextElementSibling;
-          if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-          } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-          }
-        });
-      }
-      setCollapsiblesAreSet(true);
+    for (let i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        let content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
     }
-  }, [collapsiblesAreSet]);
+    setCollapsiblesAreSet(true);
+  }, []);
 
   const setDropdownPositions = useCallback(() => {
-    if (!fromMobile) {
-      let finishedDropDownButton = document.getElementById("finishedProductsButton");
-      let prevDropDownButton = document.getElementById("prevProductsButton");
-      let premiumDropDownButton = document.getElementById("premiumProductsButton");
-      setMenuPositions({
-        prevProductsLeftFromWindow: prevDropDownButton.offsetLeft,
-        prevProductsWidth: prevDropDownButton.offsetWidth,
-        finishedProductsLeftFromWindow: finishedDropDownButton.offsetLeft,
-        finishedProductsWidth: finishedDropDownButton.offsetWidth,
-        premiumProductsLeftFromWindow: premiumDropDownButton.offsetLeft,
-        premiumProductsWidth: premiumDropDownButton.offsetWidth
-      })
-    }
-  }, [fromMobile]);
+    let finishedDropDownButton = document.getElementById("finishedProductsButton");
+    let prevDropDownButton = document.getElementById("prevProductsButton");
+    let premiumDropDownButton = document.getElementById("premiumProductsButton");
+    setMenuPositions({
+      prevProductsLeftFromWindow: prevDropDownButton.offsetLeft,
+      prevProductsWidth: prevDropDownButton.offsetWidth,
+      finishedProductsLeftFromWindow: finishedDropDownButton.offsetLeft,
+      finishedProductsWidth: finishedDropDownButton.offsetWidth,
+      premiumProductsLeftFromWindow: premiumDropDownButton.offsetLeft,
+      premiumProductsWidth: premiumDropDownButton.offsetWidth
+    })
+  }, []);
 
   useEffect(() => {
     window.addEventListener("load", () => {
-      setDropdownPositions();
-      setUpTheCollapsibleDropDownItems();
+      if (!fromMobile) {
+        console.log("triggered")
+        setDropdownPositions();
+      }
+      if (!collapsiblesAreSet) {
+        setUpTheCollapsibleDropDownItems();
+      }
     });
-  }, [setDropdownPositions, setUpTheCollapsibleDropDownItems]);
+  }, [setDropdownPositions, setUpTheCollapsibleDropDownItems, collapsiblesAreSet, fromMobile]);
 
   useEffect(() => {
-    setDropdownPositions();
+    if (!fromMobile) {
+      setDropdownPositions();
+    }
   }, [fromMobile, setDropdownPositions, width]);
 
   useEffect(() => {
