@@ -81,7 +81,7 @@ export default function PremiumProducts(props) {
         >
           {typeInHeader === "Helytelen URL!"
             ? typeInHeader
-            : "Eddigi Munkák | " + typeInHeader}
+            : "Prémium Babatermékek | " + typeInHeader}
         </h1>
 
         <DisplayPictures pictures={premiumProducts} />
