@@ -146,6 +146,17 @@ export default function Connection() {
     return !somethingIsWrong;
   }
 
+  function handleReset(event) {
+    event.preventDefault();
+    setEmailStates({
+      name: "",
+      message: "",
+      email: "",
+      additional: "",
+      honeypot: "",
+    });
+  }
+
   function handleFormSubmit(event) {
     event.preventDefault();
     let everyThingIsCorrect = checkFieldsAreFilledCorrectly();
@@ -244,6 +255,7 @@ export default function Connection() {
 
             {missingInputs ? <p className="speech-bubble">Minden mezőt ki kell tölteni!</p> : null}
             <button onClick={handleFormSubmit} style={{ marginTop: "1.5rem" }}>Küldés</button>
+            <button onClick={handleReset} style={{ marginTop: "1.5rem", marginLeft: "2rem" }}>Visszaállítás</button>
           </div>
         </form>
         {/* on success */}
