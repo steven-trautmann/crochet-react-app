@@ -6,42 +6,38 @@ import "../style/hamburgerMenu.scss";
 import "../style/navBar.css";
 import "../style/links.css";
 
+const TopNav = styled.div`
+    overflow: hidden;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 5rem;
+    z-index: 30;
+    left: 0;
+    text-align: center;
+
+    @media (min-width: 576px) {
+      display: block;
+    }
+  `;
+
 export default function Header() {
   const [width, setWidth] = useContext(InnerWidthContext);
   let fromMobile = false;
   const [collapsiblesAreSet, setCollapsiblesAreSet] = useState(false);
 
-  const [
-    finishedProductsLeftFromWindow,
-    setFinishedProductsLeftFromWindow,
-  ] = useState(0);
-  const [
-    finishedProductsWidthFromWindow,
-    setFinishedProductsWidthFromWindow,
-  ] = useState(0);
-  const [prevProductsLeftFromWindow, setPrevProductsLeftFromWindow] = useState(
-    0
-  );
-  const [
-    prevProductsWidthFromWindow,
-    setPrevProductsWidthFromWindow,
-  ] = useState(0);
-  const [premiumProductsLeftFromWindow, setPremiumProductsLeftFromWindow] = useState(
-    0
-  );
-  const [
-    premiumProductsWidthFromWindow,
-    setPremiumProductsWidthFromWindow,
-  ] = useState(0);
+  const [menuPositions, setMenuPositions] = useState({
+    finishedProductsLeftFromWindow: 0,
+    finishedProductsWidth: 0,
+    prevProductsLeftFromWindow: 0,
+    prevProductsWidth: 0,
+    premiumProductsLeftFromWindow: 0,
+    premiumProductsWidth: 0
+  })
 
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      setDropdownPositions();
-      setUpTheCollapsibleDropDownItems();
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function setUpTheCollapsibleDropDownItems() {
     if (!collapsiblesAreSet) {
       let coll = document.getElementsByClassName("collapsible");
@@ -61,62 +57,57 @@ export default function Header() {
     }
   }
 
-  const setFinishedDropDownPositions = () => {
-    let finishedDropDownButton = document.getElementById(
-      "finishedProductsButton"
-    );
-    setFinishedProductsLeftFromWindow(finishedDropDownButton.offsetLeft);
-    setFinishedProductsWidthFromWindow(finishedDropDownButton.offsetWidth);
-  };
-
-  const setPrevDropDownPositions = () => {
-    let prevDropDownButton = document.getElementById("prevProductsButton");
-
-    setPrevProductsLeftFromWindow(prevDropDownButton.offsetLeft);
-    setPrevProductsWidthFromWindow(prevDropDownButton.offsetWidth);
-  };
-
-  const setPremiumDropDownPositions = () => {
-    let premiumDropDownButton = document.getElementById("premiumProductsButton");
-
-    setPremiumProductsLeftFromWindow(premiumDropDownButton.offsetLeft);
-    setPremiumProductsWidthFromWindow(premiumDropDownButton.offsetWidth);
-  };
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const setDropdownPositions = () => {
     if (!fromMobile) {
-      setFinishedDropDownPositions();
-      setPrevDropDownPositions();
-      setPremiumDropDownPositions();
+      let finishedDropDownButton = document.getElementById("finishedProductsButton");
+      let prevDropDownButton = document.getElementById("prevProductsButton");
+      let premiumDropDownButton = document.getElementById("premiumProductsButton");
+      setMenuPositions({
+        prevProductsLeftFromWindow: prevDropDownButton.offsetLeft,
+        prevProductsWidth: prevDropDownButton.offsetWidth,
+        finishedProductsLeftFromWindow: finishedDropDownButton.offsetLeft,
+        finishedProductsWidth: finishedDropDownButton.offsetWidth,
+        premiumProductsLeftFromWindow: premiumDropDownButton.offsetLeft,
+        premiumProductsWidth: premiumDropDownButton.offsetWidth
+      })
     }
   };
+
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      setDropdownPositions();
+      setUpTheCollapsibleDropDownItems();
+    });
+  }, [setDropdownPositions, setUpTheCollapsibleDropDownItems]);
 
   useEffect(() => {
     setDropdownPositions();
   }, [fromMobile, setDropdownPositions, width]);
 
   useEffect(() => {
+    if (fromMobile) {
+      console.log("triggered")
+      closeAllNavBarSubmenus();
+    }
+  }, [fromMobile]);
+
+  useEffect(() => {
     window.addEventListener("resize", () => setWidth(window.innerWidth));
   }, [setWidth]);
 
-  // dropping dropDowns
-  const finishedProductsDropper = () => {
-    let myDropdown = document.getElementById("finishedProducts");
-    dropDropDown(myDropdown);
-  };
+  function triggerToggleDropDown(e) {
+    let buttonName = e.target.name;
+    let myDropdown;
 
-  const prevProductsDropper = () => {
-    let myDropdown = document.getElementById("prevProducts");
-    dropDropDown(myDropdown);
-  };
+    if (buttonName === "finishedProductsDropper") {
+      myDropdown = document.getElementById("finishedProducts");
+    } else if (buttonName === "prevProductsDropper") {
+      myDropdown = document.getElementById("prevProducts");
+    } else if (buttonName === "premiumProductsDropper") {
+      myDropdown = document.getElementById("premiumProducts");
+    }
 
-  const premiumProductsDropper = () => {
-    let myDropdown = document.getElementById("premiumProducts");
-    dropDropDown(myDropdown);
-  };
-
-  function dropDropDown(myDropdown) {
     if (myDropdown.classList.contains("dropDownDisquise")) {
       myDropdown.classList.remove("dropDownDisquise");
       myDropdown.classList.add("dropDown");
@@ -126,41 +117,43 @@ export default function Header() {
     }
   }
 
+  function closeAllNavBarSubmenus() {
+    let finishedDropDown = document.getElementById("finishedProducts");
+    if (finishedDropDown.classList.contains("dropDown")) {
+      finishedDropDown.classList.remove("dropDown");
+      finishedDropDown.classList.add("dropDownDisquise");
+    }
+    let prevDropDown = document.getElementById("prevProducts");
+    if (prevDropDown.classList.contains("dropDown")) {
+      prevDropDown.classList.remove("dropDown");
+      prevDropDown.classList.add("dropDownDisquise");
+    }
+    let premiumDropDown = document.getElementById("premiumProducts");
+    if (premiumDropDown.classList.contains("dropDown")) {
+      premiumDropDown.classList.remove("dropDown");
+      premiumDropDown.classList.add("dropDownDisquise");
+    }
+  }
+
   //Clicking out of dropdown
   window.onclick = function (e) {
-    if (
-      !e.target.matches("#finishedProductsButton") &&
+    if (!e.target.matches("#finishedProductsButton") &&
       !e.target.matches("#prevProductsButton") &&
-      !e.target.matches("#premiumProductsButton")
-    ) {
-      let finishedDropDown = document.getElementById("finishedProducts");
-      if (finishedDropDown.classList.contains("dropDown")) {
-        finishedDropDown.classList.remove("dropDown");
-        finishedDropDown.classList.add("dropDownDisquise");
-      }
-      let prevDropDown = document.getElementById("prevProducts");
-      if (prevDropDown.classList.contains("dropDown")) {
-        prevDropDown.classList.remove("dropDown");
-        prevDropDown.classList.add("dropDownDisquise");
-      }
-      let premiumDropDown = document.getElementById("premiumProducts");
-      if (premiumDropDown.classList.contains("dropDown")) {
-        premiumDropDown.classList.remove("dropDown");
-        premiumDropDown.classList.add("dropDownDisquise");
-      }
+      !e.target.matches("#premiumProductsButton")) {
+      closeAllNavBarSubmenus();
     }
   };
 
-  const toggleClasses = () => {
-    let elements = document.getElementsByClassName("hamburger-menu");
-    if (elements[0] == null) {
+  const toggleClassesHamMenu = () => {
+    let hamMenu = document.getElementsByClassName("hamburger-menu");
+    if (hamMenu[0] == null) {
       //if the hamburger menu is displayed but the window resized to desktop
       let mobileMenu = document.getElementById("mobile");
       mobileMenu.classList.remove("hamburgerDropDown");
       mobileMenu.classList.add("hamburgerDropDownDisquise");
       fromMobile = false;
     } else {
-      elements[0].classList.toggle("animate");
+      hamMenu[0].classList.toggle("animate");
       if (fromMobile === true) {
         let mobileMenu = document.getElementById("mobile");
         if (mobileMenu.classList.contains("hamburgerDropDownDisquise")) {
@@ -180,7 +173,7 @@ export default function Header() {
       <div
         className="menu-wrapper"
         onClick={() => {
-          toggleClasses();
+          toggleClassesHamMenu();
         }}
       >
         <div className="hamburger-menu"></div>
@@ -194,21 +187,24 @@ export default function Header() {
         <button
           className="navItem"
           id="finishedProductsButton"
-          onClick={() => finishedProductsDropper()}
+          name="finishedProductsDropper"
+          onClick={triggerToggleDropDown}
         >
           Kész Termékek
         </button>
         <button
           className="navItem"
           id="prevProductsButton"
-          onClick={() => prevProductsDropper()}
+          name="prevProductsDropper"
+          onClick={triggerToggleDropDown}
         >
           Eddigi Munkák
         </button>
         <button
           className="navItem"
           id="premiumProductsButton"
-          onClick={() => premiumProductsDropper()}
+          name="premiumProductsDropper"
+          onClick={triggerToggleDropDown}
         >
           Prémium babatermékek
         </button>
@@ -221,22 +217,6 @@ export default function Header() {
       </div>
     );
   };
-
-  const TopNav = styled.div`
-    overflow: hidden;
-    background-color: white;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 5rem;
-    z-index: 30;
-    left: 0;
-    text-align: center;
-
-    @media (min-width: 576px) {
-      display: block;
-    }
-  `;
 
   return (
     <div>
@@ -252,13 +232,13 @@ export default function Header() {
           ></img>
         </Link>
 
-        {width > 1300 ? displayNavBar() : displayHamburgerMenu()}
+        {width > 1380 ? displayNavBar() : displayHamburgerMenu()}
       </TopNav>
       <div
         id="finishedProducts"
         style={{
-          left: finishedProductsLeftFromWindow,
-          width: finishedProductsWidthFromWindow,
+          left: menuPositions.finishedProductsLeftFromWindow,
+          width: menuPositions.finishedProductsWidth,
           textAlign: "center",
         }}
         className="dropDownDisquise"
@@ -282,8 +262,8 @@ export default function Header() {
       <div
         id="prevProducts"
         style={{
-          left: prevProductsLeftFromWindow,
-          width: prevProductsWidthFromWindow,
+          left: menuPositions.prevProductsLeftFromWindow,
+          width: menuPositions.prevProductsWidth,
           textAlign: "center",
         }}
         className="dropDownDisquise"
@@ -307,8 +287,8 @@ export default function Header() {
       <div
         id="premiumProducts"
         style={{
-          left: premiumProductsLeftFromWindow,
-          width: premiumProductsWidthFromWindow,
+          left: menuPositions.premiumProductsLeftFromWindow,
+          width: menuPositions.premiumProductsWidth,
           textAlign: "center",
         }}
         className="dropDownDisquise"
@@ -339,7 +319,7 @@ export default function Header() {
             fontFamily: "auto",
             outline: "black",
           }}
-          onClick={() => toggleClasses()}
+          onClick={() => toggleClassesHamMenu()}
         >
           X
         </button>

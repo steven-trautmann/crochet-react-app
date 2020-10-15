@@ -65,7 +65,9 @@ $bar-spacing: 1.25rem;
 
 .hamburgerDropDown {
   overflow: auto;
-  height: 18rem;
+  height: 19rem;
+  width: 25vw;
+  min-width: 15rem;
   position: fixed;
   padding: 0.4rem;
   padding-top: 1rem;
@@ -84,7 +86,9 @@ $bar-spacing: 1.25rem;
 
 .hamburgerDropDownDisquise {
   overflow: auto;
-  height: 18rem;
+  height: 19rem;
+  width: 25vw;
+  min-width: 15rem;
   position: fixed;
   padding: 0.4rem;
   padding-top: 1rem;

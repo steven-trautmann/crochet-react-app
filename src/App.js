@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import HomePage from "./component/HomePage";
-import { SearchProvider } from "./context/SearchContext";
 import { InnerWidthProvider } from "./context/InnerWidthContext";
 import { ModalContextProvider } from "./context/ModalContext";
 import { FinishedModalTextsContextProvider } from "./context/ModalTextsFinishedProducts";
@@ -17,28 +16,26 @@ function App() {
   return (
     <div>
       <Router>
-        <SearchProvider>
-          <InnerWidthProvider>
-            <FinishedModalTextsContextProvider>
-              <PreviousModalTextsContextProvider>
-                <PremiumModalTextsContextProvider>
-                  <ModalContextProvider>
-                    <Header />
-                    <Route exact path="/" component={HomePage} />
-                    <Route
-                      exact
-                      path="/:category/:type"
-                      component={Products}
-                    />
-                    <Route exact path="/rolam" component={PageAboutMe} />
-                    <Route exact path="/kapcsolat" component={Connection} />
-                    <Footer />
-                  </ModalContextProvider>
-                </PremiumModalTextsContextProvider>
-              </PreviousModalTextsContextProvider>
-            </FinishedModalTextsContextProvider>
-          </InnerWidthProvider>
-        </SearchProvider>
+        <InnerWidthProvider>
+          <FinishedModalTextsContextProvider>
+            <PreviousModalTextsContextProvider>
+              <PremiumModalTextsContextProvider>
+                <ModalContextProvider>
+                  <Header />
+                  <Route exact path="/" component={HomePage} />
+                  <Route
+                    exact
+                    path="/:category/:type"
+                    component={Products}
+                  />
+                  <Route exact path="/rolam" component={PageAboutMe} />
+                  <Route exact path="/kapcsolat" component={Connection} />
+                  <Footer />
+                </ModalContextProvider>
+              </PremiumModalTextsContextProvider>
+            </PreviousModalTextsContextProvider>
+          </FinishedModalTextsContextProvider>
+        </InnerWidthProvider>
       </Router>
     </div>
   );
