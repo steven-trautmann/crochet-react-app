@@ -12,6 +12,7 @@ import Footer from "./layout/Footer";
 import FinishedProducts from "./component/FinishedProducts";
 import PreviousProducts from "./component/PreviousProducts";
 import PremiumProducts from "./component/PremiumProducts";
+import Products from "./component/Products";
 import PageAboutMe from "./component/PageAboutMe";
 import Connection from "./component/Connection";
 
@@ -27,12 +28,17 @@ function App() {
                   <ModalContextProvider>
                     <Header />
                     <Route exact path="/" component={HomePage} />
-                    <Route
+                    {/* <Route
                       exact
                       path="/kesz-termekek/:type"
                       component={FinishedProducts}
-                    />
+                    /> */}
                     <Route
+                      exact
+                      path="/:category/:type"
+                      component={Products}
+                    />
+                    {/* <Route
                       exact
                       path="/eddigi-munkak/:type"
                       component={PreviousProducts}
@@ -41,7 +47,7 @@ function App() {
                       exact
                       path="/premium-termekek/:type"
                       component={PremiumProducts}
-                    />
+                    /> */}
                     <Route exact path="/rolam" component={PageAboutMe} />
                     <Route exact path="/kapcsolat" component={Connection} />
                     <Footer />
