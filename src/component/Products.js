@@ -63,12 +63,12 @@ export default function FinishedProducts(props) {
                     )
                 )
             );
-        } else if (type === "ruhak") {
-            setTypeTitle("Ruhák");
+        } else if (type === "sapkak") {
+            setTypeTitle("Sapkák");
             setProducts(
                 importAll(
                     require.context(
-                        "../images/finished_products/ruhák",
+                        "../images/finished_products/sapkák",
                         false,
                         /\.(png|jpe?g|svg)$/
                     )
@@ -111,8 +111,8 @@ export default function FinishedProducts(props) {
                     )
                 )
             );
-        } else if (type === "ruhak") {
-            setTypeTitle("Ruhák");
+        } else if (type === "sapkak") {
+            setTypeTitle("Sapkák");
             setProducts(
                 importAll(
                     require.context(

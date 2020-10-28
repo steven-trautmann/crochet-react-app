@@ -233,8 +233,8 @@ export default function Header() {
           <Link to="/kesz-termekek/szundikendok">
             <li>Szundikendők</li>
           </Link>
-          <Link to="/kesz-termekek/ruhak">
-            <li>Ruhák</li>
+          <Link to="/kesz-termekek/sapkak">
+            <li>Sapkák</li>
           </Link>
         </ul>
       </div>
@@ -258,8 +258,8 @@ export default function Header() {
           <Link to="/eddigi-munkak/szundikendok">
             <li>Szundikendők</li>
           </Link>
-          <Link to="/eddigi-munkak/ruhak">
-            <li>Ruhák</li>
+          <Link to="/eddigi-munkak/sapkak">
+            <li>Sapkák</li>
           </Link>
         </ul>
       </div>
@@ -302,8 +302,8 @@ export default function Header() {
                 <Link to="/kesz-termekek/szundikendok">
                   <li>Szundikendők</li>
                 </Link>
-                <Link to="/kesz-termekek/ruhak">
-                  <li>Ruhák</li>
+                <Link to="/kesz-termekek/sapkak">
+                  <li>Sapkák</li>
                 </Link>
               </ul>
             </div>
@@ -331,8 +331,8 @@ export default function Header() {
                 <Link to="/eddigi-munkak/szundikendok">
                   <li>Szundikendők</li>
                 </Link>
-                <Link to="/eddigi-munkak/ruhak">
-                  <li>Ruhák</li>
+                <Link to="/eddigi-munkak/sapkak">
+                  <li>Sapkák</li>
                 </Link>
               </ul>
             </div>

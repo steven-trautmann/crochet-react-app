@@ -71,12 +71,12 @@ export default function HomePage() {
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/ruhak"} className="links">
+          <Link to={"/kesz-termekek/sapkak"} className="links">
             <Img
-              src={"/specialImages/homepageImgs/finishedSampleImgs/Ruhák.jpg"}
-              alt="Ruhák"
+              src={"/specialImages/homepageImgs/finishedSampleImgs/Sapkák.jpg"}
+              alt="Sapkák"
             />
-            {fromMobile ? <h2>Ruhák</h2> : <h1>Ruhák</h1>}
+            {fromMobile ? <h2>Sapkák</h2> : <h1>Sapkák</h1>}
           </Link>
         </div>
       </GridDiv>
@@ -115,14 +115,14 @@ export default function HomePage() {
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/ruhak"} className="links">
+          <Link to={"/kesz-termekek/sapkak"} className="links">
             <Img
               src={
                 "/specialImages/homepageImgs/previousSampleImgs/missing.jpg"
               }
-              alt="Ruhák"
+              alt="Sapkák"
             />
-            {fromMobile ? <h2>Ruhák</h2> : <h1>Ruhák</h1>}
+            {fromMobile ? <h2>Sapkák</h2> : <h1>Sapkák</h1>}
           </Link>
         </div>
       </GridDiv>

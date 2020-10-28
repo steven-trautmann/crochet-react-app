@@ -6,7 +6,6 @@
   display: block;
   z-index: 20;
   background-color: white;
-  border: solid black;
   font-size: 1.2rem;
 
   visibility: visible;
@@ -22,7 +21,6 @@
   display: block;
   z-index: 20;
   background-color: white;
-  border: solid black;
   font-size: 1.2rem;
 
   visibility: hidden;
