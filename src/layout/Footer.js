@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 const FooterDiv = styled.div`
   background-color: lightgray;
@@ -36,11 +37,22 @@ const SocialImg = styled.img`
 
 const Footer = () => {
   const [noContent, setNoContent] = useState(false);
+  const history = useHistory();
 
-  useEffect(() => {
-    if (document.getElementById("footer-div").offsetTop === 0) {
+  const checkIfThereIsNoContent = () => {
+    if (document.getElementById("footer-div").offsetTop < 200) {
       setNoContent(true);
     }
+  }
+
+  useEffect(() => {
+    return history.listen((location) => {
+      checkIfThereIsNoContent();
+    })
+  }, [history])
+
+  useEffect(() => {
+    checkIfThereIsNoContent();
   }, [])
 
   return (
