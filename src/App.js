@@ -5,7 +5,6 @@ import { InnerWidthProvider } from "./context/InnerWidthContext";
 import { ModalContextProvider } from "./context/ModalContext";
 import { FinishedModalTextsContextProvider } from "./context/ModalTextsFinishedProducts";
 import { PreviousModalTextsContextProvider } from "./context/ModalTextsPreviousProducts";
-import { PremiumModalTextsContextProvider } from "./context/ModalTextsPremiumProducts";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import Products from "./component/Products";
@@ -19,20 +18,18 @@ function App() {
         <InnerWidthProvider>
           <FinishedModalTextsContextProvider>
             <PreviousModalTextsContextProvider>
-              <PremiumModalTextsContextProvider>
-                <ModalContextProvider>
-                  <Header />
-                  <Route exact path="/" component={HomePage} />
-                  <Route
-                    exact
-                    path="/:category/:type"
-                    component={Products}
-                  />
-                  <Route exact path="/rolam" component={PageAboutMe} />
-                  <Route exact path="/kapcsolat" component={Connection} />
-                  <Footer />
-                </ModalContextProvider>
-              </PremiumModalTextsContextProvider>
+              <ModalContextProvider>
+                <Header />
+                <Route exact path="/" component={HomePage} />
+                <Route
+                  exact
+                  path="/:category/:type"
+                  component={Products}
+                />
+                <Route exact path="/rolam" component={PageAboutMe} />
+                <Route exact path="/kapcsolat" component={Connection} />
+                <Footer />
+              </ModalContextProvider>
             </PreviousModalTextsContextProvider>
           </FinishedModalTextsContextProvider>
         </InnerWidthProvider>

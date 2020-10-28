@@ -31,16 +31,16 @@
 }
 
 .navItem {
+  width: 22vw;
+  display: inline-block;
   border: none;
   background-color: white;
   color: black;
-  float: left;
   display: block;
   text-align: center;
-  margin-left: 2rem;
   text-decoration: none;
-  font-size: 1.9rem;
-  padding: 1.3rem;
+  font-size: 2rem;
+  padding: 1.3vw;
   padding-left: 3vw;
   outline: none;
   z-index: 20;

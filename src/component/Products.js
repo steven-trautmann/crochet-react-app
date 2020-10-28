@@ -5,7 +5,6 @@ import Modal from "./Modal";
 import { useParams } from "react-router-dom";
 import { FinishedModalTextsContext } from "../context/ModalTextsFinishedProducts";
 import { PreviousModalTextsContext } from "../context/ModalTextsPreviousProducts";
-import { PremiumModalTextsContext } from "../context/ModalTextsPremiumProducts";
 import styled from "styled-components";
 
 const PageTitle = styled.h1`
@@ -131,10 +130,7 @@ export default function FinishedProducts(props) {
             return FinishedModalTextsContext;
         } else if (category === "eddigi-munkak") {
             return PreviousModalTextsContext;
-        } else if (category === "premium-termekek") {
-            return PremiumModalTextsContext;
-            //setting something to prevent crash
-        } else {
+        } else { //setting something to prevent crash
             return FinishedModalTextsContext;
         }
     }, [category]);
@@ -145,9 +141,6 @@ export default function FinishedProducts(props) {
             importFinishedProducts();
         } else if (category === "eddigi-munkak") {
             setCategoryTitle("Eddigi Munkák | ");
-            importPreviousProducts();
-        } else if (category === "premium-termekek") {
-            setCategoryTitle("Prémium Babatermékek | ");
             importPreviousProducts();
         }
 

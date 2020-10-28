@@ -10,6 +10,7 @@ const TopNav = styled.div`
     overflow: hidden;
     background-color: white;
     position: fixed;
+    margin: 0;
     top: 0;
     width: 100vw;
     height: 5rem;
@@ -22,6 +23,11 @@ const TopNav = styled.div`
     }
   `;
 
+const DesktopNav = styled.div`
+    text-align: center;
+    display: inline-flex;
+  `;
+
 export default function Header() {
   const [width, setWidth] = useContext(InnerWidthContext);
   let fromMobile = 1380 > width;
@@ -32,8 +38,6 @@ export default function Header() {
     finishedProductsWidth: 0,
     prevProductsLeftFromWindow: 0,
     prevProductsWidth: 0,
-    premiumProductsLeftFromWindow: 0,
-    premiumProductsWidth: 0
   })
 
 
@@ -57,14 +61,11 @@ export default function Header() {
   const setDropdownPositions = useCallback(() => {
     let finishedDropDownButton = document.getElementById("finishedProductsButton");
     let prevDropDownButton = document.getElementById("prevProductsButton");
-    let premiumDropDownButton = document.getElementById("premiumProductsButton");
     setMenuPositions({
       prevProductsLeftFromWindow: prevDropDownButton.offsetLeft,
       prevProductsWidth: prevDropDownButton.offsetWidth,
       finishedProductsLeftFromWindow: finishedDropDownButton.offsetLeft,
       finishedProductsWidth: finishedDropDownButton.offsetWidth,
-      premiumProductsLeftFromWindow: premiumDropDownButton.offsetLeft,
-      premiumProductsWidth: premiumDropDownButton.offsetWidth
     })
   }, []);
 
@@ -101,8 +102,6 @@ export default function Header() {
       myDropdown = document.getElementById("finishedProducts");
     } else if (buttonName === "prevProductsDropper") {
       myDropdown = document.getElementById("prevProducts");
-    } else if (buttonName === "premiumProductsDropper") {
-      myDropdown = document.getElementById("premiumProducts");
     }
 
     if (myDropdown.classList.contains("dropDownDisquise")) {
@@ -125,18 +124,12 @@ export default function Header() {
       prevDropDown.classList.remove("dropDown");
       prevDropDown.classList.add("dropDownDisquise");
     }
-    let premiumDropDown = document.getElementById("premiumProducts");
-    if (premiumDropDown.classList.contains("dropDown")) {
-      premiumDropDown.classList.remove("dropDown");
-      premiumDropDown.classList.add("dropDownDisquise");
-    }
   }
 
   //Clicking out of dropdown
   window.onclick = function (e) {
     if (!e.target.matches("#finishedProductsButton") &&
-      !e.target.matches("#prevProductsButton") &&
-      !e.target.matches("#premiumProductsButton")) {
+      !e.target.matches("#prevProductsButton")) {
       closeAllNavBarSubmenus();
     }
   };
@@ -178,7 +171,7 @@ export default function Header() {
 
   const displayNavBar = () => {
     return (
-      <div>
+      <DesktopNav>
         <button
           className="navItem"
           id="finishedProductsButton"
@@ -195,21 +188,13 @@ export default function Header() {
         >
           Eddigi Munkák
         </button>
-        <button
-          className="navItem"
-          id="premiumProductsButton"
-          name="premiumProductsDropper"
-          onClick={triggerToggleDropDown}
-        >
-          Prémium babatermékek
-        </button>
         <Link className="navItem links" to="/rolam">
           Rólam
         </Link>
         <Link className="navItem links" to="/kapcsolat">
           Kapcsolat
         </Link>
-      </div>
+      </DesktopNav>
     );
   };
 
@@ -274,31 +259,6 @@ export default function Header() {
             <li>Szundikendők</li>
           </Link>
           <Link to="/eddigi-munkak/ruhak">
-            <li>Ruhák</li>
-          </Link>
-        </ul>
-      </div>
-
-      <div
-        id="premiumProducts"
-        style={{
-          left: menuPositions.premiumProductsLeftFromWindow,
-          width: menuPositions.premiumProductsWidth,
-          textAlign: "center",
-        }}
-        className="dropDownDisquise"
-      >
-        <ul style={{ listStyleType: "none" }}>
-          <Link to="/premium-termekek/figurak">
-            <li>Figurák</li>
-          </Link>
-          <Link to="/premium-termekek/takarok">
-            <li>Takarók</li>
-          </Link>
-          <Link to="/premium-termekek/szundikendok">
-            <li>Szundikendők</li>
-          </Link>
-          <Link to="/premium-termekek/ruhak">
             <li>Ruhák</li>
           </Link>
         </ul>
@@ -372,35 +332,6 @@ export default function Header() {
                   <li>Szundikendők</li>
                 </Link>
                 <Link to="/eddigi-munkak/ruhak">
-                  <li>Ruhák</li>
-                </Link>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <button
-              style={{ outline: "none" }}
-              className="collapsible hamburgerNavItem"
-            >
-              Prémium Babatermékek
-            </button>
-            <div style={{ borderRadius: "20%" }} className="content">
-              <ul
-                style={{
-                  listStyleType: "none",
-                  textAlign: "center",
-                }}
-              >
-                <Link to="/premium-termekek/figurak">
-                  <li>Figurák</li>
-                </Link>
-                <Link to="/premium-termekek/takarok">
-                  <li>Takarók</li>
-                </Link>
-                <Link to="/premium-termekek/szundikendok">
-                  <li>Szundikendők</li>
-                </Link>
-                <Link to="/premium-termekek/ruhak">
                   <li>Ruhák</li>
                 </Link>
               </ul>
