@@ -4,7 +4,7 @@ import DisplayPictures from "./DisplayPictures";
 import Modal from "./Modal";
 import { useParams } from "react-router-dom";
 import { FinishedModalTextsContext } from "../context/ModalTextsFinishedProducts";
-import importAll from "../utils/ImportAllFromFolder";
+import { importAll } from "../utils/ImportAllFromFolder";
 import PageTitle from "./PageTitle";
 
 export default function FinishedProducts(props) {

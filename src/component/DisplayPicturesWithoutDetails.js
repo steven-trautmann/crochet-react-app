@@ -9,13 +9,6 @@ const DisplayPicturesWithoutDetails = (props) => {
     let pictureSquareDistance = fromMobile ? "32vw" : "17.5vw";
     let keyCounter = 0;
 
-    let allImgSrc = [];
-
-    for (let imageSrc of Object.entries(props.images)) {
-        let src = imageSrc.toString().split(",").pop();
-        allImgSrc.push(src);
-    }
-
     return (
         <div
             style={{
@@ -28,15 +21,14 @@ const DisplayPicturesWithoutDetails = (props) => {
                 margin: "auto",
             }}
         >
-            {allImgSrc.map((imgSrc) => {
+            {props.images.map((imgSrc) => {
                 keyCounter++;
                 return (
-                    <div key={keyCounter}>
-                        <DisplayPicWithoutDetails
-                            pictureSquareDistance={pictureSquareDistance}
-                            imgSrc={imgSrc}
-                        ></DisplayPicWithoutDetails>
-                    </div>
+                    <DisplayPicWithoutDetails
+                        key={keyCounter}
+                        pictureSquareDistance={pictureSquareDistance}
+                        imgSrc={imgSrc}
+                    ></DisplayPicWithoutDetails>
                 );
             })}
         </div>
