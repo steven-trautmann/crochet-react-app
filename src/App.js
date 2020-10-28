@@ -7,6 +7,7 @@ import { FinishedModalTextsContextProvider } from "./context/ModalTextsFinishedP
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import FinishedProducts from "./component/FinishedProducts";
+import PrevProducts from "./component/PrevProducts";
 import PageAboutMe from "./component/PageAboutMe";
 import Connection from "./component/Connection";
 
@@ -23,6 +24,11 @@ function App() {
                 exact
                 path="/kesz-termekek/:type"
                 component={FinishedProducts}
+              />
+              <Route
+                exact
+                path="/eddigi-munkak"
+                component={PrevProducts}
               />
               <Route exact path="/rolam" component={PageAboutMe} />
               <Route exact path="/kapcsolat" component={Connection} />

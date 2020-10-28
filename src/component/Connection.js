@@ -3,6 +3,7 @@ import { InnerWidthContext } from "../context/InnerWidthContext";
 import Axios from "axios";
 import "../style/speech-bubble.css";
 import styled from "styled-components";
+import PageTitle from "./PageTitle";
 
 const Counter = styled.h3`
   margin: 0;
@@ -190,9 +191,7 @@ export default function Connection() {
 
   return (
     <div style={{ marginTop: "6rem" }}>
-      <h1 style={{ borderBottom: "solid", margin: "2vw", marginBottom: "5vw", textAlign: "center" }}>
-        Kapcsolat
-      </h1>
+      <PageTitle text={"Kapcsolat"} />
       <div>
         <h2 style={{ margin: "2vw" }}>Elérhetőségek:</h2>
         <ul

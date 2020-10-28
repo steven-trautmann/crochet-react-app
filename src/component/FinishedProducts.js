@@ -4,15 +4,8 @@ import DisplayPictures from "./DisplayPictures";
 import Modal from "./Modal";
 import { useParams } from "react-router-dom";
 import { FinishedModalTextsContext } from "../context/ModalTextsFinishedProducts";
-import styled from "styled-components";
 import importAll from "../utils/ImportAllFromFolder";
-
-const PageTitle = styled.h1`
-    border-bottom: solid;
-    margin: 2rem;
-    margin-top: 0;
-    text-align: center;
-`;
+import PageTitle from "./PageTitle";
 
 export default function FinishedProducts(props) {
     const [products, setProducts] = useState({});
@@ -75,11 +68,9 @@ export default function FinishedProducts(props) {
         <div>
             <Modal context={FinishedModalTextsContext} />
             <div style={{ marginTop: "6rem" }}>
-                <PageTitle>
-                    {typeTitle === "Helytelen URL!"
-                        ? typeTitle
-                        : "Kész Termékek | " + typeTitle}
-                </PageTitle>
+                <PageTitle text={typeTitle === "Helytelen URL!"
+                    ? typeTitle
+                    : "Kész Termékek | " + typeTitle} />
 
                 <DisplayPictures pictures={products} />
             </div>
