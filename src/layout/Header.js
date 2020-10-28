@@ -36,8 +36,6 @@ export default function Header() {
   const [menuPositions, setMenuPositions] = useState({
     finishedProductsLeftFromWindow: 0,
     finishedProductsWidth: 0,
-    prevProductsLeftFromWindow: 0,
-    prevProductsWidth: 0,
   })
 
 
@@ -60,10 +58,7 @@ export default function Header() {
 
   const setDropdownPositions = useCallback(() => {
     let finishedDropDownButton = document.getElementById("finishedProductsButton");
-    let prevDropDownButton = document.getElementById("prevProductsButton");
     setMenuPositions({
-      prevProductsLeftFromWindow: prevDropDownButton.offsetLeft,
-      prevProductsWidth: prevDropDownButton.offsetWidth,
       finishedProductsLeftFromWindow: finishedDropDownButton.offsetLeft,
       finishedProductsWidth: finishedDropDownButton.offsetWidth,
     })
@@ -100,8 +95,6 @@ export default function Header() {
 
     if (buttonName === "finishedProductsDropper") {
       myDropdown = document.getElementById("finishedProducts");
-    } else if (buttonName === "prevProductsDropper") {
-      myDropdown = document.getElementById("prevProducts");
     }
 
     if (myDropdown.classList.contains("dropDownDisquise")) {
@@ -119,17 +112,11 @@ export default function Header() {
       finishedDropDown.classList.remove("dropDown");
       finishedDropDown.classList.add("dropDownDisquise");
     }
-    let prevDropDown = document.getElementById("prevProducts");
-    if (prevDropDown.classList.contains("dropDown")) {
-      prevDropDown.classList.remove("dropDown");
-      prevDropDown.classList.add("dropDownDisquise");
-    }
   }
 
   //Clicking out of dropdown
   window.onclick = function (e) {
-    if (!e.target.matches("#finishedProductsButton") &&
-      !e.target.matches("#prevProductsButton")) {
+    if (!e.target.matches("#finishedProductsButton")) {
       closeAllNavBarSubmenus();
     }
   };
@@ -180,14 +167,9 @@ export default function Header() {
         >
           Kész Termékek
         </button>
-        <button
-          className="navItem"
-          id="prevProductsButton"
-          name="prevProductsDropper"
-          onClick={triggerToggleDropDown}
-        >
-          Eddigi Munkák
-        </button>
+        <Link className="navItem links" to="/eddigi-munkak">
+          Eddigi Munkáim
+        </Link>
         <Link className="navItem links" to="/rolam">
           Rólam
         </Link>
@@ -239,31 +221,6 @@ export default function Header() {
         </ul>
       </div>
 
-      <div
-        id="prevProducts"
-        style={{
-          left: menuPositions.prevProductsLeftFromWindow,
-          width: menuPositions.prevProductsWidth,
-          textAlign: "center",
-        }}
-        className="dropDownDisquise"
-      >
-        <ul style={{ listStyleType: "none" }}>
-          <Link to="/eddigi-munkak/figurak">
-            <li>Figurák</li>
-          </Link>
-          <Link to="/eddigi-munkak/takarok">
-            <li>Takarók</li>
-          </Link>
-          <Link to="/eddigi-munkak/szundikendok">
-            <li>Szundikendők</li>
-          </Link>
-          <Link to="/eddigi-munkak/sapkak">
-            <li>Sapkák</li>
-          </Link>
-        </ul>
-      </div>
-
       <div id="mobile" className="hamburgerDropDownDisquise">
         <button
           style={{
@@ -308,35 +265,9 @@ export default function Header() {
               </ul>
             </div>
           </li>
-          <li>
-            <button
-              style={{ outline: "none" }}
-              className="collapsible hamburgerNavItem"
-            >
-              Eddigi Munkáim
-            </button>
-            <div style={{ borderRadius: "20%" }} className="content">
-              <ul
-                style={{
-                  listStyleType: "none",
-                  textAlign: "center",
-                }}
-              >
-                <Link to="/eddigi-munkak/figurak">
-                  <li>Figurák</li>
-                </Link>
-                <Link to="/eddigi-munkak/takarok">
-                  <li>Takarók</li>
-                </Link>
-                <Link to="/eddigi-munkak/szundikendok">
-                  <li>Szundikendők</li>
-                </Link>
-                <Link to="/eddigi-munkak/sapkak">
-                  <li>Sapkák</li>
-                </Link>
-              </ul>
-            </div>
-          </li>
+          <Link className="hamburgerNavItem links" to="/eddigi-munkak">
+            <li>Eddigi Munkáim</li>
+          </Link>
           <Link className="hamburgerNavItem links" to="/rolam">
             <li>Rólam</li>
           </Link>
