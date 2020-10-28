@@ -80,52 +80,6 @@ export default function HomePage() {
           </Link>
         </div>
       </GridDiv>
-
-      <div style={{ marginTop: "1rem" }}>
-        <h1>Eddigi Munkáim</h1>
-      </div>
-      <GridDiv className="homepage-table">
-        <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/eddigi-munkak/figurak"} className="links">
-            <Img
-              src="/specialImages/homepageImgs/previousSampleImgs/missing.jpg"
-              alt="Figurák"
-            />
-            {fromMobile ? <h2>Figurák</h2> : <h1>Figurák</h1>}
-          </Link>
-        </div>
-        <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/takarok"} className="links">
-            <Img
-              src="/specialImages/homepageImgs/previousSampleImgs/missing.jpg"
-              alt="Takarók"
-            />
-            {fromMobile ? <h2>Takarók</h2> : <h1>Takarók</h1>}
-          </Link>
-        </div>
-        <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/szundikendok"} className="links">
-            <Img
-              src={
-                "/specialImages/homepageImgs/previousSampleImgs/missing.jpg"
-              }
-              alt="Szundikendők"
-            />
-            {fromMobile ? <h3>Szundikendők</h3> : <h2>Szundikendők</h2>}
-          </Link>
-        </div>
-        <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/sapkak"} className="links">
-            <Img
-              src={
-                "/specialImages/homepageImgs/previousSampleImgs/missing.jpg"
-              }
-              alt="Sapkák"
-            />
-            {fromMobile ? <h2>Sapkák</h2> : <h1>Sapkák</h1>}
-          </Link>
-        </div>
-      </GridDiv>
     </div>
   );
 }
