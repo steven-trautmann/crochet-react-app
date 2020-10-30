@@ -12,25 +12,21 @@ const Img = styled.img`
 export default function DisplayPicWithoutDetails(props) {
     const [itsIncreased, setIntsIncreased] = useState(false);
     const [offsetTop, setOffsetTop] = useState(0);
-    const [countainerIdName, setCountainerIdName] = useState("");
-    const [idName, setIdName] = useState("");
+    const [containerIdName, setContainerIdName] = useState("");
 
     const toggleClassName = () => {
         if (itsIncreased) {
             setOffsetTop(0);
-            setCountainerIdName("");
-            setIdName("");
+            setContainerIdName("");
             enableScroll();
             setIntsIncreased(false);
         } else {
             setOffsetTop(window.scrollY);
-            setCountainerIdName("prevProductsContainerIncreased");
-            setIdName("prevProductsIncreased");
+            setContainerIdName("prevProductsContainerIncreased");
             disableScroll();
             setIntsIncreased(true);
         }
     }
-
 
     function disableScroll() {
         // Get the current page scroll position 
@@ -47,12 +43,11 @@ export default function DisplayPicWithoutDetails(props) {
         window.onscroll = function () { };
     }
 
-
     return (
-        <div id={countainerIdName}
+        <div id={containerIdName}
             style={{ top: itsIncreased ? offsetTop : null }}
             onClick={() => { toggleClassName() }}>
-            <div id={idName} style={{ height: `${itsIncreased ? "100%" : props.pictureSquareDistance}`, width: itsIncreased ? "auto" : props.pictureSquareDistance }}>
+            <div style={{ display: "inline-block", height: `${itsIncreased ? "100%" : props.pictureSquareDistance}`, width: `${itsIncreased ? "auto" : props.pictureSquareDistance}` }}>
                 <Img
                     style={{ height: "100%", width: "100%" }}
                     src={props.imgSrc}
