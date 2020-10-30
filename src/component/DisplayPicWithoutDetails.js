@@ -49,7 +49,7 @@ export default function DisplayPicWithoutDetails(props) {
             onClick={() => { toggleClassName() }}>
             <div
                 style={{
-                    display: "inline-block", height: `${itsIncreased ? "auto" : props.pictureSquareDistance}`, width: `${itsIncreased ? "auto" : props.pictureSquareDistance}`
+                    margin: "auto", height: `${itsIncreased ? "auto" : props.pictureSquareDistance}`, width: `${itsIncreased ? "auto" : props.pictureSquareDistance}`
                 }}>
                 <Img
                     style={{ height: `${itsIncreased ? "auto" : "100%"}`, width: `${itsIncreased ? "auto" : "100%"}`, maxWidth: "100vw", maxHeight: "100vh" }}
