@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import DisplayPic from "./DisplayPic";
 import { InnerWidthContext } from "../context/InnerWidthContext";
+import "../style/displayPicturesGrid.css";
 
 export default function DisplayPictures(props) {
   const [width] = useContext(InnerWidthContext);
@@ -9,45 +10,46 @@ export default function DisplayPictures(props) {
   let pictureSquareDistance = fromMobile ? "32vw" : "17.5vw";
   let keyCounter = 0;
 
-  let listOfImgGroups = [];
+  const createImgGroups = () => {
+    let listOfImgGroups = [];
+    let listOfAllSrc = [];
+    let srcSet = new Set();
 
-  let listOfAllSrc = [];
-
-  let srcSet = new Set();
-
-  for (let imageSrc of Object.entries(props.pictures)) {
-    let src = imageSrc.toString().split(",").pop();
-    listOfAllSrc.push(src);
-    let sliceFrom = src.lastIndexOf("/") + 1;
-    let sliceTo = src.indexOf(".");
-    srcSet.add(src.slice(sliceFrom, sliceTo - 1));
-  }
-
-  for (let singleSrc of srcSet) {
-    let newGroup = [];
-    for (let normalSrc of listOfAllSrc) {
-      let sliceFrom = normalSrc.lastIndexOf("/") + 1;
-      let sliceTo = normalSrc.indexOf(".");
-      if (normalSrc.slice(sliceFrom, sliceTo - 1) === singleSrc) {
-        newGroup.push(normalSrc);
-      }
+    for (let imageSrc of Object.entries(props.pictures)) {
+      let src = imageSrc.toString().split(",").pop();
+      listOfAllSrc.push(src);
+      let sliceFrom = src.lastIndexOf("/") + 1;
+      let sliceTo = src.indexOf(".");
+      let simpleSrc = src.slice(sliceFrom, sliceTo);
+      let digitsOfCounter = simpleSrc.replace(/[^0-9]/g, '').length;
+      srcSet.add(simpleSrc.slice(0, simpleSrc.length - digitsOfCounter));
     }
-    listOfImgGroups.push(newGroup);
+
+    for (let singleSrc of srcSet) {
+      let newGroup = [];
+      for (let normalSrc of listOfAllSrc) {
+        let sliceFrom = normalSrc.lastIndexOf("/") + 1;
+        let sliceTo = normalSrc.indexOf(".");
+        let simpleSrc = normalSrc.slice(sliceFrom, sliceTo);
+        let digitsOfCounter = simpleSrc.replace(/[^0-9]/g, '').length;
+        if (simpleSrc.slice(0, simpleSrc.length - digitsOfCounter) === singleSrc) {
+          newGroup.push(normalSrc);
+        }
+      }
+      listOfImgGroups.push(newGroup);
+    }
+
+    return listOfImgGroups;
   }
 
   return (
     <div
+      className="picturesGrid"
       style={{
-        width: "90vw",
-        display: "grid",
         gridTemplateColumns: `repeat(auto-fill, minmax(${pictureSquareDistance}, 1fr))`,
-        justifyContent: "center",
-        gridGap: "3vw",
-        placeItems: "center",
-        margin: "auto",
       }}
     >
-      {listOfImgGroups.map((imageSrcGroup) => {
+      {createImgGroups().map((imageSrcGroup) => {
         keyCounter++;
         return (
           <div key={keyCounter}>

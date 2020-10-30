@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import DisplayPicWithoutDetails from "./DisplayPicWithoutDetails";
+import "../style/displayPicturesGrid.css";
 
 const DisplayPicturesWithoutDetails = (props) => {
     const [width] = useContext(InnerWidthContext);
@@ -11,14 +12,9 @@ const DisplayPicturesWithoutDetails = (props) => {
 
     return (
         <div
+            className="picturesGrid"
             style={{
-                width: "90vw",
-                display: "grid",
                 gridTemplateColumns: `repeat(auto-fill, minmax(${pictureSquareDistance}, 1fr))`,
-                justifyContent: "center",
-                gridGap: "3vw",
-                placeItems: "center",
-                margin: "auto",
             }}
         >
             {props.images.map((imgSrc) => {

@@ -156,7 +156,7 @@ function Modal(props) {
           &times;
         </button>
 
-        {width > 1000 ? <h1 style={{ borderBottom: "solid", marginBottom: "5vh" }}>
+        {width > 1000 ? <h1 style={{ borderBottom: "solid", marginBottom: "5vh", textAlign: "center" }}>
           {modalName}
         </h1>
           :

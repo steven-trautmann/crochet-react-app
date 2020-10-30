@@ -1,0 +1,8 @@
+.picturesGrid {
+    width: 90vw;
+    display: grid;
+    justify-content: center;
+    grid-gap: 3vw;
+    place-items: center;
+    margin: auto;
+}
