@@ -47,9 +47,12 @@ export default function DisplayPicWithoutDetails(props) {
         <div id={containerIdName}
             style={{ top: itsIncreased ? offsetTop : null }}
             onClick={() => { toggleClassName() }}>
-            <div style={{ display: "inline-block", height: `${itsIncreased ? "100%" : props.pictureSquareDistance}`, width: `${itsIncreased ? "auto" : props.pictureSquareDistance}` }}>
+            <div
+                style={{
+                    display: "inline-block", height: `${itsIncreased ? "auto" : props.pictureSquareDistance}`, width: `${itsIncreased ? "auto" : props.pictureSquareDistance}`
+                }}>
                 <Img
-                    style={{ height: "100%", width: "100%" }}
+                    style={{ height: `${itsIncreased ? "auto" : "100%"}`, width: `${itsIncreased ? "auto" : "100%"}`, maxWidth: "100vw", maxHeight: "100vh" }}
                     src={props.imgSrc}
                     alt="crochetProduct"
                 />
