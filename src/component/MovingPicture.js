@@ -4,6 +4,13 @@ import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+//importing imgs, the loading time is reduced this way
+import black from "../images/movingImages/black.jpg";
+import blanket from "../images/movingImages/takaro.jpg";
+import napCloth from "../images/movingImages/szundikendo.jpg";
+import dress from "../images/movingImages/ruha.jpg";
+import picAboutMe from "../images/movingImages/rolam.jpg";
+
 const CarouselText = styled.h1`
   background: rgba(192, 192, 192, 0.6);
   font-size: 4vw;
@@ -35,7 +42,7 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/black.jpg`}
+              src={black}
               alt="First slide"
             />
             <Carousel.Caption>
@@ -48,7 +55,7 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/takaro.jpg`}
+              src={blanket}
               alt="Third slide"
             />
             <Carousel.Caption>
@@ -61,7 +68,7 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/szundikendo.jpg`}
+              src={napCloth}
               alt="Third slide"
             />
             <Carousel.Caption>
@@ -74,7 +81,7 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/ruha.jpg`}
+              src={dress}
               alt="Fourth slide"
             />
             <Carousel.Caption>
@@ -87,7 +94,7 @@ export default function MovingPicture() {
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={`/specialImages/homepageImgs/movingImages/rolam.jpg`}
+              src={picAboutMe}
               alt="Fourth slide"
             />
             <Carousel.Caption>
