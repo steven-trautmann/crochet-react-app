@@ -8,7 +8,7 @@ import styled from "styled-components";
 import black from "../images/movingImages/black.jpg";
 import blanket from "../images/movingImages/takaro.jpg";
 import napCloth from "../images/movingImages/szundikendo.jpg";
-import dress from "../images/movingImages/ruha.jpg";
+import cap from "../images/movingImages/sapka.jpg";
 import picAboutMe from "../images/movingImages/rolam.jpg";
 
 const CarouselText = styled.h1`
@@ -77,15 +77,15 @@ export default function MovingPicture() {
           </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <Link to="/kesz-termekek/ruhak">
+          <Link to="/kesz-termekek/sapkak">
             <img
               className="d-block w-100"
               style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={dress}
+              src={cap}
               alt="Fourth slide"
             />
             <Carousel.Caption>
-              <CarouselText>Ruhák</CarouselText>
+              <CarouselText>Sapkák</CarouselText>
             </Carousel.Caption>
           </Link>
         </Carousel.Item>
