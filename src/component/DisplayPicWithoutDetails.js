@@ -1,13 +1,7 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import "../style/links.css";
 import "../style/prevProductsImg.css"
-
-const Img = styled.img`
-    &:hover {
-      cursor: pointer;
-    }
-  `;
+import ImgSuspense from "img-suspense";
 
 export default function DisplayPicWithoutDetails(props) {
     const [itsIncreased, setIntsIncreased] = useState(false);
@@ -51,10 +45,15 @@ export default function DisplayPicWithoutDetails(props) {
                 style={{
                     margin: "auto", height: `${itsIncreased ? "auto" : props.pictureSquareDistance}`, width: `${itsIncreased ? "auto" : props.pictureSquareDistance}`
                 }}>
-                <Img
+                <ImgSuspense
                     style={{ height: `${itsIncreased ? "auto" : "100%"}`, width: `${itsIncreased ? "auto" : "100%"}`, maxWidth: "100vw", maxHeight: "100vh" }}
                     src={props.imgSrc}
                     alt="crochetProduct"
+                    fallback={<img
+                        src="/specialImages/loading.gif"
+                        alt="loading"
+                        style={{ height: `${itsIncreased ? "auto" : "100%"}`, width: `${itsIncreased ? "auto" : "100%"}`, maxWidth: "100vw", maxHeight: "100vh" }}
+                    ></img>}
                 />
             </div>
         </div>
