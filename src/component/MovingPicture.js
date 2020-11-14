@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-//importing imgs, the loading time is reduced this way
 import black from "../images/movingImages/black.jpg";
 import blanket from "../images/movingImages/takaro.jpg";
 import napCloth from "../images/movingImages/szundikendo.jpg";
@@ -24,6 +23,12 @@ const CarouselText = styled.h1`
 
 export default function MovingPicture() {
   const [width] = useContext(InnerWidthContext);
+  const [images,] = useState(
+    [{ url: black, pageName: "Figurák", linkUrl: "kesz-termekek/figurak" },
+    { url: blanket, pageName: "Takarók", linkUrl: "kesz-termekek/takarok" },
+    { url: napCloth, pageName: "Szundikendők", linkUrl: "kesz-termekek/szundikendok" },
+    { url: cap, pageName: "Sapkák", linkUrl: "kesz-termekek/sapkak" },
+    { url: picAboutMe, pageName: "Rólam", linkUrl: "rolam" }]);
 
   let fromMobile = width < 1000;
 
@@ -37,71 +42,28 @@ export default function MovingPicture() {
       }}
     >
       <Carousel interval={10000}>
-        <Carousel.Item>
-          <Link to="/kesz-termekek/figurak">
-            <img
-              className="d-block w-100"
-              style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={black}
-              alt="First slide"
-            />
-            <Carousel.Caption>
-              <CarouselText>Figurák</CarouselText>
-            </Carousel.Caption>
-          </Link>
-        </Carousel.Item>
-        <Carousel.Item>
-          <Link to="/kesz-termekek/takarok">
-            <img
-              className="d-block w-100"
-              style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={blanket}
-              alt="Third slide"
-            />
-            <Carousel.Caption>
-              <CarouselText>Takarók</CarouselText>
-            </Carousel.Caption>
-          </Link>
-        </Carousel.Item>
-        <Carousel.Item>
-          <Link to="/kesz-termekek/szundikendok">
-            <img
-              className="d-block w-100"
-              style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={napCloth}
-              alt="Third slide"
-            />
-            <Carousel.Caption>
-              <CarouselText>Szundikendők</CarouselText>
-            </Carousel.Caption>
-          </Link>
-        </Carousel.Item>
-        <Carousel.Item>
-          <Link to="/kesz-termekek/sapkak">
-            <img
-              className="d-block w-100"
-              style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={cap}
-              alt="Fourth slide"
-            />
-            <Carousel.Caption>
-              <CarouselText>Sapkák</CarouselText>
-            </Carousel.Caption>
-          </Link>
-        </Carousel.Item>
-        <Carousel.Item>
-          <Link to="/rolam">
-            <img
-              className="d-block w-100"
-              style={{ height: fromMobile ? "33vw" : "25vw" }}
-              src={picAboutMe}
-              alt="Fourth slide"
-            />
-            <Carousel.Caption>
-              <CarouselText>Rólam</CarouselText>
-            </Carousel.Caption>
-          </Link>
-        </Carousel.Item>
+        {images.map((image) => {
+          return <Carousel.Item key={image.pageName}>
+            <Link to={`/${image.linkUrl}`}>
+              <div style={{
+                backgroundImage: `url(/specialImages/loading.gif)`,
+                backgroundRepeat: "no-repeat", backgroundColor: "white",
+                backgroundPosition: "center", backgroundSize: fromMobile ? "25vw" : "18vw"
+              }}>
+                <img
+                  className="d-block w-100"
+                  style={{ height: fromMobile ? "33vw" : "25vw" }}
+                  src={image.url}
+                  alt="First slide"
+                  decoding="async"
+                />
+              </div>
+              <Carousel.Caption>
+                <CarouselText>{image.pageName}</CarouselText>
+              </Carousel.Caption>
+            </Link>
+          </Carousel.Item>
+        })}
       </Carousel>
     </div >
   );

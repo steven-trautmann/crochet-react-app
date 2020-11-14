@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, memo } from "react";
 import DisplayPic from "./DisplayPic";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import "../style/displayPicturesGrid.css";
 
-export default function DisplayPictures(props) {
+export default memo(function DisplayPictures(props) {
   const [width] = useContext(InnerWidthContext);
 
   let fromMobile = width < 1000;
@@ -63,4 +63,4 @@ export default function DisplayPictures(props) {
       })}
     </div>
   );
-}
+})
