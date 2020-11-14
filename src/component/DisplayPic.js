@@ -1,13 +1,7 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import { ModalContext } from "../context/ModalContext";
 import "../style/links.css";
-
-const Img = styled.img`
-    &:hover {
-      cursor: pointer;
-    }
-  `;
+import ImgSuspense from "img-suspense";
 
 export default function DisplayPic(props) {
   const [
@@ -38,13 +32,18 @@ export default function DisplayPic(props) {
 
   return (
     <div style={{ width: props.pictureSquareDistance }}>
-      <Img
+      <ImgSuspense
         style={{ height: `${props.pictureSquareDistance}`, width: `${props.pictureSquareDistance}` }}
         onClick={() => {
           showModal();
         }}
         src={props.pictureSrcGroup[0]}
         alt="crochetProduct"
+        fallback={<img
+          src="/specialImages/loading.gif"
+          alt="loading"
+          style={{ height: `${props.pictureSquareDistance}`, width: `${props.pictureSquareDistance}` }}
+        ></img>}
       />
       {props.fromMobile ?
         <h3 className="links"

@@ -73,12 +73,19 @@ function Modal(props) {
             {modalSrc.map((src) => {
               return (
                 <Carousel.Item style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
-                  <img
-                    className="d-block w-100"
-                    style={{ height: "30vw", width: "30vw" }}
-                    src={src}
-                    alt="slide"
-                  />
+                  <div style={{
+                    backgroundImage: `url(/specialImages/loading.gif)`,
+                    backgroundRepeat: "no-repeat", backgroundColor: "white",
+                    backgroundPosition: "center", backgroundSize: "20vw"
+                  }}>
+                    <img
+                      className="d-block w-100"
+                      style={{ height: "30vw", width: "30vw" }}
+                      src={src}
+                      alt="slide"
+                      decoding="async"
+                    />
+                  </div>
                 </Carousel.Item>
               )
             })}
@@ -113,12 +120,19 @@ function Modal(props) {
               {modalSrc.map((src) => {
                 return (
                   <Carousel.Item style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
-                    <img
-                      className="d-block w-100"
-                      style={{ height: "60vw", width: "60vw" }}
-                      src={src}
-                      alt="slide"
-                    />
+                    <div style={{
+                      backgroundImage: `url(/specialImages/loading.gif)`,
+                      backgroundRepeat: "no-repeat", backgroundColor: "white",
+                      backgroundPosition: "center", backgroundSize: "50vw"
+                    }}>
+                      <img
+                        className="d-block w-100"
+                        style={{ height: "60vw", width: "60vw" }}
+                        src={src}
+                        alt="slide"
+                        decoding="async"
+                      />
+                    </div>
                   </Carousel.Item>
                 )
               })}
