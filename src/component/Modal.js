@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import "../style/modal.css";
+import modalStyle from "../style/modal.module.css";
 import { ModalContext } from "../context/ModalContext";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import Carousel from "react-bootstrap/Carousel";
@@ -56,12 +56,12 @@ function Modal(props) {
 
   function toggleModalVisibility() {
     let modal = document.getElementById("myModal");
-    if (modal.classList.contains("modalInvisible")) {
-      modal.classList.remove("modalInvisible");
-      modal.classList.add("modalVisible");
+    if (modal.classList.contains(modalStyle.modalInvisible)) {
+      modal.classList.remove(modalStyle.modalInvisible);
+      modal.classList.add(modalStyle.modalVisible);
     } else {
-      modal.classList.remove("modalVisible");
-      modal.classList.add("modalInvisible");
+      modal.classList.remove(modalStyle.modalVisible);
+      modal.classList.add(modalStyle.modalInvisible);
     }
   }
 
@@ -72,7 +72,7 @@ function Modal(props) {
           <Carousel fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect}>
             {modalSrc.map((src) => {
               return (
-                <Carousel.Item style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
+                <Carousel.Item key={src} style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
                   <div style={{
                     backgroundImage: `url(/specialImages/loading.gif)`,
                     backgroundRepeat: "no-repeat", backgroundColor: "white",
@@ -116,10 +116,10 @@ function Modal(props) {
       <div>
         <div style={{ margin: "auto", textAlign: "center" }}>
           <div style={{ display: "inline-block", width: "60vw", height: "60vw" }}>
-            <Carousel fade={true} pause="hover" interval="20000" activeIndex={modalIndex} onSelect={handleSelect}>
+            <Carousel fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect}>
               {modalSrc.map((src) => {
                 return (
-                  <Carousel.Item style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
+                  <Carousel.Item key={src} style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
                     <div style={{
                       backgroundImage: `url(/specialImages/loading.gif)`,
                       backgroundRepeat: "no-repeat", backgroundColor: "white",
@@ -158,11 +158,11 @@ function Modal(props) {
   }
 
   return (
-    <div id="myModal" className="modalInvisible">
-      <div className="modal-content">
+    <div id="myModal" className={modalStyle.modalInvisible}>
+      <div className={modalStyle.modalContent}>
         <button
           style={{ position: "absolute", right: "2vw" }}
-          className="close"
+          className={modalStyle.close}
           onClick={() => {
             toggleModalVisibility();
           }}

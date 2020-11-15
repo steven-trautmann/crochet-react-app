@@ -221,7 +221,7 @@ export default function Connection() {
               <label htmlFor="name">Név: </label>
               <input name="name" placeholder={fromMobile ? "A neved" : "Milyen néven szólíthatlak?"}
                 required
-                maxlength={maxLengthStates.name}
+                maxLength={maxLengthStates.name}
                 onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.name} />
               <Counter>{emailStates.name.length}/{maxLengthStates.name}</Counter>
             </fieldset>
@@ -229,7 +229,7 @@ export default function Connection() {
             <fieldset>
               <label htmlFor="message">Üzenet: </label>
               <textarea name="message" rows="8"
-                maxlength={maxLengthStates.message}
+                maxLength={maxLengthStates.message}
                 required
                 placeholder="Ide írhatod az üzenetedet..."
                 onChange={handleChange} value={emailStates.message} ></textarea>
@@ -240,7 +240,7 @@ export default function Connection() {
             <fieldset>
               <label htmlFor="email">A <em>te</em> e-mail címed (ezen tudok neked válaszolni):</label>
               <input name="email" type="email"
-                maxlength={maxLengthStates.email}
+                maxLength={maxLengthStates.email}
                 required placeholder="a.neved@email.hu"
                 onChange={handleEmailChange} onKeyDown={handleEnterKeydown} value={emailStates.email}
                 style={{ border: `${emailIsValid ? "" : "solid red"}` }} />
@@ -250,7 +250,7 @@ export default function Connection() {
             <fieldset>
               <label htmlFor="additional">Egyéb megjegyzés: </label>
               <input name="additional" placeholder={fromMobile ? "Utóirat esetleg? :)" : "Észrevételek, utóirat, bármi :)"}
-                maxlength={maxLengthStates.additional}
+                maxLength={maxLengthStates.additional}
                 onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.additional} />
               <Counter>{emailStates.additional.length}/{maxLengthStates.additional}</Counter>
             </fieldset>

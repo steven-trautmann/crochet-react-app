@@ -12,7 +12,3 @@
 .links:active {
   color: red;
 }
-
-img:hover{
-  cursor: pointer;
-}

@@ -1,6 +1,6 @@
-.homepage-table h1,
-.homepage-table h2,
-.homepage-table h3 {
+.homepageTable h1,
+.homepageTable h2,
+.homepageTable h3 {
   margin-top: 0.5rem;
   text-align: center;
   cursor: pointer;
@@ -8,17 +8,17 @@
   text-decoration: none;
 }
 
-.homepage-table h1:active,
-.homepage-table h2:active,
-.homepage-table h3:active  {
+.homepageTable h1:active,
+.homepageTable h2:active,
+.homepageTable h3:active  {
   color: red;
   text-decoration: underline;
   text-decoration-color: red;
 }
 
-.homepage-table h1:hover,
-.homepage-table h2:hover,
-.homepage-table h3:hover  {
+.homepageTable h1:hover,
+.homepageTable h2:hover,
+.homepageTable h3:hover  {
   text-decoration: underline;
   text-decoration-color: black;
 }

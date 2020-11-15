@@ -47,22 +47,18 @@
   background-color: lightgray;
 }
 
-#finishedProducts li,
-#prevProducts li,
-#premiumProducts li {
+#finishedProducts li{
   color: black;
   font-size: 2rem;
 }
 
-#finishedProducts li:active,
-#prevProducts li:active {
+#finishedProducts li:active{
   color: red;
   text-decoration: underline;
   text-decoration-color: red;
 }
 
-#finishedProducts li:hover,
-#prevProducts li:hover {
+#finishedProducts li:hover{
   text-decoration: underline;
   text-decoration-color: black;
 }

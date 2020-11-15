@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import "../style/modal.css";
 import DisplayPictures from "./DisplayPictures";
 import Modal from "./Modal";
 import { useParams } from "react-router-dom";

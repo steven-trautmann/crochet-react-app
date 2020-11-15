@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ModalContext } from "../context/ModalContext";
-import "../style/links.css";
+import linkStyle from "../style/links.module.css";
 import ImgSuspense from "img-suspense";
 
 export default function DisplayPic(props) {
@@ -46,7 +46,7 @@ export default function DisplayPic(props) {
         ></img>}
       />
       {props.fromMobile ?
-        <h3 className="links"
+        <h3 className={linkStyle.links}
           style={{ marginTop: "0.5rem", textAlign: "center", height: "4rem" }}
           onClick={() => {
             showModal();
@@ -55,7 +55,7 @@ export default function DisplayPic(props) {
           {pictureName}
         </h3>
         :
-        <h2 className="links"
+        <h2 className={linkStyle.links}
           style={{ marginTop: "0.5rem", textAlign: "center", height: "4rem" }}
           onClick={() => {
             showModal();

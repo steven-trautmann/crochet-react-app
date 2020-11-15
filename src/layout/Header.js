@@ -2,9 +2,10 @@ import React, { useContext, useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
-import "../style/hamburgerMenu.scss";
-import "../style/navBar.css";
-import "../style/links.css";
+
+import hamMenu from "../style/hamburgerMenu.module.scss";
+import navBar from "../style/navBar.module.css";
+import linkStyle from "../style/links.module.css";
 
 const TopNav = styled.div`
     overflow: hidden;
@@ -40,7 +41,7 @@ export default function Header() {
 
 
   const setUpTheCollapsibleDropDownItems = useCallback(() => {
-    let coll = document.getElementsByClassName("collapsible");
+    let coll = document.getElementsByClassName(hamMenu.collapsible);
 
     for (let i = 0; i < coll.length; i++) {
       coll[i].addEventListener("click", function () {
@@ -94,23 +95,23 @@ export default function Header() {
     let myDropdown;
 
     if (buttonName === "finishedProductsDropper") {
-      myDropdown = document.getElementById("finishedProducts");
+      myDropdown = document.getElementById(navBar.finishedProducts);
     }
 
-    if (myDropdown.classList.contains("dropDownDisquise")) {
-      myDropdown.classList.remove("dropDownDisquise");
-      myDropdown.classList.add("dropDown");
+    if (myDropdown.classList.contains(navBar.dropDownDisquise)) {
+      myDropdown.classList.remove(navBar.dropDownDisquise);
+      myDropdown.classList.add(navBar.dropDown);
     } else {
-      myDropdown.classList.remove("dropDown");
-      myDropdown.classList.add("dropDownDisquise");
+      myDropdown.classList.remove(navBar.dropDown);
+      myDropdown.classList.add(navBar.dropDownDisquise);
     }
   }
 
   function closeAllNavBarSubmenus() {
-    let finishedDropDown = document.getElementById("finishedProducts");
-    if (finishedDropDown.classList.contains("dropDown")) {
-      finishedDropDown.classList.remove("dropDown");
-      finishedDropDown.classList.add("dropDownDisquise");
+    let finishedDropDown = document.getElementById(navBar.finishedProducts);
+    if (finishedDropDown.classList.contains(navBar.dropDown)) {
+      finishedDropDown.classList.remove(navBar.dropDown);
+      finishedDropDown.classList.add(navBar.dropDownDisquise);
     }
   }
 
@@ -121,23 +122,23 @@ export default function Header() {
     }
   };
 
-  const toggleClassesHamMenu = () => {
-    let hamMenu = document.getElementsByClassName("hamburger-menu");
-    if (hamMenu[0] == null) {
+  const toggleClassesHambrMenu = () => {
+    let hambrMenu = document.getElementsByClassName(hamMenu.hamburgerMenu);
+    if (hambrMenu[0] == null) {
       //if the hamburger menu is displayed but the window resized to desktop
       let mobileMenu = document.getElementById("mobile");
-      mobileMenu.classList.remove("hamburgerDropDown");
-      mobileMenu.classList.add("hamburgerDropDownDisquise");
+      mobileMenu.classList.remove(hamMenu.hamburgerDropDown);
+      mobileMenu.classList.add(hamMenu.hamburgerDropDownDisquise);
     } else {
-      hamMenu[0].classList.toggle("animate");
+      hambrMenu[0].classList.toggle(hamMenu.animate);
       if (fromMobile === true) {
         let mobileMenu = document.getElementById("mobile");
-        if (mobileMenu.classList.contains("hamburgerDropDownDisquise")) {
-          mobileMenu.classList.remove("hamburgerDropDownDisquise");
-          mobileMenu.classList.add("hamburgerDropDown");
+        if (mobileMenu.classList.contains(hamMenu.hamburgerDropDownDisquise)) {
+          mobileMenu.classList.remove(hamMenu.hamburgerDropDownDisquise);
+          mobileMenu.classList.add(hamMenu.hamburgerDropDown);
         } else {
-          mobileMenu.classList.remove("hamburgerDropDown");
-          mobileMenu.classList.add("hamburgerDropDownDisquise");
+          mobileMenu.classList.remove(hamMenu.hamburgerDropDown);
+          mobileMenu.classList.add(hamMenu.hamburgerDropDownDisquise);
         }
       }
     }
@@ -146,12 +147,12 @@ export default function Header() {
   const displayHamburgerMenu = () => {
     return (
       <div
-        className="menu-wrapper"
+        className={hamMenu.menuWrapper}
         onClick={() => {
-          toggleClassesHamMenu();
+          toggleClassesHambrMenu();
         }}
       >
-        <div className="hamburger-menu"></div>
+        <div className={hamMenu.hamburgerMenu}></div>
       </div>
     );
   };
@@ -160,20 +161,20 @@ export default function Header() {
     return (
       <DesktopNav>
         <button
-          className="navItem"
+          className={navBar.navItem}
           id="finishedProductsButton"
           name="finishedProductsDropper"
           onClick={triggerToggleDropDown}
         >
           Kész Termékek
         </button>
-        <Link className="navItem links" to="/eddigi-munkak">
+        <Link className={`${navBar.navItem} ${linkStyle.links}`} to="/eddigi-munkak">
           Eddigi Munkáim
         </Link>
-        <Link className="navItem links" to="/rolam">
+        <Link className={`${navBar.navItem} ${linkStyle.links}`} to="/rolam">
           Rólam
         </Link>
-        <Link className="navItem links" to="/kapcsolat">
+        <Link className={`${navBar.navItem} ${linkStyle.links}`} to="/kapcsolat">
           Kapcsolat
         </Link>
       </DesktopNav>
@@ -197,13 +198,13 @@ export default function Header() {
         {!fromMobile ? displayNavBar() : displayHamburgerMenu()}
       </TopNav>
       <div
-        id="finishedProducts"
+        id={navBar.finishedProducts}
         style={{
           left: menuPositions.finishedProductsLeftFromWindow,
           width: menuPositions.finishedProductsWidth,
           textAlign: "center",
         }}
-        className="dropDownDisquise"
+        className={navBar.dropDownDisquise}
       >
         <ul style={{ listStyleType: "none" }}>
           <Link to="/kesz-termekek/figurak">
@@ -221,7 +222,7 @@ export default function Header() {
         </ul>
       </div>
 
-      <div id="mobile" className="hamburgerDropDownDisquise">
+      <div id="mobile" className={hamMenu.hamburgerDropDownDisquise}>
         <button
           style={{
             fontSize: "0.5rem",
@@ -231,7 +232,7 @@ export default function Header() {
             fontFamily: "auto",
             outline: "black",
           }}
-          onClick={() => toggleClassesHamMenu()}
+          onClick={() => toggleClassesHambrMenu()}
         >
           X
         </button>
@@ -239,11 +240,11 @@ export default function Header() {
           <li>
             <button
               style={{ outline: "none" }}
-              className="collapsible hamburgerNavItem"
+              className={`${hamMenu.collapsible} ${hamMenu.hamburgerNavItem}`}
             >
               Kész Termékek
             </button>
-            <div style={{ borderRadius: "20%" }} className="content">
+            <div style={{ borderRadius: "20%" }} className={hamMenu.content}>
               <ul
                 style={{
                   listStyleType: "none",
@@ -265,13 +266,13 @@ export default function Header() {
               </ul>
             </div>
           </li>
-          <Link className="hamburgerNavItem links" to="/eddigi-munkak">
+          <Link className={`${hamMenu.hamburgerNavItem} ${linkStyle.links}`} to="/eddigi-munkak">
             <li>Eddigi Munkáim</li>
           </Link>
-          <Link className="hamburgerNavItem links" to="/rolam">
+          <Link className={`${hamMenu.hamburgerNavItem} ${linkStyle.links}`} to="/rolam">
             <li>Rólam</li>
           </Link>
-          <Link className="hamburgerNavItem links" to="/kapcsolat">
+          <Link className={`${hamMenu.hamburgerNavItem} ${linkStyle.links}`} to="/kapcsolat">
             <li>Kapcsolat</li>
           </Link>
         </ul>

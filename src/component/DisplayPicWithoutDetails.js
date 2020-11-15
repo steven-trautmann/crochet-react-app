@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../style/links.css";
 import "../style/prevProductsImg.css"
 import ImgSuspense from "img-suspense";
 

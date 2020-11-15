@@ -3,10 +3,11 @@ import MovingPicture from "./MovingPicture";
 import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
-import "../style/homepage.css";
-import "../style/homepageTable.css";
-import "../style/links.css";
 import ImgSuspense from "img-suspense";
+
+import homepageStyle from "../style/homepage.module.css";
+import linkStyle from "../style/links.module.css";
+import "../style/globalImg.css";
 
 export default memo(function HomePage() {
   const [width] = useContext(InnerWidthContext);
@@ -28,16 +29,16 @@ export default memo(function HomePage() {
   `;
 
   return (
-    <div id="homepage">
+    <div>
       <MovingPicture />
       {/* if from mobile or desktop */}
       <div style={{ marginTop: `${fromMobile ? "1rem" : "0"}` }}>
-        <h1>Kész Termékek</h1>
+        <h1 style={{ textAlign: "center" }}>Kész Termékek</h1>
       </div>
 
-      <GridDiv className="homepage-table">
+      <GridDiv className={homepageStyle.homepageTable}>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/figurak"} className="links">
+          <Link to={"/kesz-termekek/figurak"} className={linkStyle.links}>
             <ImgSuspense
               src="/specialImages/homepageImgs/finishedSampleImgs/Figurák.jpg"
               style={{ height: pictureSquareDistance, width: pictureSquareDistance }}
@@ -52,7 +53,7 @@ export default memo(function HomePage() {
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/takarok"} className="links">
+          <Link to={"/kesz-termekek/takarok"} className={linkStyle.links}>
             <ImgSuspense
               src="/specialImages/homepageImgs/finishedSampleImgs/Takarók.jpg"
               style={{ height: pictureSquareDistance, width: pictureSquareDistance }}
@@ -67,7 +68,7 @@ export default memo(function HomePage() {
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/szundikendok"} className="links">
+          <Link to={"/kesz-termekek/szundikendok"} className={linkStyle.links}>
             <ImgSuspense
               src="/specialImages/homepageImgs/finishedSampleImgs/Szundikendők.jpg"
               style={{ height: pictureSquareDistance, width: pictureSquareDistance }}
@@ -82,7 +83,7 @@ export default memo(function HomePage() {
           </Link>
         </div>
         <div style={{ width: pictureSquareDistance }}>
-          <Link to={"/kesz-termekek/sapkak"} className="links">
+          <Link to={"/kesz-termekek/sapkak"} className={linkStyle.links}>
             <ImgSuspense
               src="/specialImages/homepageImgs/finishedSampleImgs/Sapkák.jpg"
               style={{ height: pictureSquareDistance, width: pictureSquareDistance }}
