@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import modalStyle from "../style/modal.module.css";
 import { ModalContext } from "../context/ModalContext";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import Carousel from "react-bootstrap/Carousel";
+import modalStyle from "../style/modal.module.css";
 
 function Modal(props) {
   const [ModalTexts] = useContext(props.context);
@@ -161,7 +161,6 @@ function Modal(props) {
     <div id="myModal" className={modalStyle.modalInvisible}>
       <div className={modalStyle.modalContent}>
         <button
-          style={{ position: "absolute", right: "2vw" }}
           className={modalStyle.close}
           onClick={() => {
             toggleModalVisibility();

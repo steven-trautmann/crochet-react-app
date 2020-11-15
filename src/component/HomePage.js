@@ -1,6 +1,5 @@
 import React, { useContext, memo } from "react";
 import MovingPicture from "./MovingPicture";
-import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
 import ImgSuspense from "img-suspense";
@@ -8,25 +7,13 @@ import ImgSuspense from "img-suspense";
 import homepageStyle from "../style/homepage.module.css";
 import linkStyle from "../style/links.module.css";
 import "../style/globalImg.css";
+import "../style/picturesGrid.css";
 
 export default memo(function HomePage() {
   const [width] = useContext(InnerWidthContext);
 
   let fromMobile = width < 1000;
   let pictureSquareDistance = fromMobile ? "32vw" : "17.5vw";
-
-  const GridDiv = styled.div`
-    width: 90vw;
-    display: grid;
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(${pictureSquareDistance}, 1fr)
-    );
-    justify-content: center;
-    grid-gap: 3vw;
-    place-items: center;
-    margin: auto;
-  `;
 
   return (
     <div>
@@ -36,7 +23,10 @@ export default memo(function HomePage() {
         <h1 style={{ textAlign: "center" }}>Kész Termékek</h1>
       </div>
 
-      <GridDiv className={homepageStyle.homepageTable}>
+      <div className={`${homepageStyle.homepageTable} picturesGrid`}
+        style={{
+          gridTemplateColumns: `repeat(auto-fill, minmax(${pictureSquareDistance}, 1fr))`,
+        }}>
         <div style={{ width: pictureSquareDistance }}>
           <Link to={"/kesz-termekek/figurak"} className={linkStyle.links}>
             <ImgSuspense
@@ -97,7 +87,7 @@ export default memo(function HomePage() {
             {fromMobile ? <h2>Sapkák</h2> : <h1>Sapkák</h1>}
           </Link>
         </div>
-      </GridDiv>
+      </div>
     </div>
   );
 })

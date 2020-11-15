@@ -53,6 +53,10 @@
   width: 2rem;
   height: 2rem;
   float: right !important;
+  position: absolute;
+  right: 8vw;
+  border: none;
+  background-color: white;
 }
 
 .close:hover,

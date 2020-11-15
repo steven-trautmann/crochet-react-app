@@ -1,7 +1,6 @@
 import React, { useContext, memo } from "react";
 import DisplayPic from "./DisplayPic";
 import { InnerWidthContext } from "../context/InnerWidthContext";
-import "../style/displayPicturesGrid.css";
 
 export default memo(function DisplayPictures(props) {
   const [width] = useContext(InnerWidthContext);

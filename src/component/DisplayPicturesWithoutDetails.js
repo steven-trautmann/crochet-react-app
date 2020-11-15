@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import DisplayPicWithoutDetails from "./DisplayPicWithoutDetails";
-import "../style/displayPicturesGrid.css";
 
 const DisplayPicturesWithoutDetails = (props) => {
     const [width] = useContext(InnerWidthContext);
