@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, memo } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ const CarouselText = styled.h1`
   padding: 0.5vw;
 `;
 
-export default function MovingPicture() {
+export default memo(function MovingPicture() {
   const [width] = useContext(InnerWidthContext);
   const [images,] = useState(
     [{ url: black, pageName: "Figurák", linkUrl: "kesz-termekek/figurak" },
@@ -67,4 +67,4 @@ export default function MovingPicture() {
       </Carousel>
     </div >
   );
-}
+})

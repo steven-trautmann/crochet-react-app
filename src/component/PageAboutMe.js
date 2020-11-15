@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import PageTitle from "./PageTitle";
 
-export default function PageAboutMe() {
+export default memo(function PageAboutMe() {
   return (
     <div style={{ marginTop: "6rem" }}>
       <PageTitle text={"Rólam"} />
@@ -57,4 +57,4 @@ export default function PageAboutMe() {
       </div>
     </div>
   );
-}
+})

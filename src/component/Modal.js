@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef, memo } from "react";
 import { ModalContext } from "../context/ModalContext";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import Carousel from "react-bootstrap/Carousel";
@@ -183,4 +183,4 @@ function Modal(props) {
   );
 }
 
-export default Modal;
+export default memo(Modal);

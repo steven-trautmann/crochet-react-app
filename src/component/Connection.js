@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, memo } from "react";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import Axios from "axios";
 import sBubbleStyle from "../style/speechBubble.module.css";
@@ -9,7 +9,7 @@ const Counter = styled.h3`
   margin: 0;
 `;
 
-export default function Connection() {
+export default memo(function Connection() {
   const [width] = useContext(InnerWidthContext);
   const [formVisible, setFormVisible] = useState(true);
   const [formSentSuccess, setFormSentSuccess] = useState(false);
@@ -280,4 +280,4 @@ export default function Connection() {
       </div>
     </div>
   );
-}
+})

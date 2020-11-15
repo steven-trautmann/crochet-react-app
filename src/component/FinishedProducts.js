@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, memo } from "react";
 import DisplayPictures from "./DisplayPictures";
 import Modal from "./Modal";
 import { useParams } from "react-router-dom";
@@ -6,7 +6,7 @@ import { FinishedModalTextsContext } from "../context/ModalTextsFinishedProducts
 import { importAll } from "../utils/ImportAllFromFolder";
 import PageTitle from "./PageTitle";
 
-export default function FinishedProducts(props) {
+export default memo(function FinishedProducts(props) {
     const [products, setProducts] = useState({});
     const { type } = useParams();
     const [typeTitle, setTypeTitle] = useState("Helytelen URL!");
@@ -75,4 +75,4 @@ export default function FinishedProducts(props) {
             </div>
         </div>
     );
-}
+})
