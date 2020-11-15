@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../style/prevProductsImg.css"
+import imgStyle from "../style/prevProductsImg.module.css"
 import ImgSuspense from "img-suspense";
 
 export default function DisplayPicWithoutDetails(props) {
@@ -15,7 +15,7 @@ export default function DisplayPicWithoutDetails(props) {
             setIntsIncreased(false);
         } else {
             setOffsetTop(window.scrollY);
-            setContainerIdName("prevProductsContainerIncreased");
+            setContainerIdName(imgStyle.prevProductsContainerIncreased);
             disableScroll();
             setIntsIncreased(true);
         }

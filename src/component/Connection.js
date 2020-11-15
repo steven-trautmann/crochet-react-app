@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import Axios from "axios";
-import "../style/speech-bubble.css";
+import sBubbleStyle from "../style/speechBubble.module.css";
 import styled from "styled-components";
 import PageTitle from "./PageTitle";
 
@@ -255,7 +255,7 @@ export default function Connection() {
               <Counter>{emailStates.additional.length}/{maxLengthStates.additional}</Counter>
             </fieldset>
 
-            {missingInputs ? <p className="speech-bubble">Minden mezőt ki kell tölteni!</p> : null}
+            {missingInputs ? <p className={sBubbleStyle.speechBubble}>Minden mezőt ki kell tölteni!</p> : null}
             <button onClick={handleFormSubmit} style={{ marginTop: "1.5rem" }}>Küldés</button>
             <button onClick={handleReset} style={{ marginTop: "1.5rem", marginLeft: "2rem" }}>Visszaállítás</button>
           </div>

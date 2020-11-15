@@ -1,4 +1,4 @@
-.speech-bubble {
+.speechBubble {
 	position: relative;
     background: #ff0002;
 	border-radius: .4%;
@@ -14,7 +14,7 @@
 	border-radius: 3%;
 }
 
-.speech-bubble:after {
+.speechBubble:after {
 	content: '';
 	position: absolute;
 	bottom: 0;
