@@ -7,7 +7,7 @@ import _ from "underscore";
 const PrevProducts = () => {
     const [products, _setProducts] = useState([]);
     const [slicedProducts, setSlicedProducts] = useState([]);
-    const [offset, _setOffset] = useState(8);
+    const [offset, _setOffset] = useState(0);
 
     const offsetRef = React.useRef(offset);
 
@@ -22,6 +22,17 @@ const PrevProducts = () => {
         _setProducts(data);
     }
 
+    const addFourAdditionalImgs = () => {
+        let newOffset;
+        if (offsetRef.current + 4 > productsRef.current.length) {
+            newOffset = productsRef.current.length;
+        } else {
+            newOffset = offsetRef.current + 4;
+        }
+        setOffset(newOffset);
+        sliceProducts(newOffset);
+    }
+
     const importPrevProducts = () => {
         let srcList = importAllToSrcLists(
             require.context(
@@ -30,10 +41,9 @@ const PrevProducts = () => {
                 /\.(png|jpe?g|svg)$/
             )
         )
-        setSlicedProducts(srcList.slice(0, 8));
         setProducts(srcList);
+        addFourAdditionalImgs();
     }
-
 
     const sliceProducts = (from) => {
         setSlicedProducts(productsRef.current.slice(0, from));
@@ -55,19 +65,12 @@ const PrevProducts = () => {
 
         // check if the scroll event is near to the bottom
         if (limit - window.scrollY < 200) {
-            let newOffset;
-            if (offsetRef.current + 8 > productsRef.current.length) {
-                newOffset = productsRef.current.length;
-            } else {
-                newOffset = offsetRef.current + 8;
-            }
-            setOffset(newOffset);
-            sliceProducts(newOffset);
+            addFourAdditionalImgs();
         }
     }
 
     //throttle the scroll handle so it won't be called too many times
-    const throttledScrollHandle = _.throttle(handleScroll, 1000);
+    const throttledScrollHandle = _.throttle(handleScroll, 1500);
 
     // set an eventListener for scrolling and remove it when its not used
     useEffect(() => {
@@ -79,6 +82,23 @@ const PrevProducts = () => {
         <div style={{ margin: "6rem 0 2rem" }}>
             <PageTitle text={"Eddigi Munkáim"} />
             <DisplayPicturesWithoutDetails images={slicedProducts} />
+            <div style={{ textAlign: "center" }}>
+                <button
+                    onClick={() => {
+                        if (offsetRef.current < productsRef.current.length) {
+                            addFourAdditionalImgs()
+                        }
+                    }}
+                    style={{
+                        color: `${offsetRef.current < productsRef.current.length ? "black" : "red"}`,
+                        marginTop: "2rem",
+                        fontSize: "1.5rem",
+                        cursor: `${offsetRef.current < productsRef.current.length ? "pointer" : "not-allowed"}`
+                    }}
+                >
+                    {offsetRef.current < productsRef.current.length ? "Még több kép" : "Nincs több kép"}
+                </button>
+            </div>
         </div >
     );
 }
