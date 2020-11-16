@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import imgViewer from "../style/imgViewer.module.css"
 import ImgSuspense from "img-suspense";
 import styled from "styled-components";
+import KeyDownHandler from "./KeyDownHandler";
 
 const ArrowButton = styled.button`
     background-color: white;
@@ -55,12 +56,22 @@ export default function ModalWithoutDetails(props) {
 
     function oneLeft(e) {
         e.stopPropagation();
-        props.setIncreasedImg(props.imgSrcList[props.imgSrcList.indexOf(props.imgSrc) - 1]);
+        let currentIndex = props.imgSrcList.indexOf(props.imgSrc);
+        if (currentIndex !== 0) {
+            props.setIncreasedImg(props.imgSrcList[currentIndex - 1]);
+        } else {
+            decrease();
+        }
     };
 
     function oneRight(e) {
         e.stopPropagation();
-        props.setIncreasedImg(props.imgSrcList[props.imgSrcList.indexOf(props.imgSrc) + 1]);
+        let currentIndex = props.imgSrcList.indexOf(props.imgSrc);
+        if (currentIndex < props.imgSrcList.length - 1) {
+            props.setIncreasedImg(props.imgSrcList[currentIndex + 1]);
+        } else {
+            decrease();
+        }
     }
 
     return (
@@ -75,6 +86,7 @@ export default function ModalWithoutDetails(props) {
                 }}>
                 {props.imgSrc === "" ? null :
                     <>
+                        <KeyDownHandler escHandler={decrease} leftHandler={oneLeft} rightHandler={oneRight} />
                         {props.imgSrcList.indexOf(props.imgSrc) !== 0 ?
                             <ArrowButton onClick={(e) => { oneLeft(e) }}><img src="/specialImages/left.svg" alt="left" /></ArrowButton>
                             :
