@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, memo } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import DisplayPictures from "./DisplayPictures";
 import Modal from "./Modal";
 import { useParams } from "react-router-dom";
@@ -6,11 +6,13 @@ import { FinishedModalTextsContext } from "../context/ModalTextsFinishedProducts
 import { importAll } from "../utils/ImportAllFromFolder";
 import PageTitle from "./PageTitle";
 
-export default memo(function FinishedProducts(props) {
+export default function FinishedProducts() {
     const [products, setProducts] = useState({});
     const { type } = useParams();
     const [typeTitle, setTypeTitle] = useState("Helytelen URL!");
 
+    //it is not necessary making sense, because the useParams is treated as prop, 
+    //so the component cannot be memoized, so the useCallback also wont be memoized
     const importFinishedProducts = useCallback(() => {
         if (type === "figurak") {
             setTypeTitle("Figurák");
@@ -75,4 +77,4 @@ export default memo(function FinishedProducts(props) {
             </div>
         </div>
     );
-})
+}
