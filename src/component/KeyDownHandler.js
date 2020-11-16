@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, memo } from "react";
 
 const KeyDownHandler = (props) => {
 
@@ -23,4 +23,4 @@ const KeyDownHandler = (props) => {
   return (null);
 };
 
-export default KeyDownHandler;
+export default memo(KeyDownHandler);

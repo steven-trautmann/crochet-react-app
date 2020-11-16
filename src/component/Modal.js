@@ -132,7 +132,6 @@ function Modal(props) {
   function mobileModalContext() {
     return (
       <div>
-        <KeyDownHandler escHandler={toggleModalVisibility} leftHandler={oneLeft} rightHandler={oneRight} />
         <div style={{ margin: "auto", textAlign: "center" }}>
           <div style={{ display: "inline-block", width: "60vw", height: "60vw" }}>
             <Carousel fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect}>
