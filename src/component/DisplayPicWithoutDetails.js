@@ -3,7 +3,7 @@ import imgStyle from "../style/prevProductsImg.module.css"
 import ImgSuspense from "img-suspense";
 
 export default memo(function DisplayPicWithoutDetails(props) {
-    const [itsIncreased, setIntsIncreased] = useState(false);
+    const [itsIncreased, setItsIncreased] = useState(false);
     const [offsetTop, setOffsetTop] = useState(0);
     const [containerIdName, setContainerIdName] = useState("");
 
@@ -12,12 +12,12 @@ export default memo(function DisplayPicWithoutDetails(props) {
             setOffsetTop(0);
             setContainerIdName("");
             enableScroll();
-            setIntsIncreased(false);
+            setItsIncreased(false);
         } else {
             setOffsetTop(window.scrollY);
             setContainerIdName(imgStyle.prevProductsContainerIncreased);
             disableScroll();
-            setIntsIncreased(true);
+            setItsIncreased(true);
         }
     }
 
