@@ -94,7 +94,8 @@ const PrevProducts = () => {
         <div style={{ margin: "6rem 0 2rem" }}>
             <PageTitle text={"Eddigi Munkáim"} />
             <DisplayPicturesWithoutDetails images={slicedProducts} setIncreasedImg={setIncreasedImg} />
-            <ModalWithoudDetails imgSrc={increasedImg} setIncreasedImg={setIncreasedImg} />
+            <ModalWithoudDetails imgSrc={increasedImg} setIncreasedImg={setIncreasedImg} imgSrcList={slicedProducts} />
+
             <div style={{ textAlign: "center" }}>
                 <button
                     onClick={() => {

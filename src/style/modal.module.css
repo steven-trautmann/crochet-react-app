@@ -63,5 +63,6 @@
 .close:focus {
   color: #000;
   text-decoration: none;
+  outline: none;
   cursor: pointer;
 }

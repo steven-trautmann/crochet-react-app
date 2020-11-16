@@ -1,6 +1,21 @@
 import React, { useState, useEffect, useCallback } from "react";
 import imgViewer from "../style/imgViewer.module.css"
 import ImgSuspense from "img-suspense";
+import styled from "styled-components";
+
+const ArrowButton = styled.button`
+    background-color: white;
+    width: 5vw;
+    height: 100vh;
+    opacity: 90%;
+    border: 0;
+    text-decoration: none; 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    &:focus{
+        outline: none;
+    }
+`;
 
 export default function ModalWithoutDetails(props) {
     const [offsetTop, setOffsetTop] = useState(0);
@@ -38,6 +53,16 @@ export default function ModalWithoutDetails(props) {
         window.onscroll = function () { };
     }
 
+    function oneLeft(e) {
+        e.stopPropagation();
+        props.setIncreasedImg(props.imgSrcList[props.imgSrcList.indexOf(props.imgSrc) - 1]);
+    };
+
+    function oneRight(e) {
+        e.stopPropagation();
+        props.setIncreasedImg(props.imgSrcList[props.imgSrcList.indexOf(props.imgSrc) + 1]);
+    }
+
     return (
         <div id={containerIdName}
             style={{ top: offsetTop }}
@@ -49,16 +74,28 @@ export default function ModalWithoutDetails(props) {
                     margin: "auto", height: "auto", width: "auto"
                 }}>
                 {props.imgSrc === "" ? null :
-                    <ImgSuspense
-                        style={{ height: "auto", width: "auto", maxWidth: "100vw", maxHeight: "100vh" }}
-                        src={props.imgSrc}
-                        alt="crochetProduct"
-                        fallback={<img
-                            src="/specialImages/loading.gif"
-                            alt="loading"
-                            style={{ height: "auto", width: "auto", maxWidth: "100vw", maxHeight: "100vh", borderRadius: "20%" }}
-                        ></img>}
-                    />
+                    <>
+                        {props.imgSrcList.indexOf(props.imgSrc) !== 0 ?
+                            <ArrowButton onClick={(e) => { oneLeft(e) }}><img src="/specialImages/left.svg" alt="left" /></ArrowButton>
+                            :
+                            <ArrowButton>X</ArrowButton>
+                        }
+                        <ImgSuspense
+                            style={{ height: "auto", width: "auto", maxWidth: "100vw", maxHeight: "100vh" }}
+                            src={props.imgSrc}
+                            alt="crochetProduct"
+                            fallback={<img
+                                src="/specialImages/loading.gif"
+                                alt="loading"
+                                style={{ height: "auto", width: "auto", maxWidth: "100vw", maxHeight: "100vh", borderRadius: "20%" }}
+                            ></img>}
+                        />
+                        {props.imgSrcList.indexOf(props.imgSrc) < props.imgSrcList.length - 1 ?
+                            <ArrowButton onClick={(e) => { oneRight(e) }}><img src="/specialImages/right.svg" alt="right" /></ArrowButton>
+                            :
+                            <ArrowButton>X</ArrowButton>
+                        }
+                    </>
                 }
             </div>
         </div>
