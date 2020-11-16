@@ -7,7 +7,7 @@ const DisplayPicturesWithoutDetails = (props) => {
 
     let fromMobile = width < 1000;
     let pictureSquareDistance = fromMobile ? "32vw" : "17.5vw";
-    let keyCounter = 0;
+    let keyCounter = -1;
 
     return (
         <div

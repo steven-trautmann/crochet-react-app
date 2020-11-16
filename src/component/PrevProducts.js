@@ -43,6 +43,13 @@ const PrevProducts = () => {
                 /\.(png|jpe?g|svg)$/
             )
         )
+        srcList.sort((a, b) => {
+            if (Number(a.slice(a.lastIndexOf("/") + 1, a.indexOf("."))) < Number(b.slice(b.lastIndexOf("/") + 1, b.indexOf(".")))) {
+                return -1;
+            } else {
+                return 1;
+            }
+        })
         setProducts(srcList);
         addFourAdditionalImgs();
     }
