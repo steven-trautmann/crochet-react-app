@@ -23,6 +23,7 @@ const DisplayPicturesWithoutDetails = (props) => {
                         key={keyCounter}
                         pictureSquareDistance={pictureSquareDistance}
                         imgSrc={imgSrc}
+                        setIncreasedImg={props.setIncreasedImg}
                     ></DisplayPicWithoutDetails>
                 );
             })}

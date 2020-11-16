@@ -1,4 +1,4 @@
-#prevProductsContainerIncreased {
+#increasedImgContainer {
     z-index: 900;
     position: absolute;
     width: 100%;
@@ -12,6 +12,11 @@
     animation-direction: alternate;
     animation-iteration-count: 1;
     animation-fill-mode: none;
+}
+
+#decreasedImgContainer {
+    position: absolute;
+    display: none;
 }
 
 @keyframes stretch {

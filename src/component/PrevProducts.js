@@ -3,11 +3,13 @@ import PageTitle from "./PageTitle";
 import { importAllToSrcLists } from "../utils/ImportAllFromFolder";
 import DisplayPicturesWithoutDetails from './DisplayPicturesWithoutDetails';
 import _ from "underscore";
+import ModalWithoudDetails from "./ModalWithoutDetails";
 
 const PrevProducts = () => {
     const [products, _setProducts] = useState([]);
     const [slicedProducts, setSlicedProducts] = useState([]);
     const [offset, _setOffset] = useState(0);
+    const [increasedImg, setIncreasedImg] = useState("");
 
     const offsetRef = React.useRef(offset);
 
@@ -32,7 +34,7 @@ const PrevProducts = () => {
         setOffset(newOffset);
         sliceProducts(newOffset);
 
-        window.scrollTo(0, window.scrollY - 500);
+        window.scrollTo(0, window.scrollY - 350);
     }
 
     const importPrevProducts = () => {
@@ -91,7 +93,8 @@ const PrevProducts = () => {
     return (
         <div style={{ margin: "6rem 0 2rem" }}>
             <PageTitle text={"Eddigi Munkáim"} />
-            <DisplayPicturesWithoutDetails images={slicedProducts} />
+            <DisplayPicturesWithoutDetails images={slicedProducts} setIncreasedImg={setIncreasedImg} />
+            <ModalWithoudDetails imgSrc={increasedImg} setIncreasedImg={setIncreasedImg} />
             <div style={{ textAlign: "center" }}>
                 <button
                     onClick={() => {
@@ -106,7 +109,7 @@ const PrevProducts = () => {
                         cursor: `${offsetRef.current < productsRef.current.length ? "pointer" : "not-allowed"}`
                     }}
                 >
-                    {offsetRef.current < productsRef.current.length ? "Még több kép" : "Nincs több kép"}
+                    {offsetRef.current < productsRef.current.length ? "Még több kép" : "Nincs több kép :("}
                 </button>
             </div>
         </div >
