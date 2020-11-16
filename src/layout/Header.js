@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useCallback } from "react";
+import React, { useContext, useState, useEffect, useCallback, memo } from "react";
 import styled from "styled-components";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
@@ -29,7 +29,7 @@ const DesktopNav = styled.div`
     display: inline-flex;
   `;
 
-export default function Header() {
+export default memo(function Header() {
   const [width, setWidth] = useContext(InnerWidthContext);
   let fromMobile = 1380 > width;
   const [collapsiblesAreSet, setCollapsiblesAreSet] = useState(false);
@@ -38,7 +38,6 @@ export default function Header() {
     finishedProductsLeftFromWindow: 0,
     finishedProductsWidth: 0,
   })
-
 
   const setUpTheCollapsibleDropDownItems = useCallback(() => {
     let coll = document.getElementsByClassName(hamMenu.collapsible);
@@ -279,4 +278,4 @@ export default function Header() {
       </div>
     </div>
   );
-}
+})

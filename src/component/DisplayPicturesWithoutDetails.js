@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import DisplayPicWithoutDetails from "./DisplayPicWithoutDetails";
 
@@ -30,4 +30,4 @@ const DisplayPicturesWithoutDetails = (props) => {
     );
 }
 
-export default DisplayPicturesWithoutDetails;
+export default memo(DisplayPicturesWithoutDetails);

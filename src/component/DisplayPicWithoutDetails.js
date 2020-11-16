@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import imgStyle from "../style/prevProductsImg.module.css"
 import ImgSuspense from "img-suspense";
 
-export default function DisplayPicWithoutDetails(props) {
+export default memo(function DisplayPicWithoutDetails(props) {
     const [itsIncreased, setIntsIncreased] = useState(false);
     const [offsetTop, setOffsetTop] = useState(0);
     const [containerIdName, setContainerIdName] = useState("");
@@ -57,4 +57,4 @@ export default function DisplayPicWithoutDetails(props) {
             </div>
         </div>
     );
-}
+})

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import PageTitle from "./PageTitle";
 import { importAllToSrcLists } from "../utils/ImportAllFromFolder";
 import DisplayPicturesWithoutDetails from './DisplayPicturesWithoutDetails';
@@ -76,7 +76,8 @@ const PrevProducts = () => {
     useEffect(() => {
         document.addEventListener("scroll", throttledScrollHandle);
         return () => { document.removeEventListener("scroll", throttledScrollHandle) };
-    }, [throttledScrollHandle])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <div style={{ margin: "6rem 0 2rem" }}>
@@ -103,4 +104,4 @@ const PrevProducts = () => {
     );
 }
 
-export default PrevProducts;
+export default memo(PrevProducts);
