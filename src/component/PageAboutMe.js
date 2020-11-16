@@ -1,14 +1,25 @@
 import React, { memo } from "react";
 import PageTitle from "./PageTitle";
+import ImgSuspense from "img-suspense";
 
 export default memo(function PageAboutMe() {
   return (
     <div style={{ marginTop: "6rem" }}>
       <PageTitle text={"Rólam"} />
       <div>
-        <img
+        <ImgSuspense
           src="/specialImages/aboutMeImgs/profile.jpg"
           alt="Me"
+          fallback={<img
+            src="/specialImages/loading.gif"
+            alt="loading"
+            style={{
+              display: "block",
+              margin: "auto",
+              marginTop: "1rem",
+              width: "40%"
+            }}
+          ></img>}
           style={{
             display: "block",
             margin: "auto",
