@@ -6,10 +6,10 @@ import Carousel from "react-bootstrap/Carousel";
 import modalStyle from "../style/modal.module.css";
 
 function Modal(props) {
-  const [ModalTexts] = useContext(props.context);
   const [modalIndex, setModalIndex] = useState(0);
-  const [width] = useContext(InnerWidthContext);
   const didMountRef = useRef(false);
+  const [ModalTexts] = useContext(props.context);
+  const [width] = useContext(InnerWidthContext);
   const [
     modalSrc,
     ,
@@ -77,32 +77,45 @@ function Modal(props) {
     }
   }
 
+  function generateCarousel() {
+    return (
+      <Carousel touch={false} fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect}>
+        {modalSrc.map((src) => {
+          return (
+            <Carousel.Item key={src} style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
+              <div style={{
+                backgroundImage: `url(/specialImages/loading.gif)`,
+                backgroundRepeat: "no-repeat", backgroundColor: "white",
+                backgroundPosition: "center",
+                backgroundSize: `${width > 1000 ? "20vw" : "50vw"}`
+              }}>
+                <img
+                  className="d-block w-100"
+                  style={width > 1000 ?
+                    { height: "30vw", width: "30vw" }
+                    :
+                    { height: "60vw", width: "60vw" }}
+                  src={src}
+                  alt="slide"
+                  decoding="async"
+                />
+              </div>
+            </Carousel.Item>
+          )
+        })}
+      </Carousel>
+    )
+  }
+
   function desktopModalContext() {
     return (
       <>
+        <h1 style={{ borderBottom: "solid", marginBottom: "5vh", textAlign: "center" }}>
+          {modalName}
+        </h1>
         <KeyDownHandler escHandler={toggleModalVisibility} leftHandler={oneLeft} rightHandler={oneRight} />
         <div style={{ display: "inline-block", width: "30vw", height: "30vw" }}>
-          <Carousel touch={false} fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect}>
-            {modalSrc.map((src) => {
-              return (
-                <Carousel.Item key={src} style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
-                  <div style={{
-                    backgroundImage: `url(/specialImages/loading.gif)`,
-                    backgroundRepeat: "no-repeat", backgroundColor: "white",
-                    backgroundPosition: "center", backgroundSize: "20vw"
-                  }}>
-                    <img
-                      className="d-block w-100"
-                      style={{ height: "30vw", width: "30vw" }}
-                      src={src}
-                      alt="slide"
-                      decoding="async"
-                    />
-                  </div>
-                </Carousel.Item>
-              )
-            })}
-          </Carousel>
+          {generateCarousel()}
         </div>
         <div
           style={{
@@ -127,29 +140,12 @@ function Modal(props) {
   function mobileModalContext() {
     return (
       <>
+        <h2 style={{ borderBottom: "solid", marginBottom: "5vh", textAlign: "center" }}>
+          {modalName}
+        </h2>
         <div style={{ margin: "auto", textAlign: "center" }}>
           <div style={{ display: "inline-block", width: "60vw", height: "60vw" }}>
-            <Carousel touch={false} fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect} >
-              {modalSrc.map((src) => {
-                return (
-                  <Carousel.Item key={src} style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
-                    <div style={{
-                      backgroundImage: `url(/specialImages/loading.gif)`,
-                      backgroundRepeat: "no-repeat", backgroundColor: "white",
-                      backgroundPosition: "center", backgroundSize: "50vw"
-                    }}>
-                      <img
-                        className="d-block w-100"
-                        style={{ height: "60vw", width: "60vw" }}
-                        src={src}
-                        alt="slide"
-                        decoding="async"
-                      />
-                    </div>
-                  </Carousel.Item>
-                )
-              })}
-            </Carousel>
+            {generateCarousel()}
           </div>
         </div>
         <div
@@ -181,14 +177,6 @@ function Modal(props) {
         >
           &times;
         </button>
-
-        {width > 1000 ? <h1 style={{ borderBottom: "solid", marginBottom: "5vh", textAlign: "center" }}>
-          {modalName}
-        </h1>
-          :
-          <h2 style={{ borderBottom: "solid", marginBottom: "5vh", textAlign: "center" }}>
-            {modalName}
-          </h2>}
 
         {modalSrc !== "" ? <>{width > 1000 ? desktopModalContext() : mobileModalContext()}</> : null}
       </div>
