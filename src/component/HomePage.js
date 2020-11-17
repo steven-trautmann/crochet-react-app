@@ -7,6 +7,7 @@ import ImgSuspense from "img-suspense";
 import homepageStyle from "../style/homepage.module.css";
 import linkStyle from "../style/links.module.css";
 import "../style/globalImg.css";
+import "../style/carouselControls.css";
 import "../style/picturesGrid.css";
 
 export default memo(function HomePage() {

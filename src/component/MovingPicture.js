@@ -41,7 +41,7 @@ export default memo(function MovingPicture() {
         marginTop: "6rem",
       }}
     >
-      <Carousel interval={10000}>
+      <Carousel touch={false} interval={10000}>
         {images.map((image) => {
           return <Carousel.Item key={image.pageName}>
             <Link to={`/${image.linkUrl}`}>

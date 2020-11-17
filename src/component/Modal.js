@@ -87,7 +87,7 @@ function Modal(props) {
       <div>
         <KeyDownHandler escHandler={toggleModalVisibility} leftHandler={oneLeft} rightHandler={oneRight} />
         <div style={{ display: "inline-block", width: "30vw", height: "30vw" }}>
-          <Carousel fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect}>
+          <Carousel touch={false} fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect}>
             {modalSrc.map((src) => {
               return (
                 <Carousel.Item key={src} style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
@@ -134,7 +134,7 @@ function Modal(props) {
       <div>
         <div style={{ margin: "auto", textAlign: "center" }}>
           <div style={{ display: "inline-block", width: "60vw", height: "60vw" }}>
-            <Carousel fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect}>
+            <Carousel touch={false} fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect} >
               {modalSrc.map((src) => {
                 return (
                   <Carousel.Item key={src} style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
