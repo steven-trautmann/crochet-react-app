@@ -7,7 +7,6 @@ import KeyDownHandler from "./KeyDownHandler";
 const ArrowButton = styled.button`
     background-color: white;
     width: 10vw;
-    height: 100vh;
     opacity: 90%;
     border: 0;
     font-family: 'Times New Roman', Times, serif;
@@ -81,7 +80,7 @@ export default function ModalWithoutDetails(props) {
             }}>
             <div
                 style={{
-                    margin: "auto", height: "auto", width: "auto"
+                    margin: "auto", height: "auto", width: "auto", display: "flex"
                 }}>
                 {props.imgSrc === "" ? null :
                     <>
