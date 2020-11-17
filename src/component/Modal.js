@@ -1,18 +1,54 @@
 import React, { useState, useEffect, useContext, useRef, memo } from "react";
-import KeyDownHandler from "../KeyDownHandler";
-import { ModalContext } from "../../context/ModalContext";
-import { InnerWidthContext } from "../../context/InnerWidthContext";
+import KeyDownHandler from "./KeyDownHandler";
+import { ModalContext } from "../context/ModalContext";
+import { InnerWidthContext } from "../context/InnerWidthContext";
 import Carousel from "react-bootstrap/Carousel";
-import modalStyle from "../../style/modal.module.css";
+import modalStyle from "../style/modal.module.css";
 
 function Modal(props) {
   const [ModalTexts] = useContext(props.context);
-
   const [modalIndex, setModalIndex] = useState(0);
+  const [width] = useContext(InnerWidthContext);
+  const didMountRef = useRef(false);
+  const [
+    modalSrc,
+    ,
+    modalCounter,
+    ,
+    modalName,
+    ,
+  ] = useContext(ModalContext);
 
   const handleSelect = (selectedIndex, e) => {
     setModalIndex(selectedIndex);
   };
+
+  useEffect(() => {
+    setModalIndex(0);
+    if (didMountRef.current) {
+      if (modalSrc !== "") {
+        toggleModalVisibility();
+      }
+    } else {
+      didMountRef.current = true;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modalCounter]);
+
+  useEffect(() => {
+    window.addEventListener("click", function (event) {
+      let myModal = document.getElementById("myModal");
+      if (event.target === myModal) {
+        toggleModalVisibility();
+      }
+    });
+    return window.removeEventListener("click", function (event) {
+      let myModal = document.getElementById("myModal");
+      if (event.target === myModal) {
+        toggleModalVisibility();
+      }
+    });
+  }, []);
 
   const oneLeft = () => {
     if (modalIndex === 0) {
@@ -30,47 +66,6 @@ function Modal(props) {
     }
   }
 
-  const [width] = useContext(InnerWidthContext);
-  const [
-    modalSrc,
-    // eslint-disable-next-line no-unused-vars
-    setModalSrc,
-    modalCounter,
-    // eslint-disable-next-line no-unused-vars
-    setModalCounter,
-    modalName,
-    // eslint-disable-next-line no-unused-vars
-    setModalName,
-    hasListener,
-    setHasListener,
-  ] = useContext(ModalContext);
-
-  const didMountRef = useRef(false);
-
-  useEffect(() => {
-    setModalIndex(0);
-    if (didMountRef.current) {
-      if (modalSrc !== "") {
-        toggleModalVisibility();
-      }
-    } else {
-      didMountRef.current = true;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [modalCounter]);
-
-  useEffect(() => {
-    if (!hasListener) {
-      window.addEventListener("click", function (event) {
-        let myModal = document.getElementById("myModal");
-        if (event.target === myModal) {
-          toggleModalVisibility();
-        }
-      });
-      setHasListener(true);
-    }
-  }, [hasListener, setHasListener]);
-
   function toggleModalVisibility() {
     let modal = document.getElementById("myModal");
     if (modal.classList.contains(modalStyle.modalInvisible)) {
@@ -84,7 +79,7 @@ function Modal(props) {
 
   function desktopModalContext() {
     return (
-      <div>
+      <>
         <KeyDownHandler escHandler={toggleModalVisibility} leftHandler={oneLeft} rightHandler={oneRight} />
         <div style={{ display: "inline-block", width: "30vw", height: "30vw" }}>
           <Carousel touch={false} fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect}>
@@ -125,13 +120,13 @@ function Modal(props) {
           <h2>{ModalTexts[modalName + " additional"]}</h2>
           <h1 style={{ marginLeft: "0", textAlign: "inherit", marginTop: "1rem" }}>{ModalTexts[modalName + " ár"]}</h1>
         </div>
-      </div>
+      </>
     );
   }
 
   function mobileModalContext() {
     return (
-      <div>
+      <>
         <div style={{ margin: "auto", textAlign: "center" }}>
           <div style={{ display: "inline-block", width: "60vw", height: "60vw" }}>
             <Carousel touch={false} fade={true} pause="hover" interval={20000} activeIndex={modalIndex} onSelect={handleSelect} >
@@ -171,7 +166,7 @@ function Modal(props) {
           <h4>{ModalTexts[modalName + " additional"]}</h4>
           <h3 style={{ marginLeft: "0", textAlign: "inherit", marginTop: "1rem" }}>{ModalTexts[modalName + " ár"]}</h3>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -195,7 +190,7 @@ function Modal(props) {
             {modalName}
           </h2>}
 
-        {modalSrc !== "" ? <div>{width > 1000 ? desktopModalContext() : mobileModalContext()}</div> : null}
+        {modalSrc !== "" ? <>{width > 1000 ? desktopModalContext() : mobileModalContext()}</> : null}
       </div>
     </div>
   );
