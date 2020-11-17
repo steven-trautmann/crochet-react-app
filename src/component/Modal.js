@@ -17,6 +17,8 @@ function Modal(props) {
     ,
     modalName,
     ,
+    hasListener,
+    setHasListener,
   ] = useContext(ModalContext);
 
   const handleSelect = (selectedIndex, e) => {
@@ -36,19 +38,16 @@ function Modal(props) {
   }, [modalCounter]);
 
   useEffect(() => {
-    window.addEventListener("click", function (event) {
-      let myModal = document.getElementById("myModal");
-      if (event.target === myModal) {
-        toggleModalVisibility();
-      }
-    });
-    return window.removeEventListener("click", function (event) {
-      let myModal = document.getElementById("myModal");
-      if (event.target === myModal) {
-        toggleModalVisibility();
-      }
-    });
-  }, []);
+    if (!hasListener) {
+      window.addEventListener("click", function (event) {
+        let myModal = document.getElementById("myModal");
+        if (event.target === myModal) {
+          toggleModalVisibility();
+        }
+      });
+      setHasListener(true);
+    }
+  }, [hasListener, setHasListener]);
 
   const oneLeft = () => {
     if (modalIndex === 0) {
