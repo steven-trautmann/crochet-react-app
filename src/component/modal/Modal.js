@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext, useRef, memo } from "react";
-import KeyDownHandler from "./KeyDownHandler";
-import { ModalContext } from "../context/ModalContext";
-import { InnerWidthContext } from "../context/InnerWidthContext";
+import KeyDownHandler from "../KeyDownHandler";
+import { ModalContext } from "../../context/ModalContext";
+import { InnerWidthContext } from "../../context/InnerWidthContext";
 import Carousel from "react-bootstrap/Carousel";
-import modalStyle from "../style/modal.module.css";
+import modalStyle from "../../style/modal.module.css";
 
 function Modal(props) {
   const [ModalTexts] = useContext(props.context);

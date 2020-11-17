@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ModalContext } from "../context/ModalContext";
-import linkStyle from "../style/links.module.css";
+import { ModalContext } from "../../context/ModalContext";
+import linkStyle from "../../style/links.module.css";
 import ImgSuspense from "img-suspense";
 
 export default function DisplayPic(props) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from "styled-components";
 
 const Title = styled.h1`
@@ -13,4 +13,4 @@ const PageTitle = (props) => {
         <Title>{props.text}</Title>
     );
 }
-export default PageTitle;
+export default memo(PageTitle);

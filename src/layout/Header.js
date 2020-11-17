@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, memo } from "react";
 import { InnerWidthContext } from "../context/InnerWidthContext";
 import { Link } from "react-router-dom";
-import DesktopNavBar from "./DesktopNavBar";
-import MobileNavBar from "./MobileNavBar";
+import DesktopNavBar from "./navbar/DesktopNavBar";
+import MobileNavBar from "./navbar/MobileNavBar";
 
 export default memo(function Header() {
   const [width, setWidth] = useContext(InnerWidthContext);

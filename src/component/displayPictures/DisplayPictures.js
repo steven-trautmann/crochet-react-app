@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import DisplayPic from "./DisplayPic";
-import { InnerWidthContext } from "../context/InnerWidthContext";
+import { InnerWidthContext } from "../../context/InnerWidthContext";
 
 export default function DisplayPictures(props) {
   const [width] = useContext(InnerWidthContext);

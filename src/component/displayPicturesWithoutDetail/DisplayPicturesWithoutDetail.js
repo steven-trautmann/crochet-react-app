@@ -1,6 +1,6 @@
 import React, { useContext, memo } from 'react';
-import { InnerWidthContext } from "../context/InnerWidthContext";
-import DisplayPicWithoutDetails from "./DisplayPicWithoutDetails";
+import { InnerWidthContext } from "../../context/InnerWidthContext";
+import DisplayPicWithoutDetails from "./DisplayPicWithoutDetail";
 
 const DisplayPicturesWithoutDetails = (props) => {
     const [width] = useContext(InnerWidthContext);

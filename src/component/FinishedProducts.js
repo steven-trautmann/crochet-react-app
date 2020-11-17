@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
-import DisplayPictures from "./DisplayPictures";
-import Modal from "./Modal";
+import DisplayPictures from "./displayPictures/DisplayPictures";
+import Modal from "./modal/Modal";
 import { useParams } from "react-router-dom";
 import { FinishedModalTextsContext } from "../context/ModalTextsFinishedProducts";
 import { importAll } from "../utils/ImportAllFromFolder";

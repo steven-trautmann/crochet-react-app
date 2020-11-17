@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useEffect, useContext, memo } from 'react';
 import { Link } from "react-router-dom";
-import { InnerWidthContext } from "../context/InnerWidthContext";
-import hamMenu from "../style/hamburgerMenu.module.scss";
-import linkStyle from "../style/links.module.css";
+import { InnerWidthContext } from "../../context/InnerWidthContext";
+import hamMenu from "../../style/hamburgerMenu.module.scss";
+import linkStyle from "../../style/links.module.css";
 
 const MobileNavBar = () => {
     const [collapsiblesAreSet, setCollapsiblesAreSet] = useState(false);

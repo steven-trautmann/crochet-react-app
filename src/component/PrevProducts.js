@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from 'react';
 import PageTitle from "./PageTitle";
 import { importAllToSrcLists } from "../utils/ImportAllFromFolder";
-import DisplayPicturesWithoutDetails from './DisplayPicturesWithoutDetails';
+import DisplayPicturesWithoutDetails from './displayPicturesWithoutDetail/DisplayPicturesWithoutDetail';
 import _ from "underscore";
 import ModalWithoudDetails from "./ModalWithoutDetails";
 

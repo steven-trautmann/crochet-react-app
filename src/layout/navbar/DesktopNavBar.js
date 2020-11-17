@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useEffect, useContext, memo } from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { InnerWidthContext } from "../context/InnerWidthContext";
-import navBar from "../style/navBar.module.css";
-import linkStyle from "../style/links.module.css";
+import { InnerWidthContext } from "../../context/InnerWidthContext";
+import navBar from "../../style/navBar.module.css";
+import linkStyle from "../../style/links.module.css";
 
 const DesktopNav = styled.div`
   text-align: center;
