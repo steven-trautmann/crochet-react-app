@@ -24,8 +24,8 @@ export default memo(function Connection() {
   const [maxLengthStates,] = useState({
     name: 40,
     message: 500,
-    email: 60,
-    additional: 50
+    email: 50,
+    additional: 60
   })
 
   const [emailStates, setEmailStates] = useState({
@@ -221,35 +221,32 @@ export default memo(function Connection() {
               <label htmlFor="name">Név: </label>
               <input name="name" placeholder={fromMobile ? "A neved" : "Milyen néven szólíthatlak?"}
                 required
+                style={{ width: "65vw" }}
                 maxLength={maxLengthStates.name}
                 onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.name} />
               <Counter>{emailStates.name.length}/{maxLengthStates.name}</Counter>
-            </fieldset>
 
-            <fieldset>
               <label htmlFor="message">Üzenet: </label>
-              <textarea name="message" rows="8"
+              <textarea name="message" rows="10"
+                style={{ width: "65vw" }}
                 maxLength={maxLengthStates.message}
                 required
                 placeholder="Ide írhatod az üzenetedet..."
                 onChange={handleChange} value={emailStates.message} ></textarea>
               <Counter>{emailStates.message.length}/{maxLengthStates.message}</Counter>
-            </fieldset>
 
-            {emailIsValid ? null : <h2 style={{ textDecoration: "underline", textDecorationColor: "red" }}>Helytelen e-mail cím. Ellenőrizd újra!</h2>}
-            <fieldset>
+              {emailIsValid ? null : <h2 style={{ textDecoration: "underline", textDecorationColor: "red" }}>Helytelen e-mail cím. Ellenőrizd újra!</h2>}
               <label htmlFor="email">A <em>te</em> e-mail címed (ezen tudok neked válaszolni):</label>
               <input name="email" type="email"
                 maxLength={maxLengthStates.email}
                 required placeholder="a.neved@email.hu"
                 onChange={handleEmailChange} onKeyDown={handleEnterKeydown} value={emailStates.email}
-                style={{ border: `${emailIsValid ? "" : "solid red"}` }} />
+                style={{ border: `${emailIsValid ? "" : "solid red"}`, width: `${fromMobile ? "65vw" : "35vw"}`, maxWidth: "50rem" }} />
               <Counter>{emailStates.email.length}/{maxLengthStates.email}</Counter>
-            </fieldset>
 
-            <fieldset>
               <label htmlFor="additional">Egyéb megjegyzés: </label>
               <input name="additional" placeholder={fromMobile ? "Utóirat esetleg? :)" : "Észrevételek, utóirat, bármi :)"}
+                style={{ width: "50vw" }}
                 maxLength={maxLengthStates.additional}
                 onChange={handleChange} onKeyDown={handleEnterKeydown} value={emailStates.additional} />
               <Counter>{emailStates.additional.length}/{maxLengthStates.additional}</Counter>
