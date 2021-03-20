@@ -33,8 +33,6 @@ const PrevProducts = () => {
         }
         setOffset(newOffset);
         sliceProducts(newOffset);
-
-        window.scrollTo(0, window.scrollY - 350);
     }
 
     const importPrevProducts = () => {

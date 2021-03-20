@@ -253,8 +253,8 @@ export default memo(function Connection() {
             </fieldset>
 
             {missingInputs ? <p className={sBubbleStyle.speechBubble}>Minden mezőt ki kell tölteni!</p> : null}
-            <button onClick={handleFormSubmit} style={{ marginTop: "1.5rem" }}>Küldés</button>
-            <button onClick={handleReset} style={{ marginTop: "1.5rem", marginLeft: "2rem" }}>Visszaállítás</button>
+            <button onClick={handleReset} style={{ marginTop: "1.5rem" }}>Visszaállítás</button>
+            <button onClick={handleFormSubmit} style={{ marginTop: "1.5rem", marginLeft: "2rem" }}>Küldés</button>
           </div>
         </form>
         {/* on success */}
