@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import imgViewer from "../style/imgViewer.module.css"
-import ImgSuspense from "img-suspense";
 import styled from "styled-components";
 import KeyDownHandler from "./KeyDownHandler";
 
@@ -90,15 +89,10 @@ export default function ModalWithoutDetails(props) {
                             :
                             <ArrowButton>X</ArrowButton>
                         }
-                        <ImgSuspense
+                        <img
                             style={{ height: "auto", width: "auto", maxWidth: "80vw", maxHeight: "100vh" }}
                             src={props.imgSrc}
                             alt="crochetProduct"
-                            fallback={<img
-                                src="/specialImages/loading.gif"
-                                alt="loading"
-                                style={{ height: "auto", width: "auto", maxWidth: "80vw", maxHeight: "100vh", borderRadius: "20%" }}
-                            ></img>}
                         />
                         {props.imgSrcList.indexOf(props.imgSrc) < props.imgSrcList.length - 1 ?
                             <ArrowButton onClick={(e) => { oneRight(e) }}><img src="/specialImages/right.svg" alt="right" /></ArrowButton>

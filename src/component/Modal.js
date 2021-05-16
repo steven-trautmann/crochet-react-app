@@ -82,23 +82,16 @@ function Modal(props) {
         {modalSrc.map((src) => {
           return (
             <Carousel.Item key={src} style={{ transition: "transform 1s ease, opacity 1.25s ease-out" }}>
-              <div style={{
-                backgroundImage: `url(/specialImages/loading.gif)`,
-                backgroundRepeat: "no-repeat", backgroundColor: "white",
-                backgroundPosition: "center",
-                backgroundSize: `${width > 1000 ? "20vw" : "50vw"}`
-              }}>
-                <img
-                  className="d-block w-100"
-                  style={width > 1000 ?
-                    { height: "30vw", width: "30vw" }
-                    :
-                    { height: "60vw", width: "60vw" }}
-                  src={src}
-                  alt="slide"
-                  decoding="async"
-                />
-              </div>
+              <img
+                className="d-block w-100"
+                style={width > 1000 ?
+                  { height: "30vw", width: "30vw" }
+                  :
+                  { height: "60vw", width: "60vw" }}
+                src={src}
+                alt="slide"
+                decoding="async"
+              />
             </Carousel.Item>
           )
         })}

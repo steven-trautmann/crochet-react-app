@@ -44,10 +44,10 @@ export function FinishedModalTextsContextProvider(props) {
     "Zsiráf szundikendő additional": "Mosás: 40 fokon gépben mosható, szárítógépbe nem szabad tenni, fektetve kell szárítani",
     "Zsiráf szundikendő ár": "Ár: 6500 Ft",
 
-    "Szivárvány sörényű unikornis szöveg": "Göndör, szivárvány sörényű unikornis hímzett szemmel.\nKedves és különleges alvótárs lehet az unikornis-imádóknak.",
-    "Szivárvány sörényű unikornis méret": "Méret: 27 cm (ülő helyzetben)",
-    "Szivárvány sörényű unikornis anyag": "Anyag: 55% pamut, 45 % akril",
-    "Szivárvány sörényű unikornis ár": "Ár: 11 000 Ft",
+    "Szivárvány unikornis szöveg": "Göndör, szivárvány sörényű unikornis hímzett szemmel.\nKedves és különleges alvótárs lehet az unikornis-imádóknak.",
+    "Szivárvány unikornis méret": "Méret: 27 cm (ülő helyzetben)",
+    "Szivárvány unikornis anyag": "Anyag: 55% pamut, 45 % akril",
+    "Szivárvány unikornis ár": "Ár: 11 000 Ft",
   });
 
   return (

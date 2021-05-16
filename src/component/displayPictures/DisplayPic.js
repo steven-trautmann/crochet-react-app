@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { ModalContext } from "../../context/ModalContext";
 import linkStyle from "../../style/links.module.css";
-import ImgSuspense from "img-suspense";
 
 export default function DisplayPic(props) {
   const [
@@ -32,18 +31,13 @@ export default function DisplayPic(props) {
 
   return (
     <div style={{ width: props.pictureSquareDistance }}>
-      <ImgSuspense
+      <img
         style={{ height: `${props.pictureSquareDistance}`, width: `${props.pictureSquareDistance}` }}
         onClick={() => {
           showModal();
         }}
         src={props.pictureSrcGroup[0]}
         alt="crochetProduct"
-        fallback={<img
-          src="/specialImages/loading.gif"
-          alt="loading"
-          style={{ height: `${props.pictureSquareDistance}`, width: `${props.pictureSquareDistance}` }}
-        ></img>}
       />
       {props.fromMobile ?
         <h3 className={linkStyle.links}

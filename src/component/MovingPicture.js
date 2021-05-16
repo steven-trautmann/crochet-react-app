@@ -45,19 +45,13 @@ export default memo(function MovingPicture() {
         {images.map((image) => {
           return <Carousel.Item key={image.pageName}>
             <Link to={`/${image.linkUrl}`}>
-              <div style={{
-                backgroundImage: `url(/specialImages/loading.gif)`,
-                backgroundRepeat: "no-repeat", backgroundColor: "white",
-                backgroundPosition: "center", backgroundSize: fromMobile ? "25vw" : "18vw"
-              }}>
-                <img
-                  className="d-block w-100"
-                  style={{ height: fromMobile ? "33vw" : "25vw" }}
-                  src={image.url}
-                  alt="First slide"
-                  decoding="async"
-                />
-              </div>
+              <img
+                className="d-block w-100"
+                style={{ height: fromMobile ? "33vw" : "25vw" }}
+                src={image.url}
+                alt="First slide"
+                decoding="async"
+              />
               <Carousel.Caption>
                 <CarouselText>{image.pageName}</CarouselText>
               </Carousel.Caption>
